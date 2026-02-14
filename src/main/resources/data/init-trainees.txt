@@ -1,0 +1,5 @@
+T1,John,Smith,John.Smith,a8F9xPqL2z,true,1995-04-12,Seoul
+T2,Anna,Brown,Anna.Brown9,Kd83LmPqX1,true,1998-11-03,Busan
+T3,Michael,Johnson,Michael.Johnson,Qw8zLm2PxR,false,1992-06-21,Incheon
+T4,Sophia,Lee,Sophia.Lee,Yu7TxLmZp1,true,2000-02-14,Daegu
+T5,Daniel,Kim,Daniel.Kim8,Rt56LpQwZa,true,1997-09-30,Gwangju

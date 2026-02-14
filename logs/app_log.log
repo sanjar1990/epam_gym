@@ -1,0 +1,26 @@
+14 Feb 2026 - 17:23:05.955 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 5944 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+14 Feb 2026 - 17:23:05.969 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+14 Feb 2026 - 17:23:06.717 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+14 Feb 2026 - 17:23:06.728 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 Feb 2026 - 17:23:06.728 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+14 Feb 2026 - 17:23:06.764 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 746 ms
+14 Feb 2026 - 17:23:06.825 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+14 Feb 2026 - 17:23:06.829 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+14 Feb 2026 - 17:23:06.833 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+14 Feb 2026 - 17:23:07.123 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+14 Feb 2026 - 17:23:07.127 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 1.654 seconds (process running for 2.496)
+14 Feb 2026 - 17:24:26.442 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+14 Feb 2026 - 17:24:26.451 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+14 Feb 2026 - 17:24:32.345 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 8604 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+14 Feb 2026 - 17:24:32.366 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+14 Feb 2026 - 17:24:33.293 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+14 Feb 2026 - 17:24:33.311 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+14 Feb 2026 - 17:24:33.312 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+14 Feb 2026 - 17:24:33.353 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 923 ms
+14 Feb 2026 - 17:24:33.417 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+14 Feb 2026 - 17:24:33.419 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+14 Feb 2026 - 17:24:33.423 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+14 Feb 2026 - 17:24:33.710 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+14 Feb 2026 - 17:24:33.715 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 2.054 seconds (process running for 2.843)
+14 Feb 2026 - 18:03:46.817 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+14 Feb 2026 - 18:03:46.834 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete

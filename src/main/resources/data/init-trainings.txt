@@ -1,0 +1,8 @@
+TN1,TR1,T1,Full Body Blast,Strength,2025-01-10,60
+TN2,TR2,T2,Morning Yoga Flow,Yoga,2025-01-12,45
+TN3,TR3,T3,Advanced Boxing,Boxing,2025-01-15,75
+TN4,TR4,T4,Pilates Core,Pilates,2025-01-18,50
+TN5,TR5,T5,HIIT Cardio,Cardio,2025-01-20,40
+TN6,TR6,T1,CrossFit Power,CrossFit,2025-01-22,70
+TN7,TR1,T3,Muscle Builder,Strength,2025-01-25,60
+TN8,TR2,T4,Evening Stretch,Yoga,2025-01-28,45
