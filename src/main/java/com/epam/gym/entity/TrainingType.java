@@ -11,6 +11,12 @@ import java.util.UUID;
 @Setter
 @ToString
 @NoArgsConstructor
+// TODO:
+//  [Optional]
+//  If TrainingType represents a fixed set of predefined types (e.g., "CARDIO", "STRENGTH", "YOGA"),
+//  using an enum is preferable. Enums provide type safety, are easier to maintain,
+//  make the code more readable and are faster to compare then strings.
+//  You can keep the strings approach though - it also works here.
 public class TrainingType {
     private String id;
     private String trainingType;

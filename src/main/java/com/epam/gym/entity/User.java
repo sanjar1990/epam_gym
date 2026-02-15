@@ -8,6 +8,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public abstract class User {
+    // TODO:
+    //  Using String as an identifier is not incorrect in general,
+    //  but for this learning project it may complicate things further in the course.
+    //  I’d recommend switching to Long or if you want to keep string-based identifiers,
+    //  consider using UUID: `private UUID id` - also works.
     private String id;
     private String firstName;
     private String lastName;

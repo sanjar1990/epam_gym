@@ -24,3 +24,42 @@
 14 Feb 2026 - 17:24:33.715 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 2.054 seconds (process running for 2.843)
 14 Feb 2026 - 18:03:46.817 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
 14 Feb 2026 - 18:03:46.834 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+15 Feb 2026 - 12:45:28.764 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 25.0.1 with PID 86762 (/Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym/target/classes started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
+15 Feb 2026 - 12:45:28.767 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+15 Feb 2026 - 12:45:29.010 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+15 Feb 2026 - 12:45:29.015 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+15 Feb 2026 - 12:45:29.015 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+15 Feb 2026 - 12:45:29.027 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 244 ms
+15 Feb 2026 - 12:45:29.050 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+15 Feb 2026 - 12:45:29.051 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+15 Feb 2026 - 12:45:29.052 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+15 Feb 2026 - 12:45:29.149 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+15 Feb 2026 - 12:45:29.151 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 0.517 seconds (process running for 0.701)
+15 Feb 2026 - 12:49:46.055 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+15 Feb 2026 - 12:49:46.056 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+15 Feb 2026 - 13:03:31.970 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 88443 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
+15 Feb 2026 - 13:03:31.973 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
+15 Feb 2026 - 13:03:32.164 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+15 Feb 2026 - 13:03:32.165 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+15 Feb 2026 - 13:03:32.166 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+15 Feb 2026 - 13:03:32.290 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.416 seconds (process running for 0.81)
+15 Feb 2026 - 13:03:32.338 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+15 Feb 2026 - 13:03:32.338 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+15 Feb 2026 - 13:03:32.339 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+15 Feb 2026 - 13:03:32.665 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
+15 Feb 2026 - 13:03:32.667 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
+15 Feb 2026 - 13:03:32.686 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
+15 Feb 2026 - 13:03:32.688 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
+15 Feb 2026 - 13:03:44.301 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 88474 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
+15 Feb 2026 - 13:03:44.304 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
+15 Feb 2026 - 13:03:44.672 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+15 Feb 2026 - 13:03:44.673 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+15 Feb 2026 - 13:03:44.675 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+15 Feb 2026 - 13:03:44.887 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.762 seconds (process running for 1.469)
+15 Feb 2026 - 13:03:44.944 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
+15 Feb 2026 - 13:03:44.945 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
+15 Feb 2026 - 13:03:44.946 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
+15 Feb 2026 - 13:03:45.540 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
+15 Feb 2026 - 13:03:45.543 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
+15 Feb 2026 - 13:03:45.561 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
+15 Feb 2026 - 13:03:45.563 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson

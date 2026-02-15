@@ -96,6 +96,8 @@ class TraineeServiceTest {
         verifyNoMoreInteractions(traineeDao);
     }
 
+    // TODO:
+    //  This test fails
     @Test
     void delete_ShouldRemoveFromStorage() {
 

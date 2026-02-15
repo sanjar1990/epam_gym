@@ -15,6 +15,8 @@ import java.util.UUID;
 @Getter
 public class TraineeService {
 
+    // TODO
+    //  You have @Slf4j annotation in the project, consider using it throughout the app instead of creating a logger manually.
     private static final Logger log =
             LoggerFactory.getLogger(TraineeService.class);
 
@@ -31,6 +33,10 @@ public class TraineeService {
         this.generator = generator;
     }
 
+    // TODO
+    //  This is not stated clearly in the task, but will be important later in the course:
+    //  Since both Trainer and Trainee extend User class - "generateUsername" method should check
+    //  both storages at once for the existing username.
     public Trainee create(Trainee trainee) {
 
         String username = generator.generateUsername(
@@ -55,6 +61,9 @@ public class TraineeService {
         return traineeDao.findById(id);
     }
 
+    // TODO
+    //  What if the trainee/trainer username was changed to something that already exists in the storage?
+    //  Consider adding a check for that in the "update" method and throw an exception if the username is not unique
     public void update(Trainee trainee) {
         traineeDao.save(trainee);
         log.info("Updated trainee {}", trainee.getUsername());
