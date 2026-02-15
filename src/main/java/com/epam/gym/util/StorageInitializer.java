@@ -21,7 +21,7 @@ import java.time.LocalDate;
 //  First of all - good job, nice approach on using BeanPostProcessor to load data into storages!
 //  [Optional]
 //  It is very useful to have more descriptive full class name in this case, like StorageInitializationPostProcessor
-//  or StorageInitializationBeanPostProcessor. Otherwise the critical lifecycle role of it is hidden,
+//  or StorageInitializationBeanPostProcessor. Otherwise the critical lifecycle role of the class is hidden,
 //  especially when it is under 'utils' package. Please also move it to 'config'
 public class StorageInitializer implements BeanPostProcessor {
     @Value("${storage.init.trainees.file}")
