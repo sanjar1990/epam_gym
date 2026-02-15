@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @ToString
 public class Trainee extends User {
     // TODO:
-    //  Superclass already has an id field, so we should remove the id field from child classes
+    //  Superclass already has an id field, so we don't need it in child classes
     private String id;
     private LocalDate dateOfBirth;
     private String address;

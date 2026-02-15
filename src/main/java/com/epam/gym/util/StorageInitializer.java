@@ -62,8 +62,8 @@ public class StorageInitializer implements BeanPostProcessor {
     //  [Optional]
     //  Consider switching to for-each loop here since you don't need the index
     //  Also you should be warned about this and other things by your IDE
-    //  Its a good practice to pay attention to such warnings as they can help you write cleaner and more efficient code
-    //  You can run Inspect Code in IntelliJ IDEA to find all warnings in the project
+    //  It's a good practice to pay attention to such warnings as they can help you write cleaner and more efficient code
+    //  You can run `Inspect Code` in IntelliJ IDEA to find all warnings in the project
     private void loadTrainerData(TrainerStorage storage) {
         String[] data = ReadFile.getData(trainersFilePath);
         for (int i = 0; i < data.length; i++) {

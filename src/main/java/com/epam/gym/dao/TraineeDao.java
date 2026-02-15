@@ -12,6 +12,9 @@ import java.util.Collection;
 
 @Repository
 @Getter
+// TODO:
+//  @Getter...hmmm. Are you sure that you want other classes to access the storage? It breaks encapsulation.
+//  You should provide methods to work with the storage instead of exposing it to other classes.
 public class TraineeDao {
 
 

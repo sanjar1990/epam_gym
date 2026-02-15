@@ -16,7 +16,8 @@ import java.util.UUID;
 public class TraineeService {
 
     // TODO
-    //  You have @Slf4j annotation in the project, consider using it throughout the app instead of creating a logger manually.
+    //  You have @Slf4j annotation in the project, consider using it throughout the app
+    //  instead of creating a logger manually.
     private static final Logger log =
             LoggerFactory.getLogger(TraineeService.class);
 
