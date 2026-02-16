@@ -12,7 +12,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 
 @Slf4j
@@ -101,9 +100,9 @@ storage.getTrainerMap().put(trainer.getId(), trainer);
             training.setTrainingDate(LocalDate.parse(parts[5]));
             training.setDuration(Double.parseDouble(parts[6]));
 
-            storage.getTrainningMap().put(training.getId(), training);
+            storage.getTrainingMap().put(training.getId(), training);
         }
-        log.info("Loaded {} trainings", storage.getTrainningMap().size());
+        log.info("Loaded {} trainings", storage.getTrainingMap().size());
     }
 
 

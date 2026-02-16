@@ -2,7 +2,6 @@ package com.epam.gym.util;
 
 import com.epam.gym.entity.User;
 import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Random;
 

@@ -4,7 +4,6 @@ import com.epam.gym.entity.Trainer;
 import com.epam.gym.storage.TrainerStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.Collection;
 
 @Repository

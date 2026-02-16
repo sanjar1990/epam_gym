@@ -1,13 +1,10 @@
 package com.epam.gym.dao;
 
 import com.epam.gym.entity.Trainee;
-import com.epam.gym.entity.Trainer;
 import com.epam.gym.storage.TraineeStorage;
-import com.epam.gym.storage.TrainerStorage;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.Collection;
 
 @Repository
