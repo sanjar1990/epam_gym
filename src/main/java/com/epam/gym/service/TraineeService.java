@@ -1,23 +1,38 @@
 package com.epam.gym.service;
 
 import com.epam.gym.dao.TraineeDao;
+import com.epam.gym.dao.TrainerDao;
 import com.epam.gym.entity.Trainee;
+import com.epam.gym.entity.User;
+import com.epam.gym.util.PasswordGenerator;
+import com.epam.gym.util.UsernameGenerator;
 import com.epam.gym.util.UsernamePasswordGenerator;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
-@Getter
 @Slf4j
 public class TraineeService {
 
-
+    // TODO
+    //  You have @Slf4j annotation in the project, consider using it throughout the app
+    //  instead of creating a logger manually.
+    // DONE
 
     private TraineeDao traineeDao;
-    private UsernamePasswordGenerator generator;
+    private TrainerDao trainerDao;
+    private PasswordGenerator passwordGenerator;
+    private UsernameGenerator usernameGenerator;
 
     @Autowired
     public void setTraineeDao(TraineeDao traineeDao) {
@@ -25,23 +40,31 @@ public class TraineeService {
     }
 
     @Autowired
-    public void setGenerator(UsernamePasswordGenerator generator) {
-        this.generator = generator;
+    public void setPasswordGenerator(PasswordGenerator passwordGenerator) {
+        this.passwordGenerator = passwordGenerator;
     }
 
-    public Trainee create(Trainee trainee) {
+    @Autowired
+    public void setUsernameGenerator(UsernameGenerator usernameGenerator) {
+        this.usernameGenerator = usernameGenerator;
+    }
 
-        String username = generator.generateUsername(
+    // TODO
+    //  This is not stated clearly in the task, but will be important later in the course:
+    //  Since both Trainer and Trainee extend User class - "generateUsername" method should check
+    //  both storages at once for the existing username.
+    public Trainee create(Trainee trainee) {
+        trainerDao.findAll();
+
+        String username = usernameGenerator.generateUsername(
                 trainee.getFirstName(),
                 trainee.getLastName(),
-                traineeDao.findAll()
+                getAllUsers()
         );
 
         trainee.setUsername(username);
-        trainee.setPassword(generator.generatePassword());
+        trainee.setPassword(passwordGenerator.generatePassword());
         trainee.setActive(true);
-        trainee.setId(UUID.randomUUID().toString());
-
         traineeDao.save(trainee);
 
         log.info("Created trainee {}", username);
@@ -49,17 +72,28 @@ public class TraineeService {
         return trainee;
     }
 
-    public Trainee find(String id) {
+    public Trainee find(Long id) {
         return traineeDao.findById(id);
     }
 
+    // TODO
+    //  What if the trainee/trainer username was changed to something that already exists in the storage?
+    //  Consider adding a check for that in the "update" method and throw an exception if the username is not unique
+    // Done
     public void update(Trainee trainee) {
-        traineeDao.save(trainee);
+        traineeDao.update(trainee, getAllUsers());
         log.info("Updated trainee {}", trainee.getUsername());
     }
 
-    public void delete(String id) {
-        traineeDao.getStorage().getTraineeMap().remove(id);
+    public void delete(Long id) {
+        traineeDao.remove(id);
         log.info("Deleted trainee id={}", id);
+    }
+
+    private Collection<User> getAllUsers() {
+        Collection<User> users = new ArrayList<>();
+        users.addAll(traineeDao.findAll());
+        users.addAll(trainerDao.findAll());
+        return users;
     }
 }

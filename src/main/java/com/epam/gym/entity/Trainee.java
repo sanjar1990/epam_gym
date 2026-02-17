@@ -7,7 +7,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Trainee extends User {
-    private String id;
+    // TODO
+    //  Superclass already has an id field, so we don't need it in child classes
+    // Done
     private LocalDate dateOfBirth;
     private String address;
 }

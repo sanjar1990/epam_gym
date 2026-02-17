@@ -36,29 +36,29 @@ class TrainingServiceTest {
     void find_ShouldReturnTraining_WhenExists() {
 
         Training training = new Training();
-        training.setId("123");
+        training.setId(123L);
 
-        when(trainingDao.findById("123")).thenReturn(training);
+        when(trainingDao.findById(123L)).thenReturn(training);
 
-        Training result = trainingService.find("123");
+        Training result = trainingService.find(123L);
 
         assertNotNull(result);
-        assertEquals("123", result.getId());
+        assertEquals(123L, result.getId());
 
-        verify(trainingDao).findById("123");
+        verify(trainingDao).findById(123L);
         verifyNoMoreInteractions(trainingDao);
     }
 
     @Test
     void find_ShouldReturnNull_WhenTrainingNotFound() {
 
-        when(trainingDao.findById("999")).thenReturn(null);
+        when(trainingDao.findById(999L)).thenReturn(null);
 
-        Training result = trainingService.find("999");
+        Training result = trainingService.find(999L);
 
         assertNull(result);
 
-        verify(trainingDao).findById("999");
+        verify(trainingDao).findById(999L);
         verifyNoMoreInteractions(trainingDao);
     }
 }

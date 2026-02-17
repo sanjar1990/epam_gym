@@ -1,22 +1,15 @@
 package com.epam.gym.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-<<<<<<< HEAD:src/main/java/com/epam/gym/util/ReadFile.java
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public  class ReadFile {
-=======
 
 // TODO:
 //  [Optional]
 //  It is more expected if class name is a noun like FileReader or FileUtils etc.
 //  Verbs are usually used for method names
 public class FileUtils {
->>>>>>> origin/feature/clean-project:src/main/java/com/epam/gym/util/FileUtils.java
     private static String readFile(String filePath) {
 
         Resource resource = new ClassPathResource(filePath);
@@ -39,10 +32,6 @@ public class FileUtils {
 
         return content.toString();
     }
-<<<<<<< HEAD:src/main/java/com/epam/gym/util/ReadFile.java
-    public static String [] getLines(String filePath) {
-
-=======
 
     // TODO:
     //  Method signatures should be self-descriptive. Imagine someone else will use the class you wrote.
@@ -52,7 +41,6 @@ public class FileUtils {
     //  String[] readLines(String filePath)
     //Done
     public static String [] readLines(String filePath) {
->>>>>>> origin/feature/clean-project:src/main/java/com/epam/gym/util/FileUtils.java
      return readFile(filePath).split("\n");
     }
 

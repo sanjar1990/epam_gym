@@ -10,6 +10,6 @@ import java.util.Map;
 @Component
 public class TrainerStorage {
 
-    private final Map<String, Trainer> trainerMap = new HashMap<>();
+    private final Map<Long, Trainer> trainerMap = new HashMap<>();
 
 }
