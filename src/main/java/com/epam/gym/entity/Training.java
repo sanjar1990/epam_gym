@@ -1,7 +1,6 @@
 package com.epam.gym.entity;
 
 import com.epam.gym.enums.TrainingType;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 

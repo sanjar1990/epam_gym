@@ -4,7 +4,6 @@ import com.epam.gym.dao.TrainerDao;
 import com.epam.gym.entity.Trainee;
 import com.epam.gym.util.PasswordGenerator;
 import com.epam.gym.util.UsernameGenerator;
-import com.epam.gym.util.UsernamePasswordGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,6 +1,5 @@
 package com.epam.gym.entity;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
