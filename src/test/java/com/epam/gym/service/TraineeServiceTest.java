@@ -1,6 +1,9 @@
 package com.epam.gym.service;
 import com.epam.gym.dao.TraineeDao;
+import com.epam.gym.dao.TrainerDao;
 import com.epam.gym.entity.Trainee;
+import com.epam.gym.util.PasswordGenerator;
+import com.epam.gym.util.UsernameGenerator;
 import com.epam.gym.util.UsernamePasswordGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,9 +21,13 @@ class TraineeServiceTest {
 
     @Mock
     private TraineeDao traineeDao;
+    @Mock
+    private TrainerDao trainerDao;
 
     @Mock
-    private UsernamePasswordGenerator generator;
+    private UsernameGenerator usernameGenerator;
+    @Mock
+    private PasswordGenerator passwordGenerator;
 
     @InjectMocks
     private TraineeService traineeService;
@@ -34,9 +41,9 @@ class TraineeServiceTest {
         trainee.setLastName("Smith");
 
         when(traineeDao.findAll()).thenReturn(Collections.emptyList());
-        when(generator.generateUsername("John", "Smith", Collections.emptyList()))
+        when(usernameGenerator.generateUsername("John", "Smith", Collections.emptyList()))
                 .thenReturn("John.Smith");
-        when(generator.generatePassword()).thenReturn("1234567890");
+        when(passwordGenerator.generatePassword()).thenReturn("1234567890");
 
         // when
         Trainee result = traineeService.create(trainee);
@@ -48,60 +55,63 @@ class TraineeServiceTest {
         assertTrue(result.isActive());
 
         verify(traineeDao).findAll();
-        verify(generator).generateUsername("John", "Smith", Collections.emptyList());
-        verify(generator).generatePassword();
+        verify(usernameGenerator).generateUsername("John", "Smith", Collections.emptyList());
+        verify(passwordGenerator).generatePassword();
         verify(traineeDao).save(trainee);
-        verifyNoMoreInteractions(traineeDao, generator);
+        verifyNoMoreInteractions(traineeDao, usernameGenerator, passwordGenerator);
     }
 
     @Test
     void find_ShouldReturnTrainee() {
 
         Trainee trainee = new Trainee();
-        trainee.setId("1");
+        trainee.setId(1L);
 
-        when(traineeDao.findById("1")).thenReturn(trainee);
+        when(traineeDao.findById(1L)).thenReturn(trainee);
 
-        Trainee result = traineeService.find("1");
+        Trainee result = traineeService.find(1L);
 
         assertNotNull(result);
-        assertEquals("1", result.getId());
+        assertEquals(1L, result.getId());
 
-        verify(traineeDao).findById("1");
+        verify(traineeDao).findById(1L);
         verifyNoMoreInteractions(traineeDao);
     }
 
     @Test
     void find_ShouldReturnNull_WhenNotFound() {
 
-        when(traineeDao.findById("99")).thenReturn(null);
+        when(traineeDao.findById(99L)).thenReturn(null);
 
-        Trainee result = traineeService.find("99");
+        Trainee result = traineeService.find(99L);
 
         assertNull(result);
 
-        verify(traineeDao).findById("99");
+        verify(traineeDao).findById(99L);
         verifyNoMoreInteractions(traineeDao);
     }
 
     @Test
-    void update_ShouldCallSave() {
+    void update_ShouldCallUpdate() {
 
         Trainee trainee = new Trainee();
         trainee.setUsername("updatedUser");
 
+        when(traineeDao.findAll()).thenReturn(Collections.emptyList());
+        when(trainerDao.findAll()).thenReturn(Collections.emptyList());
+
         traineeService.update(trainee);
 
-        verify(traineeDao).save(trainee);
-        verifyNoMoreInteractions(traineeDao);
+        verify(traineeDao).findAll();
+        verify(trainerDao).findAll();
+        verify(traineeDao).update(eq(trainee), anyCollection());
+        verifyNoMoreInteractions(traineeDao, trainerDao);
     }
 
     // TODO:
     //  This test fails
     @Test
     void delete_ShouldRemoveFromStorage() {
-
-
-        assertDoesNotThrow(() -> traineeService.delete("1"));
+        assertDoesNotThrow(() -> traineeService.delete(1L));
     }
 }

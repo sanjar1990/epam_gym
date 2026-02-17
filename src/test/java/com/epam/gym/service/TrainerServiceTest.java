@@ -1,8 +1,10 @@
 package com.epam.gym.service;
 
+import com.epam.gym.dao.TraineeDao;
 import com.epam.gym.dao.TrainerDao;
 import com.epam.gym.entity.Trainer;
-import com.epam.gym.util.UsernamePasswordGenerator;
+import com.epam.gym.util.PasswordGenerator;
+import com.epam.gym.util.UsernameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,9 +21,14 @@ class TrainerServiceTest {
 
     @Mock
     private TrainerDao trainerDao;
+    @Mock
+    private TraineeDao traineeDao;
 
     @Mock
-    private UsernamePasswordGenerator generator;
+    private UsernameGenerator usernameGenerator;
+    @Mock
+    private PasswordGenerator passwordGenerator;
+
 
     @InjectMocks
     private TrainerService trainerService;
@@ -35,9 +42,9 @@ class TrainerServiceTest {
         trainer.setLastName("Wilson");
 
         when(trainerDao.findAll()).thenReturn(Collections.emptyList());
-        when(generator.generateUsername("David", "Wilson", Collections.emptyList()))
+        when(usernameGenerator.generateUsername("David", "Wilson", Collections.emptyList()))
                 .thenReturn("David.Wilson");
-        when(generator.generatePassword()).thenReturn("password123");
+        when(passwordGenerator.generatePassword()).thenReturn("password123");
 
         Trainer result = trainerService.create(trainer);
 
@@ -47,10 +54,10 @@ class TrainerServiceTest {
         assertTrue(result.isActive());
 
         verify(trainerDao).findAll();
-        verify(generator).generateUsername("David", "Wilson", Collections.emptyList());
-        verify(generator).generatePassword();
+        verify(usernameGenerator).generateUsername("David", "Wilson", Collections.emptyList());
+        verify(passwordGenerator).generatePassword();
         verify(trainerDao).save(trainer);
-        verifyNoMoreInteractions(trainerDao, generator);
+        verifyNoMoreInteractions(trainerDao, usernameGenerator, passwordGenerator);
     }
 
 
@@ -58,29 +65,29 @@ class TrainerServiceTest {
     void find_ShouldReturnTrainer_WhenExists() {
 
         Trainer trainer = new Trainer();
-        trainer.setId("TR1");
+        trainer.setId(1L);
 
-        when(trainerDao.findById("TR1")).thenReturn(trainer);
+        when(trainerDao.findById(1L)).thenReturn(trainer);
 
-        Trainer result = trainerService.find("TR1");
+        Trainer result = trainerService.find(1L);
 
         assertNotNull(result);
-        assertEquals("TR1", result.getId());
+        assertEquals(1L, result.getId());
 
-        verify(trainerDao).findById("TR1");
+        verify(trainerDao).findById(1L);
         verifyNoMoreInteractions(trainerDao);
     }
 
     @Test
     void find_ShouldReturnNull_WhenNotFound() {
 
-        when(trainerDao.findById("99")).thenReturn(null);
+        when(trainerDao.findById(99L)).thenReturn(null);
 
-        Trainer result = trainerService.find("99");
+        Trainer result = trainerService.find(99L);
 
         assertNull(result);
 
-        verify(trainerDao).findById("99");
+        verify(trainerDao).findById(99L);
         verifyNoMoreInteractions(trainerDao);
     }
 
@@ -90,10 +97,13 @@ class TrainerServiceTest {
 
         Trainer trainer = new Trainer();
         trainer.setUsername("Emma.Thompson");
+        when(traineeDao.findAll()).thenReturn(Collections.emptyList());
+        when(trainerDao.findAll()).thenReturn(Collections.emptyList());
 
         trainerService.update(trainer);
-
-        verify(trainerDao).save(trainer);
+        verify(traineeDao).findAll();
+        verify(trainerDao).findAll();
+        verify(trainerDao).update(eq(trainer), anyCollection());
         verifyNoMoreInteractions(trainerDao);
     }
 }

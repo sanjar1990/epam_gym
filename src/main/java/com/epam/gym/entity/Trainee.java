@@ -9,9 +9,9 @@ import java.time.LocalDate;
 @Setter
 @ToString
 public class Trainee extends User {
-    // TODO:
+    // TODO
     //  Superclass already has an id field, so we don't need it in child classes
-    private String id;
+    // Done
     private LocalDate dateOfBirth;
     private String address;
 }

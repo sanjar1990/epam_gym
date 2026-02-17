@@ -10,6 +10,6 @@ import java.util.Map;
 @Getter
 @Component
 public class TraineeStorage {
-    private final Map<String, Trainee> traineeMap = new HashMap<>();
+    private final Map<Long, Trainee> traineeMap = new HashMap<>();
 
 }

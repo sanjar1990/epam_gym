@@ -20,7 +20,7 @@ public class TrainingDao {
         storage.getTrainningMap().put(training.getId(), training);
     }
 
-    public Training findById(String id) {
+    public Training findById(Long id) {
         return storage.getTrainningMap().get(id);
     }
 

@@ -5,13 +5,12 @@ import org.springframework.core.io.Resource;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 // TODO:
 //  [Optional]
 //  It is more expected if class name is a noun like FileReader or FileUtils etc.
 //  Verbs are usually used for method names
-public abstract class ReadFile {
+public class FileUtils {
     private static String readFile(String filePath) {
 
         Resource resource = new ClassPathResource(filePath);
@@ -41,8 +40,9 @@ public abstract class ReadFile {
     //  String[] getData(String data) -- what is 'data' param? What kind of data you get? Why array? etc.
     //  In comparison:
     //  String[] readLines(String filePath)
-    public static String [] getData(String data) {
-     return readFile(data).split("\n");
+    //Done
+    public static String [] readLines(String filePath) {
+     return readFile(filePath).split("\n");
     }
 
 }

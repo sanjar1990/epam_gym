@@ -8,6 +8,5 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Trainer extends User  {
-    private String id;
     private String specialization;
 }

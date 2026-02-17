@@ -10,7 +10,5 @@ import java.util.Map;
 @Getter
 @Component
 public class TrainingStorage {
-    private final Map<String, Training> trainningMap = new HashMap<>();
-
-
+    private final Map<Long, Training> trainningMap = new HashMap<>();
 }
