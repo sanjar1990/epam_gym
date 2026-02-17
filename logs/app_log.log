@@ -998,3 +998,14 @@ Caused by: java.lang.NumberFormatException: For input string: "60"
 17 Feb 2026 - 13:01:11.028 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 8 trainings
 17 Feb 2026 - 13:01:11.358 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
 17 Feb 2026 - 13:01:11.362 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 1.648 seconds (process running for 2.302)
+17 Feb 2026 - 13:26:18.762 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 19840 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+17 Feb 2026 - 13:26:18.777 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+17 Feb 2026 - 13:26:19.683 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+17 Feb 2026 - 13:26:19.695 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+17 Feb 2026 - 13:26:19.695 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+17 Feb 2026 - 13:26:19.734 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 902 ms
+17 Feb 2026 - 13:26:19.809 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
+17 Feb 2026 - 13:26:19.813 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
+17 Feb 2026 - 13:26:19.818 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 8 trainings
+17 Feb 2026 - 13:26:20.117 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+17 Feb 2026 - 13:26:20.122 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 1.972 seconds (process running for 2.749)
