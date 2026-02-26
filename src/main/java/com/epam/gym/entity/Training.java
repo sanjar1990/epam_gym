@@ -1,25 +1,43 @@
 package com.epam.gym.entity;
 
-import com.epam.gym.enums.TrainingType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @Setter
+@Entity
 public class Training {
-    private Long id= ThreadLocalRandom.current().nextLong();
-    private String trainerId;
-    private String traineeId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "trainee_id")
+    private Long traineeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trainee_id",insertable = false,updatable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Trainee trainee;
+    @Column(name = "trainer_id")
+    private Long trainerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trainer_id", insertable = false,updatable = false)
+    private Trainer trainer;
+
+    @Column(nullable = false)
     private String trainingName;
+    @Column(name = "training_type_id")
+    private Long trainingTypeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "training_type_id",insertable = false,updatable = false)
     private TrainingType trainingType;
+
+    @Column(nullable = false)
     private LocalDate trainingDate;
-    // TODO
-    //  Is there a specific reason for using Double instead of Integer or Long for duration?
-    //  Also imagine a new team member is reading your code, how will they understand what the duration represents?
-    //  Is it in minutes, hours, seconds, etc.? You can for example leave a comment or give a field more descriptive name
-    // Done
+
+    @Column(nullable = false)
     private Integer trainingDuration;
 }

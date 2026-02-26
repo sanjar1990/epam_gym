@@ -1,80 +1,97 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dao.TraineeDao;
-import com.epam.gym.dao.TrainerDao;
+import com.epam.gym.dto.CreateTrainerRequestDTO;
+import com.epam.gym.dto.TrainerDTO;
+import com.epam.gym.dto.UpdateTrainerRequestDTO;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.User;
-import com.epam.gym.util.PasswordGenerator;
-import com.epam.gym.util.UsernameGenerator;
+import com.epam.gym.exceptions.UserNotFoundException;
+import com.epam.gym.repository.TrainerRepository;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Setter
 @Service
 @Slf4j
 public class TrainerService {
 
+    private final TrainerRepository trainerRepository;
+    private final UserService userService;
+    private final AuthService authService;
+    private final TrainerAndTraineeService trainerAndTraineeService;
 
-    private TrainerDao trainerDao;
-    private TraineeDao traineeDao;
-    private PasswordGenerator passwordGenerator;
-    private UsernameGenerator usernameGenerator;
-
-    @Autowired
-    public void setTrainerDao(TrainerDao trainerDao) {
-        this.trainerDao = trainerDao;
-    }
-    @Autowired
-    public void setTraineeDao(TraineeDao traineeDao) {
-        this.traineeDao = traineeDao;
-    }
 
     @Autowired
-    public void setPasswordGenerator(PasswordGenerator passwordGenerator) {
-        this.passwordGenerator = passwordGenerator;
+    public TrainerService(TrainerRepository trainerRepository, UserService userService,
+                          AuthService authService, TrainerAndTraineeService trainerAndTraineeService) {
+        this.trainerRepository = trainerRepository;
+        this.userService = userService;
+        this.authService = authService;
+        this.trainerAndTraineeService = trainerAndTraineeService;
     }
 
-    @Autowired
-    public void setUsernameGenerator(UsernameGenerator usernameGenerator) {
-        this.usernameGenerator = usernameGenerator;
+    //1. Create Trainer profile.
+    public void create(CreateTrainerRequestDTO dto) {
+        String username = userService.generateUsername(dto.getFirstName(), dto.getLastName());
+        String password = userService.generatePassword();
+
+        Trainer trainer = new Trainer();
+        User user = new User();
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setIsActive(true);
+        trainer.setUser(user);
+        trainer.setTrainingTypeId(dto.getTrainingTypeId());
+        trainerRepository.save(trainer);
     }
 
-    public Trainer create(Trainer trainer) {
-
-        String username = usernameGenerator.generateUsername(
-                trainer.getFirstName(),
-                trainer.getLastName(),
-                getAllUsers()
-        );
-
-        trainer.setUsername(username);
-        trainer.setPassword(passwordGenerator.generatePassword());
-        trainer.setActive(true);
-
-        trainerDao.save(trainer);
-
-        log.info("Created trainer {}", username);
-
-        return trainer;
+    //5. Select Trainer profile by username.
+    public Trainer getTrainerByUsername(String username) {
+        Optional<Trainer> trainer = trainerRepository.findByUserUsername(username);
+        if (trainer.isEmpty()) {
+            throw new UserNotFoundException("User not found with username: " + username);
+        }
+        return trainer.get();
     }
 
-    public Trainer find(Long id) {
-        return trainerDao.findById(id);
+    //8. Trainer password change
+    public boolean changePassword(String username, String oldPassword, String newPassword) {
+        User user = authService.login(username, oldPassword);
+        user.setPassword(newPassword);
+        return userService.changePassword(user);
     }
 
-    public void update(Trainer trainer) {
-        trainerDao.update(trainer, getAllUsers());
-        log.info("Updated trainer {}", trainer.getUsername());
+    //9. Update trainer profile.
+    public boolean updateTrainer(String username, String password, UpdateTrainerRequestDTO dto) {
+//Authentication
+        authService.login(username, password);
+
+        Trainer trainer = getTrainerByUsername(username);
+        trainer.setTrainingTypeId(dto.getTrainingTypeId());
+        User user = trainer.getUser();
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+
+        trainerRepository.save(trainer);
+        return true;
     }
-    private Collection<User> getAllUsers() {
-        Collection<User> users = new ArrayList<>();
-        users.addAll(traineeDao.findAll());
-        users.addAll(trainerDao.findAll());
-        return users;
+
+    //12. Activate/De-activate trainer.
+    public boolean activateDeactivateTrainer(String username, String password) {
+        User user = authService.login(username, password);
+        return userService.changeStatus(user);
     }
+//    17. Get trainers list that not assigned on trainee by trainee's username.
+
+    public List<TrainerDTO> getTrainersNotAssignedOnTrainee(String traineeUsername) {
+        return trainerAndTraineeService.getTrainersNotAssignedOnTrainee(traineeUsername);
+    }
+
 }

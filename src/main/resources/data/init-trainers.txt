@@ -1,6 +1,0 @@
-David,Wilson,David.Wilson,aP9xLmQ2zR,true,Strength Training
-Emma,Thompson,Emma.Thompson,Xz82LpQwRt,true,Yoga
-Chris,Evans,Chris.Evans9,Kd73LmPxQa,false,Boxing
-Olivia,Martinez,Olivia.Martinez,Qw7LpZmT1x,true,Pilates
-James,Anderson,James.Anderson8,Zx9LpQwRt2,true,Cardio Fitness
-Sarah,Lee,Sarah.Lee,Yu8TrLmZp4,true,CrossFit

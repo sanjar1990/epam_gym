@@ -1,26 +1,26 @@
 package com.epam.gym.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @Setter
-@ToString
+@Entity
+@Table(name = "users")
 public  class User {
-    // TODO
-    //  Using String as an identifier is not incorrect in general,
-    //  but for this learning project it may complicate things further in the course.
-    //  I’d recommend switching to Long or if you want to keep string-based identifiers,
-    //  consider using UUID as a type instead of plain String.
-    // Done
 
-    private Long id= ThreadLocalRandom.current().nextLong();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false, unique = true)
     private String username;
+    @Column(nullable = false)
     private String password;
-    private boolean isActive;
+    @Column(nullable = false)
+    private Boolean isActive=false;
 }

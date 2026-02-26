@@ -1,1115 +1,301 @@
-14 Feb 2026 - 17:23:05.955 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 5944 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-14 Feb 2026 - 17:23:05.969 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-14 Feb 2026 - 17:23:06.717 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-14 Feb 2026 - 17:23:06.728 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-14 Feb 2026 - 17:23:06.728 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-14 Feb 2026 - 17:23:06.764 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 746 ms
-14 Feb 2026 - 17:23:06.825 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-14 Feb 2026 - 17:23:06.829 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-14 Feb 2026 - 17:23:06.833 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-14 Feb 2026 - 17:23:07.123 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-14 Feb 2026 - 17:23:07.127 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 1.654 seconds (process running for 2.496)
-14 Feb 2026 - 17:24:26.442 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-14 Feb 2026 - 17:24:26.451 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-14 Feb 2026 - 17:24:32.345 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 8604 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-14 Feb 2026 - 17:24:32.366 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-14 Feb 2026 - 17:24:33.293 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-14 Feb 2026 - 17:24:33.311 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-14 Feb 2026 - 17:24:33.312 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-14 Feb 2026 - 17:24:33.353 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 923 ms
-14 Feb 2026 - 17:24:33.417 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-14 Feb 2026 - 17:24:33.419 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-14 Feb 2026 - 17:24:33.423 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-14 Feb 2026 - 17:24:33.710 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-14 Feb 2026 - 17:24:33.715 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 2.054 seconds (process running for 2.843)
-14 Feb 2026 - 18:03:46.817 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-14 Feb 2026 - 18:03:46.834 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-15 Feb 2026 - 12:45:28.764 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 25.0.1 with PID 86762 (/Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym/target/classes started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 12:45:28.767 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 12:45:29.010 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-15 Feb 2026 - 12:45:29.015 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-15 Feb 2026 - 12:45:29.015 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-15 Feb 2026 - 12:45:29.027 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 244 ms
-15 Feb 2026 - 12:45:29.050 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 12:45:29.051 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 12:45:29.052 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 12:45:29.149 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-15 Feb 2026 - 12:45:29.151 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 0.517 seconds (process running for 0.701)
-15 Feb 2026 - 12:49:46.055 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-15 Feb 2026 - 12:49:46.056 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-15 Feb 2026 - 13:03:31.970 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 88443 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 13:03:31.973 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 13:03:32.164 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 13:03:32.165 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 13:03:32.166 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 13:03:32.290 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.416 seconds (process running for 0.81)
-15 Feb 2026 - 13:03:32.338 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 13:03:32.338 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 13:03:32.339 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 13:03:32.665 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 13:03:32.667 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 13:03:32.686 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 13:03:32.688 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 13:03:44.301 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 88474 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 13:03:44.304 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 13:03:44.672 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 13:03:44.673 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 13:03:44.675 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 13:03:44.887 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.762 seconds (process running for 1.469)
-15 Feb 2026 - 13:03:44.944 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 13:03:44.945 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 13:03:44.946 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 13:03:45.540 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 13:03:45.543 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 13:03:45.561 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 13:03:45.563 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 18:56:21.879 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 93441 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 18:56:21.882 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 18:56:22.068 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 18:56:22.069 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 18:56:22.070 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 18:56:22.189 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.409 seconds (process running for 0.861)
-15 Feb 2026 - 18:56:22.203 - o.s.test.context.TestContextManager -  ERROR - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.epam.gym.facade.GymFacadeTest@42c0a16e]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.epam.gym.facade.GymFacadeTest': Unsatisfied dependency expressed through field 'facade': No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:402)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:142)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:97)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:247)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:163)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$1(ClassBasedTestDescriptor.java:423)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:428)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$0(ClassBasedTestDescriptor.java:422)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:422)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$0(ClassBasedTestDescriptor.java:334)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:333)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$1(ClassBasedTestDescriptor.java:322)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$0(ClassBasedTestDescriptor.java:321)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:127)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:126)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:70)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$0(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:110)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41)
-	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
-	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67)
-	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:231)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:2297)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1725)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763)
-	... 84 common frames omitted
-15 Feb 2026 - 18:56:22.498 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 18:56:22.500 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 18:56:22.514 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 18:56:22.517 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 18:56:26.428 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 25.0.1 with PID 93454 (/Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym/target/classes started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 18:56:26.431 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 18:56:26.647 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-15 Feb 2026 - 18:56:26.652 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-15 Feb 2026 - 18:56:26.652 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-15 Feb 2026 - 18:56:26.663 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 218 ms
-15 Feb 2026 - 18:56:26.681 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 18:56:26.681 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 18:56:26.682 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 18:56:26.755 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-15 Feb 2026 - 18:56:26.761 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 0.453 seconds (process running for 0.629)
-15 Feb 2026 - 18:56:29.131 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-15 Feb 2026 - 18:56:29.133 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-15 Feb 2026 - 19:00:21.198 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 94461 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:00:21.201 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:00:21.397 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:00:21.398 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:00:21.399 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:00:21.520 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.425 seconds (process running for 0.842)
-15 Feb 2026 - 19:00:21.716 - o.s.test.context.TestContextManager -  WARN  - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.epam.gym.facade.GymFacadeTest@43755e2f]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.epam.gym.facade.GymFacadeTest': Unsatisfied dependency expressed through field 'facade': No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:402)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:156)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:111)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:205)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$1(ClassBasedTestDescriptor.java:423)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:428)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$0(ClassBasedTestDescriptor.java:422)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:422)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$0(ClassBasedTestDescriptor.java:334)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:333)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$1(ClassBasedTestDescriptor.java:322)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$0(ClassBasedTestDescriptor.java:321)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:127)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:126)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:70)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$0(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:110)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41)
-	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
-	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67)
-	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:231)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:2297)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1725)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763)
-	... 84 common frames omitted
-15 Feb 2026 - 19:00:21.823 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 19:00:21.825 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 19:00:21.841 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 19:00:21.843 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 19:00:43.471 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 94478 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:00:43.474 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:00:43.657 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:00:43.658 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:00:43.659 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:00:43.770 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.393 seconds (process running for 0.804)
-15 Feb 2026 - 19:00:43.785 - o.s.test.context.TestContextManager -  ERROR - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.epam.gym.facade.GymFacadeTest@526f6427]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.epam.gym.facade.GymFacadeTest': Unsatisfied dependency expressed through field 'facade': No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:402)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:142)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:97)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:247)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:163)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$1(ClassBasedTestDescriptor.java:423)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:428)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$0(ClassBasedTestDescriptor.java:422)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:422)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$0(ClassBasedTestDescriptor.java:334)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:333)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$1(ClassBasedTestDescriptor.java:322)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$0(ClassBasedTestDescriptor.java:321)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:127)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:126)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:70)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$0(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:110)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41)
-	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
-	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67)
-	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:231)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:2297)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1725)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763)
-	... 84 common frames omitted
-15 Feb 2026 - 19:00:44.054 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 19:00:44.056 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 19:00:44.070 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 19:00:44.072 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 19:01:02.404 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 94505 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:01:02.407 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:01:02.584 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:01:02.585 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:01:02.586 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:01:02.688 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.366 seconds (process running for 0.748)
-15 Feb 2026 - 19:01:02.705 - o.s.test.context.TestContextManager -  ERROR - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.epam.gym.facade.GymFacadeTest@5968800d]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.epam.gym.facade.GymFacadeTest': Unsatisfied dependency expressed through field 'facade': No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:402)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:142)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:97)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:247)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:163)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$1(ClassBasedTestDescriptor.java:423)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:428)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$0(ClassBasedTestDescriptor.java:422)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:422)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$0(ClassBasedTestDescriptor.java:334)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:333)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$1(ClassBasedTestDescriptor.java:322)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$0(ClassBasedTestDescriptor.java:321)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:127)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:126)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:70)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$0(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:110)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41)
-	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
-	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67)
-	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:231)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:2297)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1725)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763)
-	... 84 common frames omitted
-15 Feb 2026 - 19:01:02.946 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 19:01:02.949 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 19:01:02.963 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 19:01:02.965 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 19:01:33.308 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 94578 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:01:33.311 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:01:33.514 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:01:33.515 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:01:33.517 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:01:33.656 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.443 seconds (process running for 0.853)
-15 Feb 2026 - 19:01:33.701 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:01:33.701 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:01:33.702 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:01:33.981 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 19:01:33.984 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 19:01:33.999 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 19:01:34.004 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 19:02:36.314 - com.epam.gym.facade.GymFacadeTest -  INFO  - Starting GymFacadeTest using Java 25.0.1 with PID 94830 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:02:36.317 - com.epam.gym.facade.GymFacadeTest -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:02:36.505 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:02:36.507 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:02:36.509 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:02:36.631 - com.epam.gym.facade.GymFacadeTest -  INFO  - Started GymFacadeTest in 0.408 seconds (process running for 0.781)
-15 Feb 2026 - 19:07:36.010 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 95664 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:07:36.016 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:07:36.208 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:07:36.209 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:07:36.210 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:07:36.328 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.411 seconds (process running for 0.85)
-15 Feb 2026 - 19:07:36.343 - o.s.test.context.TestContextManager -  ERROR - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.epam.gym.facade.GymFacadeTest@7c70aae1]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.epam.gym.facade.GymFacadeTest': Unsatisfied dependency expressed through field 'facade': No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:402)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:142)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:97)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:247)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:163)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$1(ClassBasedTestDescriptor.java:423)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:428)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$0(ClassBasedTestDescriptor.java:422)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:214)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1716)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:422)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$0(ClassBasedTestDescriptor.java:334)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:333)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$1(ClassBasedTestDescriptor.java:322)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$0(ClassBasedTestDescriptor.java:321)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:127)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:126)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:70)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$0(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:110)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41)
-	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
-	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67)
-	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:231)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:2297)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1725)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763)
-	... 84 common frames omitted
-15 Feb 2026 - 19:07:36.622 - com.epam.gym.service.TraineeService -  INFO  - Created trainee John.Smith
-15 Feb 2026 - 19:07:36.624 - com.epam.gym.service.TraineeService -  INFO  - Updated trainee updatedUser
-15 Feb 2026 - 19:07:36.641 - com.epam.gym.service.TrainerService -  INFO  - Updated trainer Emma.Thompson
-15 Feb 2026 - 19:07:36.643 - com.epam.gym.service.TrainerService -  INFO  - Created trainer David.Wilson
-15 Feb 2026 - 19:07:43.269 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 25.0.1 with PID 95699 (/Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym/target/classes started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:07:43.272 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:07:43.492 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-15 Feb 2026 - 19:07:43.496 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-15 Feb 2026 - 19:07:43.496 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-15 Feb 2026 - 19:07:43.507 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 220 ms
-15 Feb 2026 - 19:07:43.525 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:07:43.526 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:07:43.526 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:07:43.602 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-15 Feb 2026 - 19:07:43.608 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 0.461 seconds (process running for 0.64)
-15 Feb 2026 - 19:07:45.718 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-15 Feb 2026 - 19:07:45.720 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-15 Feb 2026 - 19:10:11.316 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 25.0.1 with PID 95841 (started by ilya_lozinskiy in /Users/ilya_lozinskiy/Desktop/Development/Projects/MENTOR/Sanjar/epam_gym)
-15 Feb 2026 - 19:10:11.319 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-15 Feb 2026 - 19:10:11.509 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 5 trainees
-15 Feb 2026 - 19:10:11.510 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 6 trainers
-15 Feb 2026 - 19:10:11.511 - c.epam.gym.util.StorageInitializer -  INFO  - Loaded 8 trainings
-15 Feb 2026 - 19:10:11.629 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 0.4 seconds (process running for 0.777)
-17 Feb 2026 - 12:46:37.042 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 18968 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 12:46:37.053 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 12:46:37.934 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 12:46:37.947 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 12:46:37.947 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 12:46:37.985 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 890 ms
-17 Feb 2026 - 12:46:38.062 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'traineeDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'traineeStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TraineeStorage.class]: Text 'Seoul' could not be parsed at index 0
-17 Feb 2026 - 12:46:38.064 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
-17 Feb 2026 - 12:46:38.074 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
+25 Feb 2026 - 19:31:46.626 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 27036 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 19:31:46.648 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 19:31:47.751 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 19:31:47.822 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 59 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 19:31:48.339 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+25 Feb 2026 - 19:31:48.355 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+25 Feb 2026 - 19:31:48.356 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+25 Feb 2026 - 19:31:48.418 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1703 ms
+25 Feb 2026 - 19:31:48.598 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 19:31:48.690 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 19:31:49.246 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 19:31:49.295 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 19:31:51.868 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@39f93225
+25 Feb 2026 - 19:31:51.870 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 19:31:53.345 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 19:31:54.828 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 19:32:01.110 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:32:01.226 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 19:32:02.120 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 19:32:02.492 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+25 Feb 2026 - 19:32:02.496 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 16.367 seconds (process running for 18.272)
+25 Feb 2026 - 19:32:36.007 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+25 Feb 2026 - 19:32:36.017 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+25 Feb 2026 - 19:32:36.020 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:32:39.222 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+25 Feb 2026 - 19:32:41.223 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+25 Feb 2026 - 19:32:47.621 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 3300 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 19:32:47.632 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 19:32:48.279 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 19:32:48.361 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 19:32:48.895 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+25 Feb 2026 - 19:32:48.907 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+25 Feb 2026 - 19:32:48.908 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+25 Feb 2026 - 19:32:48.960 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1282 ms
+25 Feb 2026 - 19:32:49.102 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 19:32:49.162 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 19:32:49.626 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 19:32:49.660 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 19:32:51.882 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4491eaeb
+25 Feb 2026 - 19:32:51.884 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 19:32:53.213 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 19:32:54.440 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 19:33:00.937 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:33:01.056 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 19:33:01.913 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 19:33:02.256 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+25 Feb 2026 - 19:33:02.261 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 15.131 seconds (process running for 16.011)
+25 Feb 2026 - 19:33:02.770 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+25 Feb 2026 - 19:33:02.777 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+25 Feb 2026 - 19:33:02.782 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:33:06.140 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+25 Feb 2026 - 19:33:08.129 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+25 Feb 2026 - 19:51:48.811 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 10204 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 19:51:48.825 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 19:51:49.541 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 19:51:49.604 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 53 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 19:51:50.165 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+25 Feb 2026 - 19:51:50.180 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+25 Feb 2026 - 19:51:50.181 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+25 Feb 2026 - 19:51:50.230 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1355 ms
+25 Feb 2026 - 19:51:50.402 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 19:51:50.485 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 19:51:51.081 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 19:51:51.122 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 19:51:54.484 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@79e2606f
+25 Feb 2026 - 19:51:54.486 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 19:51:55.846 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 19:51:57.423 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 19:52:03.871 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:52:04.020 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 19:52:05.154 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 19:52:05.519 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+25 Feb 2026 - 19:52:05.524 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 17.383 seconds (process running for 18.22)
+25 Feb 2026 - 19:52:05.915 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-17 Feb 2026 - 12:46:38.088 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'traineeDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'traineeStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TraineeStorage.class]: Text 'Seoul' could not be parsed at index 0
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:871)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:826)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'traineeStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TraineeStorage.class]: Text 'Seoul' could not be parsed at index 0
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:863)
-	... 22 common frames omitted
-Caused by: java.time.format.DateTimeParseException: Text 'Seoul' could not be parsed at index 0
-	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2108)
-	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:2010)
-	at java.base/java.time.LocalDate.parse(LocalDate.java:435)
-	at java.base/java.time.LocalDate.parse(LocalDate.java:420)
-	at com.epam.gym.config.StorageInitializationPostProcessor.loadTraineeData(StorageInitializationPostProcessor.java:90)
-	at com.epam.gym.config.StorageInitializationPostProcessor.postProcessAfterInitialization(StorageInitializationPostProcessor.java:45)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:442)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1820)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	... 31 common frames omitted
-17 Feb 2026 - 12:48:11.120 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 7924 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 12:48:11.131 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 12:48:11.866 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 12:48:11.879 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 12:48:11.880 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 12:48:11.912 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 734 ms
-17 Feb 2026 - 12:48:11.974 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 12:48:11.986 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 12:48:11.999 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: No enum constant com.epam.gym.enums.TrainingType.Strength
-17 Feb 2026 - 12:48:12.001 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
-17 Feb 2026 - 12:48:12.009 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-17 Feb 2026 - 12:48:12.023 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: No enum constant com.epam.gym.enums.TrainingType.Strength
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:871)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:826)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: No enum constant com.epam.gym.enums.TrainingType.Strength
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:863)
-	... 22 common frames omitted
-Caused by: java.lang.IllegalArgumentException: No enum constant com.epam.gym.enums.TrainingType.Strength
-	at java.base/java.lang.Enum.valueOf(Enum.java:293)
-	at com.epam.gym.enums.TrainingType.valueOf(TrainingType.java:3)
-	at com.epam.gym.config.StorageInitializationPostProcessor.loadTrainingData(StorageInitializationPostProcessor.java:107)
-	at com.epam.gym.config.StorageInitializationPostProcessor.postProcessAfterInitialization(StorageInitializationPostProcessor.java:46)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:442)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1820)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	... 31 common frames omitted
-17 Feb 2026 - 12:50:18.675 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 18824 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 12:50:18.689 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 12:50:19.435 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 12:50:19.446 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 12:50:19.446 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 12:50:19.481 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 741 ms
-17 Feb 2026 - 12:50:19.542 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 12:50:19.546 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 12:50:19.559 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-17 Feb 2026 - 12:50:19.562 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
-17 Feb 2026 - 12:50:19.569 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-17 Feb 2026 - 12:50:19.582 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:871)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:826)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:863)
-	... 22 common frames omitted
-Caused by: java.lang.NumberFormatException: For input string: "60"
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:662)
-	at java.base/java.lang.Integer.parseInt(Integer.java:778)
-	at com.epam.gym.config.StorageInitializationPostProcessor.loadTrainingData(StorageInitializationPostProcessor.java:109)
-	at com.epam.gym.config.StorageInitializationPostProcessor.postProcessAfterInitialization(StorageInitializationPostProcessor.java:46)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:442)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1820)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	... 31 common frames omitted
-17 Feb 2026 - 12:55:31.949 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 9848 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 12:55:31.964 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 12:55:32.694 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 12:55:32.707 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 12:55:32.707 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 12:55:32.744 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 732 ms
-17 Feb 2026 - 12:55:32.806 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 12:55:32.809 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 12:55:32.813 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-17 Feb 2026 - 12:55:32.816 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
-17 Feb 2026 - 12:55:32.825 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-17 Feb 2026 - 12:55:32.838 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:871)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:826)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:863)
-	... 22 common frames omitted
-Caused by: java.lang.NumberFormatException: For input string: "60"
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:662)
-	at java.base/java.lang.Integer.parseInt(Integer.java:778)
-	at com.epam.gym.config.StorageInitializationPostProcessor.loadTrainingData(StorageInitializationPostProcessor.java:109)
-	at com.epam.gym.config.StorageInitializationPostProcessor.postProcessAfterInitialization(StorageInitializationPostProcessor.java:46)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:442)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1820)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	... 31 common frames omitted
-17 Feb 2026 - 12:56:01.780 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 17620 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 12:56:01.792 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 12:56:02.521 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 12:56:02.534 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 12:56:02.534 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 12:56:02.566 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 730 ms
-17 Feb 2026 - 12:56:02.628 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 12:56:02.632 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 12:56:02.637 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-17 Feb 2026 - 12:56:02.639 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
-17 Feb 2026 - 12:56:02.647 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-17 Feb 2026 - 12:56:02.661 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:871)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:826)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:863)
-	... 22 common frames omitted
-Caused by: java.lang.NumberFormatException: For input string: "60"
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:662)
-	at java.base/java.lang.Integer.parseInt(Integer.java:778)
-	at com.epam.gym.config.StorageInitializationPostProcessor.loadTrainingData(StorageInitializationPostProcessor.java:110)
-	at com.epam.gym.config.StorageInitializationPostProcessor.postProcessAfterInitialization(StorageInitializationPostProcessor.java:46)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:442)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1820)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	... 31 common frames omitted
-17 Feb 2026 - 12:58:33.490 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 19052 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 12:58:33.501 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 12:58:34.223 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 12:58:34.234 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 12:58:34.234 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 12:58:34.266 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 724 ms
-17 Feb 2026 - 12:58:34.328 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 12:58:34.331 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 12:58:34.335 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-17 Feb 2026 - 12:58:34.337 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
-17 Feb 2026 - 12:58:34.345 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-17 Feb 2026 - 12:58:34.359 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'trainingDao': Unsatisfied dependency expressed through method 'setStorage' parameter 0: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:871)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:826)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'trainingStorage' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\storage\TrainingStorage.class]: For input string: "60"
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:610)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:863)
-	... 22 common frames omitted
-Caused by: java.lang.NumberFormatException: For input string: "60"
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:662)
-	at java.base/java.lang.Integer.parseInt(Integer.java:778)
-	at com.epam.gym.config.StorageInitializationPostProcessor.loadTrainingData(StorageInitializationPostProcessor.java:110)
-	at com.epam.gym.config.StorageInitializationPostProcessor.postProcessAfterInitialization(StorageInitializationPostProcessor.java:46)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:442)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1820)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	... 31 common frames omitted
-17 Feb 2026 - 13:01:10.164 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 2288 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 13:01:10.176 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 13:01:10.905 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 13:01:10.920 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 13:01:10.920 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 13:01:10.957 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 736 ms
-17 Feb 2026 - 13:01:11.021 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 13:01:11.025 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 13:01:11.028 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 8 trainings
-17 Feb 2026 - 13:01:11.358 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-17 Feb 2026 - 13:01:11.362 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 1.648 seconds (process running for 2.302)
-17 Feb 2026 - 13:26:18.762 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 19840 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 13:26:18.777 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 13:26:19.683 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-17 Feb 2026 - 13:26:19.695 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-17 Feb 2026 - 13:26:19.695 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-17 Feb 2026 - 13:26:19.734 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 902 ms
-17 Feb 2026 - 13:26:19.809 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 13:26:19.813 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 13:26:19.818 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 8 trainings
-17 Feb 2026 - 13:26:20.117 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-17 Feb 2026 - 13:26:20.122 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 1.972 seconds (process running for 2.749)
-17 Feb 2026 - 15:07:55.798 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-17 Feb 2026 - 15:07:55.805 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-17 Feb 2026 - 15:08:03.532 - com.epam.gym.facade.GymFacadeTest -  INFO  - Starting GymFacadeTest using Java 21.0.9 with PID 8860 (started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 15:08:03.544 - com.epam.gym.facade.GymFacadeTest -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 15:08:03.688 - com.epam.gym.facade.GymFacadeTest -  INFO  - Started GymFacadeTest in 0.554 seconds (process running for 2.147)
-17 Feb 2026 - 15:08:03.831 - o.s.test.context.TestContextManager -  ERROR - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.epam.gym.facade.GymFacadeTest@6a48a7f3]
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'com.epam.gym.facade.GymFacadeTest': Unsatisfied dependency expressed through field 'facade': No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747)
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:402)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:142)
-	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:97)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:247)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:163)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$1(ClassBasedTestDescriptor.java:423)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:428)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$0(ClassBasedTestDescriptor.java:422)
+25 Feb 2026 - 19:52:05.927 - o.s.boot.SpringApplication -  ERROR - Application run failed
+org.flywaydb.core.api.FlywayException: Unsupported Database: PostgreSQL 17.8
+	at org.flywaydb.core.internal.database.DatabaseTypeRegister.lambda$getDatabaseTypeForConnection$7(DatabaseTypeRegister.java:142)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.flywaydb.core.internal.database.DatabaseTypeRegister.getDatabaseTypeForConnection(DatabaseTypeRegister.java:142)
+	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:77)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:142)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:186)
+	at com.epam.gym.config.FlywayStarter.run(FlywayStarter.java:18)
+	at org.springframework.boot.SpringApplication.lambda$callRunner$1(SpringApplication.java:792)
+	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
+	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
+	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:800)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:791)
+	at org.springframework.boot.SpringApplication.lambda$callRunners$0(SpringApplication.java:776)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510)
 	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
 	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
 	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
 	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:422)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$0(ClassBasedTestDescriptor.java:334)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:333)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$1(ClassBasedTestDescriptor.java:322)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$0(ClassBasedTestDescriptor.java:321)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:27)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:127)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:126)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:70)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$0(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:144)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:110)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:42)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$2(NodeTestTask.java:180)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$1(NodeTestTask.java:166)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$0(NodeTestTask.java:164)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:74)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:163)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:116)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:36)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:52)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:58)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.executeEngine(EngineExecutionOrchestrator.java:246)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.failOrExecuteEngine(EngineExecutionOrchestrator.java:218)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:179)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:66)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:157)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:65)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:125)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:93)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$0(InterceptingLauncher.java:41)
-	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
-	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:40)
-	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:48)
-	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:67)
-	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.epam.gym.facade.GymFacade' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:2297)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1725)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651)
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763)
-	... 84 common frames omitted
-17 Feb 2026 - 15:10:12.524 - com.epam.gym.facade.GymFacadeTest -  INFO  - Starting GymFacadeTest using Java 21.0.9 with PID 12216 (started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-17 Feb 2026 - 15:10:12.533 - com.epam.gym.facade.GymFacadeTest -  INFO  - No active profile set, falling back to 1 default profile: "default"
-17 Feb 2026 - 15:10:13.486 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 5 trainees
-17 Feb 2026 - 15:10:13.490 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 6 trainers
-17 Feb 2026 - 15:10:13.495 - c.e.g.c.StorageInitializationPostProcessor -  INFO  - Loaded 8 trainings
-17 Feb 2026 - 15:10:13.962 - com.epam.gym.facade.GymFacadeTest -  INFO  - Started GymFacadeTest in 1.791 seconds (process running for 3.327)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:776)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:328)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.epam.gym.GymApplication.main(GymApplication.java:10)
+25 Feb 2026 - 19:52:05.935 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+25 Feb 2026 - 19:52:05.941 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+25 Feb 2026 - 19:52:05.946 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:52:09.184 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+25 Feb 2026 - 19:52:10.983 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+25 Feb 2026 - 19:57:24.694 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 16108 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 19:57:24.705 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 19:57:25.383 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 19:57:25.459 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 67 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 19:57:25.979 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+25 Feb 2026 - 19:57:25.994 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+25 Feb 2026 - 19:57:25.995 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+25 Feb 2026 - 19:57:26.050 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1309 ms
+25 Feb 2026 - 19:57:26.207 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 19:57:26.271 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 19:57:26.801 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 19:57:26.844 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 19:57:29.090 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6ac9b66b
+25 Feb 2026 - 19:57:29.092 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 19:57:30.399 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 19:57:31.629 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 19:57:39.456 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:57:39.573 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 19:57:40.527 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 19:57:40.852 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+25 Feb 2026 - 19:57:40.857 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 16.622 seconds (process running for 18.381)
+25 Feb 2026 - 19:57:41.470 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
+25 Feb 2026 - 19:57:43.914 - o.f.c.i.s.JdbcTableSchemaHistory -  INFO  - Schema history table "public"."flyway_schema_history" does not exist yet
+25 Feb 2026 - 19:57:44.138 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 1 migration (execution time 00:00.676s)
+25 Feb 2026 - 19:57:46.445 - o.f.c.i.s.JdbcTableSchemaHistory -  INFO  - Creating Schema History table "public"."flyway_schema_history" with baseline ...
+25 Feb 2026 - 19:57:48.391 - o.f.core.internal.command.DbBaseline -  INFO  - Successfully baselined schema with version: 1
+25 Feb 2026 - 19:57:51.062 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 1
+25 Feb 2026 - 19:57:51.279 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
+25 Feb 2026 - 19:59:26.905 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+25 Feb 2026 - 19:59:26.913 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+25 Feb 2026 - 19:59:26.917 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:59:30.282 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+25 Feb 2026 - 19:59:32.243 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+25 Feb 2026 - 19:59:40.377 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 18004 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 19:59:40.396 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 19:59:41.046 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 19:59:41.107 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 52 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 19:59:41.610 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+25 Feb 2026 - 19:59:41.622 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+25 Feb 2026 - 19:59:41.622 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+25 Feb 2026 - 19:59:41.666 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1205 ms
+25 Feb 2026 - 19:59:41.810 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 19:59:41.895 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 19:59:42.809 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 19:59:42.845 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 19:59:45.059 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3ca278bc
+25 Feb 2026 - 19:59:45.066 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 19:59:46.327 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 19:59:47.471 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 19:59:53.715 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 19:59:53.802 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 19:59:54.609 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 19:59:54.947 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+25 Feb 2026 - 19:59:54.952 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 15.197 seconds (process running for 15.923)
+25 Feb 2026 - 19:59:55.520 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
+25 Feb 2026 - 19:59:58.189 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.817s)
+25 Feb 2026 - 20:00:00.766 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 1
+25 Feb 2026 - 20:00:01.352 - o.f.core.internal.command.DbMigrate -  INFO  - Migrating schema "public" to version "2 - create training type"
+25 Feb 2026 - 20:00:04.562 - o.f.core.internal.command.DbMigrate -  INFO  - Successfully applied 1 migration to schema "public", now at version v2 (execution time 00:00.962s)
+25 Feb 2026 - 20:01:27.012 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 21.0.9 with PID 26192 (started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 20:01:27.021 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 20:01:27.743 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 20:01:27.826 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 20:01:28.358 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 20:01:28.428 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 20:01:29.058 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 20:01:29.100 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 20:01:31.266 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ac0ed65
+25 Feb 2026 - 20:01:31.269 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 20:01:32.592 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 20:01:33.923 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 20:01:39.861 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 20:01:39.982 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 20:01:41.027 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 20:01:41.572 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 14.948 seconds (process running for 16.906)
+25 Feb 2026 - 20:01:42.143 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
+25 Feb 2026 - 20:01:44.754 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.818s)
+25 Feb 2026 - 20:01:47.271 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 2
+25 Feb 2026 - 20:01:47.468 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
+25 Feb 2026 - 20:01:49.505 - org.hibernate.orm.jdbc.error -  WARN  - HHH000247: ErrorCode: 0, SQLState: 23503
+25 Feb 2026 - 20:01:49.505 - org.hibernate.orm.jdbc.error -  WARN  - ERROR: insert or update on table "trainer" violates foreign key constraint "fkbr9evfuc2m77pw4i65cxmm140"
+  Detail: Key (training_type_id)=(2) is not present in table "training_type".
+25 Feb 2026 - 20:01:49.763 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 20:01:52.713 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+25 Feb 2026 - 20:01:54.711 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+25 Feb 2026 - 20:02:57.982 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 21.0.9 with PID 11636 (started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+25 Feb 2026 - 20:02:57.995 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
+25 Feb 2026 - 20:02:58.670 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25 Feb 2026 - 20:02:58.748 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+25 Feb 2026 - 20:02:59.246 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+25 Feb 2026 - 20:02:59.325 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+25 Feb 2026 - 20:02:59.950 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+25 Feb 2026 - 20:02:59.984 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+25 Feb 2026 - 20:03:02.137 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@36ecf9f6
+25 Feb 2026 - 20:03:02.139 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+25 Feb 2026 - 20:03:03.372 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.8
+	Default catalog/schema: gymdb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+25 Feb 2026 - 20:03:04.734 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+25 Feb 2026 - 20:03:10.629 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 20:03:10.773 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+25 Feb 2026 - 20:03:11.882 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25 Feb 2026 - 20:03:12.386 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 14.837 seconds (process running for 16.655)
+25 Feb 2026 - 20:03:12.991 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
+25 Feb 2026 - 20:03:15.514 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.774s)
+25 Feb 2026 - 20:03:18.009 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 2
+25 Feb 2026 - 20:03:18.201 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
+25 Feb 2026 - 20:03:20.176 - org.hibernate.orm.jdbc.error -  WARN  - HHH000247: ErrorCode: 0, SQLState: 23503
+25 Feb 2026 - 20:03:20.177 - org.hibernate.orm.jdbc.error -  WARN  - ERROR: insert or update on table "trainer" violates foreign key constraint "fkbr9evfuc2m77pw4i65cxmm140"
+  Detail: Key (training_type_id)=(2) is not present in table "training_type".
+25 Feb 2026 - 20:03:20.414 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+25 Feb 2026 - 20:03:23.303 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+25 Feb 2026 - 20:03:25.316 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+25 Feb 2026 - 21:47:57.749 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+25 Feb 2026 - 21:47:57.815 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+25 Feb 2026 - 21:47:57.902 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
