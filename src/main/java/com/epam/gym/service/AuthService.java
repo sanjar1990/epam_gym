@@ -18,6 +18,7 @@ public class AuthService {
         this.userService = userService;
     }
 
+
     //3. Trainee username and password matching.
     //4. Trainer username and password matching.
     public User login(String username, String password) {

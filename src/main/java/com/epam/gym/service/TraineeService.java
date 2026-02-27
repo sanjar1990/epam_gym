@@ -10,6 +10,7 @@ import com.epam.gym.repository.TraineeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -89,6 +90,7 @@ public class TraineeService {
     }
 
     //    13. Delete trainee profile by username.
+    @Transactional
     public boolean deleteTrainee(String username, String password) {
         User user = authService.login(username, password);
         Trainee trainee = getTraineeByUsername(username);

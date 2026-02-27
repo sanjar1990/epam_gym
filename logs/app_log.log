@@ -1,18 +1,18 @@
-25 Feb 2026 - 19:31:46.626 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 27036 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 19:31:46.648 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 19:31:47.751 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 19:31:47.822 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 59 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 19:31:48.339 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-25 Feb 2026 - 19:31:48.355 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-25 Feb 2026 - 19:31:48.356 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-25 Feb 2026 - 19:31:48.418 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1703 ms
-25 Feb 2026 - 19:31:48.598 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 19:31:48.690 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 19:31:49.246 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 19:31:49.295 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 19:31:51.868 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@39f93225
-25 Feb 2026 - 19:31:51.870 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 19:31:53.345 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+27 Feb 2026 - 23:06:13.343 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 8508 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+27 Feb 2026 - 23:06:13.358 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+27 Feb 2026 - 23:06:14.278 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+27 Feb 2026 - 23:06:14.354 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 65 ms. Found 6 JPA repository interfaces.
+27 Feb 2026 - 23:06:14.908 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+27 Feb 2026 - 23:06:14.924 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+27 Feb 2026 - 23:06:14.924 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+27 Feb 2026 - 23:06:14.981 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1568 ms
+27 Feb 2026 - 23:06:15.172 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+27 Feb 2026 - 23:06:15.272 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+27 Feb 2026 - 23:06:15.917 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+27 Feb 2026 - 23:06:15.972 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+27 Feb 2026 - 23:06:19.391 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@49d543a9
+27 Feb 2026 - 23:06:19.393 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+27 Feb 2026 - 23:06:20.845 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -24,138 +24,56 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-25 Feb 2026 - 19:31:54.828 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 19:32:01.110 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:32:01.226 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 19:32:02.120 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 19:32:02.492 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-25 Feb 2026 - 19:32:02.496 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 16.367 seconds (process running for 18.272)
-25 Feb 2026 - 19:32:36.007 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-25 Feb 2026 - 19:32:36.017 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-25 Feb 2026 - 19:32:36.020 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:32:39.222 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
-25 Feb 2026 - 19:32:41.223 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
-25 Feb 2026 - 19:32:47.621 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 3300 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 19:32:47.632 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 19:32:48.279 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 19:32:48.361 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 19:32:48.895 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-25 Feb 2026 - 19:32:48.907 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-25 Feb 2026 - 19:32:48.908 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-25 Feb 2026 - 19:32:48.960 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1282 ms
-25 Feb 2026 - 19:32:49.102 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 19:32:49.162 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 19:32:49.626 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 19:32:49.660 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 19:32:51.882 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4491eaeb
-25 Feb 2026 - 19:32:51.884 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 19:32:53.213 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
-	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
-	Database driver: PostgreSQL JDBC Driver
-	Database dialect: PostgreSQLDialect
-	Database version: 17.8
-	Default catalog/schema: gymdb/public
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: none
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-25 Feb 2026 - 19:32:54.440 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 19:33:00.937 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:33:01.056 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 19:33:01.913 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 19:33:02.256 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-25 Feb 2026 - 19:33:02.261 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 15.131 seconds (process running for 16.011)
-25 Feb 2026 - 19:33:02.770 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-25 Feb 2026 - 19:33:02.777 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-25 Feb 2026 - 19:33:02.782 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:33:06.140 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
-25 Feb 2026 - 19:33:08.129 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
-25 Feb 2026 - 19:51:48.811 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 10204 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 19:51:48.825 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 19:51:49.541 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 19:51:49.604 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 53 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 19:51:50.165 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-25 Feb 2026 - 19:51:50.180 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-25 Feb 2026 - 19:51:50.181 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-25 Feb 2026 - 19:51:50.230 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1355 ms
-25 Feb 2026 - 19:51:50.402 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 19:51:50.485 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 19:51:51.081 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 19:51:51.122 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 19:51:54.484 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@79e2606f
-25 Feb 2026 - 19:51:54.486 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 19:51:55.846 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
-	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
-	Database driver: PostgreSQL JDBC Driver
-	Database dialect: PostgreSQLDialect
-	Database version: 17.8
-	Default catalog/schema: gymdb/public
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: none
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-25 Feb 2026 - 19:51:57.423 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 19:52:03.871 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:52:04.020 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 19:52:05.154 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 19:52:05.519 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-25 Feb 2026 - 19:52:05.524 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 17.383 seconds (process running for 18.22)
-25 Feb 2026 - 19:52:05.915 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
+27 Feb 2026 - 23:06:22.356 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+27 Feb 2026 - 23:06:29.054 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:06:29.176 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+27 Feb 2026 - 23:06:29.991 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'gymFacade' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'traineeService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\UserService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'authService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\AuthService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userService': Requested bean is currently in creation: Is there an unresolvable circular reference or an asynchronous initialization dependency?
+27 Feb 2026 - 23:06:29.992 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:06:33.495 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+27 Feb 2026 - 23:06:35.643 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+27 Feb 2026 - 23:06:35.646 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+27 Feb 2026 - 23:06:35.663 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-25 Feb 2026 - 19:52:05.927 - o.s.boot.SpringApplication -  ERROR - Application run failed
-org.flywaydb.core.api.FlywayException: Unsupported Database: PostgreSQL 17.8
-	at org.flywaydb.core.internal.database.DatabaseTypeRegister.lambda$getDatabaseTypeForConnection$7(DatabaseTypeRegister.java:142)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
-	at org.flywaydb.core.internal.database.DatabaseTypeRegister.getDatabaseTypeForConnection(DatabaseTypeRegister.java:142)
-	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:77)
-	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:142)
-	at org.flywaydb.core.Flyway.migrate(Flyway.java:186)
-	at com.epam.gym.config.FlywayStarter.run(FlywayStarter.java:18)
-	at org.springframework.boot.SpringApplication.lambda$callRunner$1(SpringApplication.java:792)
-	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
-	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
-	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:800)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:791)
-	at org.springframework.boot.SpringApplication.lambda$callRunners$0(SpringApplication.java:776)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
-	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:776)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:328)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.epam.gym.GymApplication.main(GymApplication.java:10)
-25 Feb 2026 - 19:52:05.935 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-25 Feb 2026 - 19:52:05.941 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-25 Feb 2026 - 19:52:05.946 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:52:09.184 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
-25 Feb 2026 - 19:52:10.983 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
-25 Feb 2026 - 19:57:24.694 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 16108 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 19:57:24.705 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 19:57:25.383 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 19:57:25.459 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 67 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 19:57:25.979 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-25 Feb 2026 - 19:57:25.994 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-25 Feb 2026 - 19:57:25.995 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-25 Feb 2026 - 19:57:26.050 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1309 ms
-25 Feb 2026 - 19:57:26.207 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 19:57:26.271 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 19:57:26.801 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 19:57:26.844 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 19:57:29.090 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6ac9b66b
-25 Feb 2026 - 19:57:29.092 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 19:57:30.399 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+27 Feb 2026 - 23:06:35.676 - o.s.b.d.LoggingFailureAnalysisReporter -  ERROR - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   gymFacade defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]
+      ↓
+   traineeService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]
+┌─────┐
+|  userService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\UserService.class]
+↑     ↓
+|  authService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\AuthService.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+27 Feb 2026 - 23:08:18.341 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 25892 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+27 Feb 2026 - 23:08:18.356 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+27 Feb 2026 - 23:08:19.090 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+27 Feb 2026 - 23:08:19.167 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 65 ms. Found 6 JPA repository interfaces.
+27 Feb 2026 - 23:08:19.663 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+27 Feb 2026 - 23:08:19.675 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+27 Feb 2026 - 23:08:19.675 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+27 Feb 2026 - 23:08:19.718 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1300 ms
+27 Feb 2026 - 23:08:19.857 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+27 Feb 2026 - 23:08:19.918 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+27 Feb 2026 - 23:08:20.405 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+27 Feb 2026 - 23:08:20.437 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+27 Feb 2026 - 23:08:22.690 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6bfdaa7a
+27 Feb 2026 - 23:08:22.691 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+27 Feb 2026 - 23:08:24.057 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -167,39 +85,56 @@ org.flywaydb.core.api.FlywayException: Unsupported Database: PostgreSQL 17.8
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-25 Feb 2026 - 19:57:31.629 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 19:57:39.456 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:57:39.573 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 19:57:40.527 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 19:57:40.852 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-25 Feb 2026 - 19:57:40.857 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 16.622 seconds (process running for 18.381)
-25 Feb 2026 - 19:57:41.470 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
-25 Feb 2026 - 19:57:43.914 - o.f.c.i.s.JdbcTableSchemaHistory -  INFO  - Schema history table "public"."flyway_schema_history" does not exist yet
-25 Feb 2026 - 19:57:44.138 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 1 migration (execution time 00:00.676s)
-25 Feb 2026 - 19:57:46.445 - o.f.c.i.s.JdbcTableSchemaHistory -  INFO  - Creating Schema History table "public"."flyway_schema_history" with baseline ...
-25 Feb 2026 - 19:57:48.391 - o.f.core.internal.command.DbBaseline -  INFO  - Successfully baselined schema with version: 1
-25 Feb 2026 - 19:57:51.062 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 1
-25 Feb 2026 - 19:57:51.279 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
-25 Feb 2026 - 19:59:26.905 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-25 Feb 2026 - 19:59:26.913 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-25 Feb 2026 - 19:59:26.917 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:59:30.282 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
-25 Feb 2026 - 19:59:32.243 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
-25 Feb 2026 - 19:59:40.377 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 18004 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 19:59:40.396 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 19:59:41.046 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 19:59:41.107 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 52 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 19:59:41.610 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
-25 Feb 2026 - 19:59:41.622 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
-25 Feb 2026 - 19:59:41.622 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
-25 Feb 2026 - 19:59:41.666 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1205 ms
-25 Feb 2026 - 19:59:41.810 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 19:59:41.895 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 19:59:42.809 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 19:59:42.845 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 19:59:45.059 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3ca278bc
-25 Feb 2026 - 19:59:45.066 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 19:59:46.327 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+27 Feb 2026 - 23:08:25.239 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+27 Feb 2026 - 23:08:31.856 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:08:31.947 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+27 Feb 2026 - 23:08:32.674 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'gymFacade' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'traineeService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userService': Unsatisfied dependency expressed through method 'setAuthService' parameter 0: Error creating bean with name 'authService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\AuthService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userService': Requested bean is currently in creation: Is there an unresolvable circular reference or an asynchronous initialization dependency?
+27 Feb 2026 - 23:08:32.674 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:08:36.153 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+27 Feb 2026 - 23:08:38.324 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+27 Feb 2026 - 23:08:38.326 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+27 Feb 2026 - 23:08:38.332 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+27 Feb 2026 - 23:08:38.345 - o.s.b.d.LoggingFailureAnalysisReporter -  ERROR - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   gymFacade defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]
+      ↓
+   traineeService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]
+┌─────┐
+|  userService
+↑     ↓
+|  authService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\AuthService.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+27 Feb 2026 - 23:09:09.314 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 2656 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+27 Feb 2026 - 23:09:09.326 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+27 Feb 2026 - 23:09:09.978 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+27 Feb 2026 - 23:09:10.050 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 63 ms. Found 6 JPA repository interfaces.
+27 Feb 2026 - 23:09:10.547 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+27 Feb 2026 - 23:09:10.560 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+27 Feb 2026 - 23:09:10.561 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+27 Feb 2026 - 23:09:10.616 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1248 ms
+27 Feb 2026 - 23:09:10.797 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+27 Feb 2026 - 23:09:10.854 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+27 Feb 2026 - 23:09:11.329 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+27 Feb 2026 - 23:09:11.363 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+27 Feb 2026 - 23:09:13.739 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@73be4cdd
+27 Feb 2026 - 23:09:13.741 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+27 Feb 2026 - 23:09:15.188 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -211,28 +146,56 @@ org.flywaydb.core.api.FlywayException: Unsupported Database: PostgreSQL 17.8
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-25 Feb 2026 - 19:59:47.471 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 19:59:53.715 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 19:59:53.802 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 19:59:54.609 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 19:59:54.947 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
-25 Feb 2026 - 19:59:54.952 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 15.197 seconds (process running for 15.923)
-25 Feb 2026 - 19:59:55.520 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
-25 Feb 2026 - 19:59:58.189 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.817s)
-25 Feb 2026 - 20:00:00.766 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 1
-25 Feb 2026 - 20:00:01.352 - o.f.core.internal.command.DbMigrate -  INFO  - Migrating schema "public" to version "2 - create training type"
-25 Feb 2026 - 20:00:04.562 - o.f.core.internal.command.DbMigrate -  INFO  - Successfully applied 1 migration to schema "public", now at version v2 (execution time 00:00.962s)
-25 Feb 2026 - 20:01:27.012 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 21.0.9 with PID 26192 (started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 20:01:27.021 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 20:01:27.743 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 20:01:27.826 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 20:01:28.358 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 20:01:28.428 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 20:01:29.058 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 20:01:29.100 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 20:01:31.266 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ac0ed65
-25 Feb 2026 - 20:01:31.269 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 20:01:32.592 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+27 Feb 2026 - 23:09:16.405 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+27 Feb 2026 - 23:09:23.267 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:09:23.354 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+27 Feb 2026 - 23:09:24.088 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'gymFacade' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'traineeService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userService': Unsatisfied dependency expressed through method 'setAuthService' parameter 0: Error creating bean with name 'authService': Unsatisfied dependency expressed through method 'setUserService' parameter 0: Error creating bean with name 'userService': Requested bean is currently in creation: Is there an unresolvable circular reference or an asynchronous initialization dependency?
+27 Feb 2026 - 23:09:24.088 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:09:27.752 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+27 Feb 2026 - 23:09:29.953 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+27 Feb 2026 - 23:09:29.955 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+27 Feb 2026 - 23:09:29.966 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+27 Feb 2026 - 23:09:29.986 - o.s.b.d.LoggingFailureAnalysisReporter -  ERROR - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   gymFacade defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]
+      ↓
+   traineeService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]
+┌─────┐
+|  userService
+↑     ↓
+|  authService
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+27 Feb 2026 - 23:15:12.544 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 26364 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+27 Feb 2026 - 23:15:12.559 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+27 Feb 2026 - 23:15:13.255 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+27 Feb 2026 - 23:15:13.330 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 64 ms. Found 6 JPA repository interfaces.
+27 Feb 2026 - 23:15:13.867 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+27 Feb 2026 - 23:15:13.882 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+27 Feb 2026 - 23:15:13.883 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+27 Feb 2026 - 23:15:13.941 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1337 ms
+27 Feb 2026 - 23:15:14.264 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+27 Feb 2026 - 23:15:14.372 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+27 Feb 2026 - 23:15:15.013 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+27 Feb 2026 - 23:15:15.055 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+27 Feb 2026 - 23:15:17.649 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e3d168e
+27 Feb 2026 - 23:15:17.651 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+27 Feb 2026 - 23:15:19.071 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -244,32 +207,56 @@ org.flywaydb.core.api.FlywayException: Unsupported Database: PostgreSQL 17.8
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-25 Feb 2026 - 20:01:33.923 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 20:01:39.861 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 20:01:39.982 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 20:01:41.027 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 20:01:41.572 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 14.948 seconds (process running for 16.906)
-25 Feb 2026 - 20:01:42.143 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
-25 Feb 2026 - 20:01:44.754 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.818s)
-25 Feb 2026 - 20:01:47.271 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 2
-25 Feb 2026 - 20:01:47.468 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
-25 Feb 2026 - 20:01:49.505 - org.hibernate.orm.jdbc.error -  WARN  - HHH000247: ErrorCode: 0, SQLState: 23503
-25 Feb 2026 - 20:01:49.505 - org.hibernate.orm.jdbc.error -  WARN  - ERROR: insert or update on table "trainer" violates foreign key constraint "fkbr9evfuc2m77pw4i65cxmm140"
-  Detail: Key (training_type_id)=(2) is not present in table "training_type".
-25 Feb 2026 - 20:01:49.763 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 20:01:52.713 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
-25 Feb 2026 - 20:01:54.711 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
-25 Feb 2026 - 20:02:57.982 - com.epam.gym.GymApplicationTests -  INFO  - Starting GymApplicationTests using Java 21.0.9 with PID 11636 (started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
-25 Feb 2026 - 20:02:57.995 - com.epam.gym.GymApplicationTests -  INFO  - No active profile set, falling back to 1 default profile: "default"
-25 Feb 2026 - 20:02:58.670 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-25 Feb 2026 - 20:02:58.748 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
-25 Feb 2026 - 20:02:59.246 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
-25 Feb 2026 - 20:02:59.325 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
-25 Feb 2026 - 20:02:59.950 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
-25 Feb 2026 - 20:02:59.984 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
-25 Feb 2026 - 20:03:02.137 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@36ecf9f6
-25 Feb 2026 - 20:03:02.139 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
-25 Feb 2026 - 20:03:03.372 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
+27 Feb 2026 - 23:15:20.685 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+27 Feb 2026 - 23:15:27.401 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:15:27.518 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+27 Feb 2026 - 23:15:28.405 - o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext -  WARN  - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'gymFacade' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'traineeService' defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userService': Unsatisfied dependency expressed through method 'setAuthService' parameter 0: Error creating bean with name 'authService': Unsatisfied dependency expressed through method 'setUserService' parameter 0: Error creating bean with name 'userService': Requested bean is currently in creation: Is there an unresolvable circular reference or an asynchronous initialization dependency?
+27 Feb 2026 - 23:15:28.406 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:15:31.980 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+27 Feb 2026 - 23:15:33.753 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
+27 Feb 2026 - 23:15:33.756 - o.a.catalina.core.StandardService -  INFO  - Stopping service [Tomcat]
+27 Feb 2026 - 23:15:33.763 - o.s.b.a.l.ConditionEvaluationReportLogger -  INFO  - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+27 Feb 2026 - 23:15:33.777 - o.s.b.d.LoggingFailureAnalysisReporter -  ERROR - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   gymFacade defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\facade\GymFacade.class]
+      ↓
+   traineeService defined in file [G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes\com\epam\gym\service\TraineeService.class]
+┌─────┐
+|  userService
+↑     ↓
+|  authService
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+27 Feb 2026 - 23:15:46.367 - com.epam.gym.GymApplication -  INFO  - Starting GymApplication using Java 21.0.9 with PID 12248 (G:\PROGRAMMING\Java Projects\epam_gym\gym\target\classes started by Sanjar in G:\PROGRAMMING\Java Projects\epam_gym\gym)
+27 Feb 2026 - 23:15:46.378 - com.epam.gym.GymApplication -  INFO  - No active profile set, falling back to 1 default profile: "default"
+27 Feb 2026 - 23:15:47.073 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+27 Feb 2026 - 23:15:47.167 - o.s.d.r.c.RepositoryConfigurationDelegate -  INFO  - Finished Spring Data repository scanning in 83 ms. Found 6 JPA repository interfaces.
+27 Feb 2026 - 23:15:47.614 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat initialized with port 8080 (http)
+27 Feb 2026 - 23:15:47.627 - o.a.catalina.core.StandardService -  INFO  - Starting service [Tomcat]
+27 Feb 2026 - 23:15:47.627 - o.a.catalina.core.StandardEngine -  INFO  - Starting Servlet engine: [Apache Tomcat/11.0.15]
+27 Feb 2026 - 23:15:47.669 - o.s.b.w.c.s.WebApplicationContextInitializer -  INFO  - Root WebApplicationContext: initialization completed in 1250 ms
+27 Feb 2026 - 23:15:47.801 - org.hibernate.orm.jpa -  INFO  - HHH008540: Processing PersistenceUnitInfo [name: default]
+27 Feb 2026 - 23:15:47.871 - org.hibernate.orm.core -  INFO  - HHH000001: Hibernate ORM core version 7.2.1.Final
+27 Feb 2026 - 23:15:48.314 - o.s.o.j.p.SpringPersistenceUnitInfo -  INFO  - No LoadTimeWeaver setup: ignoring JPA class transformer
+27 Feb 2026 - 23:15:48.346 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Starting...
+27 Feb 2026 - 23:15:50.589 - com.zaxxer.hikari.pool.HikariPool -  INFO  - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6bfdaa7a
+27 Feb 2026 - 23:15:50.591 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Start completed.
+27 Feb 2026 - 23:15:51.980 - o.hibernate.orm.connections.pooling -  INFO  - HHH10001005: Database info:
 	Database JDBC URL [jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require]
 	Database driver: PostgreSQL JDBC Driver
 	Database dialect: PostgreSQLDialect
@@ -281,21 +268,18 @@ org.flywaydb.core.api.FlywayException: Unsupported Database: PostgreSQL 17.8
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-25 Feb 2026 - 20:03:04.734 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-25 Feb 2026 - 20:03:10.629 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 20:03:10.773 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
-25 Feb 2026 - 20:03:11.882 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-25 Feb 2026 - 20:03:12.386 - com.epam.gym.GymApplicationTests -  INFO  - Started GymApplicationTests in 14.837 seconds (process running for 16.655)
-25 Feb 2026 - 20:03:12.991 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
-25 Feb 2026 - 20:03:15.514 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.774s)
-25 Feb 2026 - 20:03:18.009 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 2
-25 Feb 2026 - 20:03:18.201 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
-25 Feb 2026 - 20:03:20.176 - org.hibernate.orm.jdbc.error -  WARN  - HHH000247: ErrorCode: 0, SQLState: 23503
-25 Feb 2026 - 20:03:20.177 - org.hibernate.orm.jdbc.error -  WARN  - ERROR: insert or update on table "trainer" violates foreign key constraint "fkbr9evfuc2m77pw4i65cxmm140"
-  Detail: Key (training_type_id)=(2) is not present in table "training_type".
-25 Feb 2026 - 20:03:20.414 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
-25 Feb 2026 - 20:03:23.303 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
-25 Feb 2026 - 20:03:25.316 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
-25 Feb 2026 - 21:47:57.749 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
-25 Feb 2026 - 21:47:57.815 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
-25 Feb 2026 - 21:47:57.902 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:15:53.158 - org.hibernate.orm.core -  INFO  - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+27 Feb 2026 - 23:15:59.666 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Initialized JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:15:59.753 - o.s.d.j.r.q.QueryEnhancerFactories -  INFO  - Hibernate is in classpath; If applicable, HQL parser will be used.
+27 Feb 2026 - 23:16:00.620 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration -  WARN  - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+27 Feb 2026 - 23:16:00.981 - o.s.boot.tomcat.TomcatWebServer -  INFO  - Tomcat started on port 8080 (http) with context path '/'
+27 Feb 2026 - 23:16:00.986 - com.epam.gym.GymApplication -  INFO  - Started GymApplication in 15.106 seconds (process running for 15.804)
+27 Feb 2026 - 23:16:01.597 - org.flywaydb.core.FlywayExecutor -  INFO  - Database: jdbc:postgresql://ep-billowing-mud-aiprlmtr-pooler.c-4.us-east-1.aws.neon.tech/gymdb?sslmode=require&channel_binding=require (PostgreSQL 17.8)
+27 Feb 2026 - 23:16:04.451 - o.f.core.internal.command.DbValidate -  INFO  - Successfully validated 3 migrations (execution time 00:00.887s)
+27 Feb 2026 - 23:16:07.285 - o.f.core.internal.command.DbMigrate -  INFO  - Current version of schema "public": 2
+27 Feb 2026 - 23:16:07.503 - o.f.core.internal.command.DbMigrate -  INFO  - Schema "public" is up to date. No migration necessary.
+27 Feb 2026 - 23:16:08.013 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Commencing graceful shutdown. Waiting for active requests to complete
+27 Feb 2026 - 23:16:08.020 - o.s.boot.tomcat.GracefulShutdown -  INFO  - Graceful shutdown complete
+27 Feb 2026 - 23:16:08.025 - o.s.o.j.LocalContainerEntityManagerFactoryBean -  INFO  - Closing JPA EntityManagerFactory for persistence unit 'default'
+27 Feb 2026 - 23:16:11.646 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown initiated...
+27 Feb 2026 - 23:16:13.857 - com.zaxxer.hikari.HikariDataSource -  INFO  - HikariPool-1 - Shutdown completed.
