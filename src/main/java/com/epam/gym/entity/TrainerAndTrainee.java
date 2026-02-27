@@ -15,11 +15,11 @@ public class TrainerAndTrainee {
     @Column(name = "trainer_id")
     private Long trainerId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainer_id", insertable = false,updatable = false)
+    @JoinColumn(name = "trainer_id", insertable = false, updatable = false)
     private Trainer trainer;
     @Column(name = "trainee_id")
     private Long traineeId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainee_id",insertable = false,updatable = false)
+    @JoinColumn(name = "trainee_id", insertable = false, updatable = false)
     private Trainee trainee;
 }

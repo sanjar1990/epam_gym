@@ -11,8 +11,10 @@ public interface TrainerMapperI {
     String getTrainerUsername();
 
     Boolean getIsActive();
-//Training Type
+
+    //Training Type
     Long getTrainingTypeId();
+
     String getTrainingTypeName();
 
 }

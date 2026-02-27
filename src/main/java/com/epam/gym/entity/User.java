@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-public  class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +22,5 @@ public  class User {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private Boolean isActive=false;
+    private Boolean isActive = false;
 }

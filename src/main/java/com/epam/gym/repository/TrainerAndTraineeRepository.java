@@ -1,6 +1,5 @@
 package com.epam.gym.repository;
 
-import com.epam.gym.dto.TrainerDTO;
 import com.epam.gym.entity.TrainerAndTrainee;
 import com.epam.gym.mapper.TrainerMapperI;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,6 +16,6 @@ public interface TrainerAndTraineeRepository extends JpaRepository<TrainerAndTra
             "inner join User as tru on tr.user.id = tru.id " +
             "inner join TrainingType as tp on tr.trainingTypeId = tp.id " +
             "inner join Trainee as te on tt.traineeId = te.id " +
-            "where te.user.username != :traineeUsername and tru.isActive = true " )
-    List<TrainerMapperI> findTrainersNotAssignedOnTrainee(  @Param("traineeUsername") String traineeUsername);
+            "where te.user.username != :traineeUsername and tru.isActive = true ")
+    List<TrainerMapperI> findTrainersNotAssignedOnTrainee(@Param("traineeUsername") String traineeUsername);
 }

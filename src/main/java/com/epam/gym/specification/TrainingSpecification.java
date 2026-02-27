@@ -3,8 +3,10 @@ package com.epam.gym.specification;
 import com.epam.gym.dto.GetTraineeTrainingsCriteriaFilterDTO;
 import com.epam.gym.dto.GetTrainerTrainingsCriteriaFilterDTO;
 import com.epam.gym.entity.Training;
+import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
-import jakarta.persistence.criteria.*;
 
 public class TrainingSpecification {
 
@@ -58,6 +60,7 @@ public class TrainingSpecification {
             return predicate;
         };
     }
+
     public static Specification<Training> filterByCriteriaForTrainer(GetTrainerTrainingsCriteriaFilterDTO dto) {
         return (root, query, cb) -> {
 

@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface TrainerRepository extends JpaRepository<Trainer, Long> {
     @Query("SELECT t FROM Trainer t WHERE t.user.username = ?1 AND t.user.password = ?2")
     Optional<Trainer> findByUsernameAndPassword(String username, String password);
+
     @Query("SELECT t FROM Trainer t WHERE t.user.username = ?1")
     Optional<Trainer> findByUserUsername(String username);
 }

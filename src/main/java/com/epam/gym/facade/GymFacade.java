@@ -1,24 +1,35 @@
 package com.epam.gym.facade;
 
-import com.epam.gym.service.TraineeService;
-import com.epam.gym.service.TrainerService;
-import com.epam.gym.service.TrainingService;
+import com.epam.gym.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GymFacade{
+public class GymFacade {
     private final TraineeService traineeService;
     private final TrainerService trainerService;
     private final TrainingService trainingService;
+    private final AuthService authService;
+    private final UserService userService;
+    private final TrainingTypeService trainingTypeService;
+    private final TrainerAndTraineeService trainerAndTraineeService;
+
 
     @Autowired
     public GymFacade(TraineeService traineeService,
                      TrainerService trainerService,
-                     TrainingService trainingService) {
+                     TrainingService trainingService,
+                     AuthService authService,
+                     UserService userService,
+                     TrainingTypeService trainingTypeService,
+                     TrainerAndTraineeService trainerAndTraineeService) {
 
         this.traineeService = traineeService;
         this.trainerService = trainerService;
         this.trainingService = trainingService;
+        this.authService = authService;
+        this.userService = userService;
+        this.trainingTypeService = trainingTypeService;
+        this.trainerAndTraineeService = trainerAndTraineeService;
     }
 }

@@ -8,10 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface TraineeRepository extends JpaRepository<Trainee,Long> {
+public interface TraineeRepository extends JpaRepository<Trainee, Long> {
 
-   @Query("SELECT t FROM Trainee t WHERE t.user.username = ?1 AND t.user.password = ?2")
+    @Query("SELECT t FROM Trainee t WHERE t.user.username = ?1 AND t.user.password = ?2")
     Optional<Trainee> findByUsernameAndPassword(String username, String password);
+
     @Query("SELECT t FROM Trainee t WHERE t.user.username = ?1")
     Optional<Trainee> findByUsername(String username);
 }

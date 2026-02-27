@@ -3,8 +3,6 @@ package com.epam.gym.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
@@ -18,13 +16,13 @@ public class Training {
     @Column(name = "trainee_id")
     private Long traineeId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainee_id",insertable = false,updatable = false)
+    @JoinColumn(name = "trainee_id", insertable = false, updatable = false)
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     private Trainee trainee;
     @Column(name = "trainer_id")
     private Long trainerId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainer_id", insertable = false,updatable = false)
+    @JoinColumn(name = "trainer_id", insertable = false, updatable = false)
     private Trainer trainer;
 
     @Column(nullable = false)
@@ -32,7 +30,7 @@ public class Training {
     @Column(name = "training_type_id")
     private Long trainingTypeId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "training_type_id",insertable = false,updatable = false)
+    @JoinColumn(name = "training_type_id", insertable = false, updatable = false)
     private TrainingType trainingType;
 
     @Column(nullable = false)
