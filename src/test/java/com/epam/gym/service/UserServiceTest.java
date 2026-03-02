@@ -24,9 +24,6 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    @Mock
-    private AuthService authService;
-
     @InjectMocks
     private UserService userService;
 
@@ -91,11 +88,9 @@ class UserServiceTest {
 
     @Test
     void isUserExists_shouldReturnEmpty_whenUserInactive() {
-        User user = new User();
-        user.setIsActive(false);
 
         when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
-                .thenReturn(Optional.of(user));
+                .thenReturn(Optional.empty());
 
         Optional<User> result = userService.isUserExists("john", "123");
 
@@ -136,14 +131,16 @@ class UserServiceTest {
         User user = new User();
         user.setUsername("john");
         user.setPassword("old");
+        user.setIsActive(true);
 
         UserChangePasswordDTO dto = new UserChangePasswordDTO();
         dto.setUsername("john");
         dto.setOldPassword("old");
         dto.setNewPassword("new123");
 
-        when(authService.login("john", "old"))
-                .thenReturn(user);
+        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue(
+                "john", "old"))
+                .thenReturn(Optional.of(user));
 
         userService.changePassword(dto);
 
