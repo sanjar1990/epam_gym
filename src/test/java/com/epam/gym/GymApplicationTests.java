@@ -8,17 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class GymApplicationTests {
-    @Autowired
-    private TrainerService trainerService;
 
-    @Test
-    public void test() {
-
-        CreateTrainerRequestDTO trainer = new CreateTrainerRequestDTO();
-        trainer.setFirstName("Alex");
-        trainer.setLastName("Smith");
-        trainer.setTrainingTypeId(2L);
-        trainerService.create(trainer);
-    }
 
 }

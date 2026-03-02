@@ -81,7 +81,7 @@ class UserServiceTest {
         User user = new User();
         user.setIsActive(true);
 
-        when(userRepository.findByUsernameAndPassword("john", "123"))
+        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
                 .thenReturn(Optional.of(user));
 
         Optional<User> result = userService.isUserExists("john", "123");
@@ -94,7 +94,7 @@ class UserServiceTest {
         User user = new User();
         user.setIsActive(false);
 
-        when(userRepository.findByUsernameAndPassword("john", "123"))
+        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
                 .thenReturn(Optional.of(user));
 
         Optional<User> result = userService.isUserExists("john", "123");
@@ -104,7 +104,7 @@ class UserServiceTest {
 
     @Test
     void isUserExists_shouldReturnEmpty_whenUserNotFound() {
-        when(userRepository.findByUsernameAndPassword("john", "123"))
+        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
                 .thenReturn(Optional.empty());
 
         Optional<User> result = userService.isUserExists("john", "123");
