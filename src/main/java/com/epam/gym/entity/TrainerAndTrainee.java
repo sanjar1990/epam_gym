@@ -4,6 +4,17 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+// TODO:
+//  Usually we don't need to create this relation manually
+//  @ManyToMany + @JoinTable annotation will do the trick for us.
+//  ---
+//  @ManyToMany
+//  @JoinTable(
+//      name = "trainee_trainer",
+//      joinColumns = @JoinColumn(name = "trainer_id"),
+//      inverseJoinColumns = @JoinColumn(name = "trainee_id")
+//  )
+//  private Set<Trainee> trainees;
 @Getter
 @Setter
 @Entity

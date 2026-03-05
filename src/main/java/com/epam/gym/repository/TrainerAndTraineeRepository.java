@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+// TODO:
+//  With @ManyToMany we don't need this repository. The 'get unassigned trainers' can be done with derive query in TrainerRepository
+//  List<Trainer> findByTraineesNotContaining(Trainee trainee);
 public interface TrainerAndTraineeRepository extends JpaRepository<TrainerAndTrainee, Long> {
     @Query("SELECT tt.trainerId as trainerId, tru.firstName as firstName, tru.lastName as lastName, " +
             "tru.username as trainerUsername, tru.isActive as isActive, tp.trainingTypeName as trainingTypeName," +

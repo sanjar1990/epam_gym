@@ -9,6 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+// TODO:
+//  Nice base class! Let's use it for your entities
 @Getter
 @Setter
 @MappedSuperclass

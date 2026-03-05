@@ -8,6 +8,11 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 
+// TODO:
+//  Good job on using Criteria API! Just a couple of questions:
+//  1. Is there any specific reason to concatenate first&last names instead of using 'username' field directly?
+//  2. Are both criteria for trainee and trainer same? Please double check the task on which fields are used in each case.
+//  3. For those fields which are used in both criteria, consider refactoring into a separate method to avoid code duplication.
 public class TrainingSpecification {
 
     public static Specification<Training> filterByCriteriaForTrainee(GetTraineeTrainingsCriteriaFilterDTO dto) {

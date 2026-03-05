@@ -55,6 +55,9 @@ public class TrainerService {
     }
 
     //5. Select Trainer profile by username.
+    // TODO:
+    //  [Optional]
+    //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainer getTrainerByUsername(String username) {
         Optional<Trainer> trainer = trainerRepository.findByUserUsername(username);
         if (trainer.isEmpty()) {

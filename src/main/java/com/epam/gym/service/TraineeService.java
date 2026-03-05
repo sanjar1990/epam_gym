@@ -52,6 +52,9 @@ public class TraineeService {
     }
 
     //6. Select Trainee profile by username.
+    // TODO:
+    //  [Optional]
+    //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainee getTraineeByUsername(String username) {
         Optional<Trainee> optionalTrainee = traineeRepository.findByUsername(username);
         if (optionalTrainee.isEmpty()) {
@@ -90,6 +93,8 @@ public class TraineeService {
     }
 
     //    13. Delete trainee profile by username.
+    // TODO:
+    //  What does boolean return type represent in this case?
     @Transactional
     public boolean deleteTrainee(String username, String password) {
         User user = authService.login(username, password);

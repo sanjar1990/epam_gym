@@ -25,6 +25,10 @@ public class UserService {
 
     public String generateUsername(String firstName, String lastName) {
         String username = firstName + "." + lastName;
+        // TODO:
+        //  You have defined an unique constraint on username field in User entity which is good.
+        //  Now you generate the username filtering only active users and later call repo.save()
+        //  What happens if user with the same first and last name already exists but in status active=false?
         int count = userRepository.countAllByIsActiveTrueAndUsername(username);
         return count == 0 ? username : username + count;
     }
