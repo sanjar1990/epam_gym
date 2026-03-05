@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
+
 @Component
 public class FlywayStarter implements CommandLineRunner {
     @Autowired
@@ -15,5 +16,7 @@ public class FlywayStarter implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Flyway.configure().baselineOnMigrate(true).dataSource(dataSource).load().migrate();
+
     }
+
 }
