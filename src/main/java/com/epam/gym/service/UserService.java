@@ -1,9 +1,9 @@
 package com.epam.gym.service;
 
+import com.epam.gym.dto.UserChangePasswordDTO;
 import com.epam.gym.entity.User;
-import com.epam.gym.exceptions.UserBlockedException;
-import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -11,20 +11,27 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.Random;
 
+@Slf4j
 @Service
 public class UserService {
     @Value("${password.characters}")
     private String CHARS;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
+
+    @Autowired()
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     public String generateUsername(String firstName, String lastName) {
         String username = firstName + "." + lastName;
-        int count = userRepository.countAllByIsActiveTrueAndUsername(username);
+        // TODO:
+        //  You have defined an unique constraint on username field in User entity which is good.
+        //  Now you generate the username filtering only active users and later call repo.save()
+        //  What happens if user with the same first and last name already exists but in status active=false?
+        //  It will throw exception. I removed Status check.
+        int count = userRepository.countAllByUsername(username);
         return count == 0 ? username : username + count;
     }
 
@@ -39,26 +46,31 @@ public class UserService {
 
         return sb.toString();
     }
-//3. Trainee username and password matching.
+
+    //3. Trainee username and password matching.
 //4. Trainer username and password matching.
     public Optional<User> isUserExists(String username, String password) {
-        Optional<User> user = userRepository.findByUsernameAndPassword(username, password);
-        if (user.isPresent() && user.get().getIsActive()) {
-            return user;
-        } else {
-            return Optional.empty();
-        }
+        return userRepository.findByUsernameAndPasswordAndIsActiveTrue(username, password);
     }
 
-    public boolean changePassword(User user) {
-        userRepository.save(user);
-        return true;
-    }
 
     public boolean changeStatus(User user) {
         user.setIsActive(!user.getIsActive());
-       userRepository.save(user);
+        userRepository.save(user);
         return user.getIsActive();
+    }
+
+    //7. Trainee password change
+    public void changePassword(UserChangePasswordDTO dto) {
+        User user = userRepository.findByUsernameAndPasswordAndIsActiveTrue(
+                        dto.getUsername(), dto.getOldPassword())
+                .orElseThrow(() -> {
+                    log.error("User not found {}", dto.getUsername());
+                    return new RuntimeException("User not found");
+
+                });
+        user.setPassword(dto.getNewPassword());
+        userRepository.save(user);
     }
 
 }

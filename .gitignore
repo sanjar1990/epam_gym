@@ -32,3 +32,8 @@ build/
 
 ### VS Code ###
 .vscode/
+/.env
+
+/tasks/Task_Hibernate.pdf
+/tasks/Task_Rest.pdf
+/tasks/Task_Spring_Core.pdf

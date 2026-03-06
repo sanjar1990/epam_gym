@@ -9,10 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "training_type")
-public class TrainingType  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class TrainingType extends BaseEntity {
     @Column()
     @Enumerated(EnumType.STRING)
     private TrainingTypeEnum trainingTypeName;

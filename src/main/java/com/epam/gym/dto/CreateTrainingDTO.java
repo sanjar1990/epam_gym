@@ -1,9 +1,5 @@
 package com.epam.gym.dto;
 
-import com.epam.gym.entity.Trainee;
-import com.epam.gym.entity.Trainer;
-import com.epam.gym.entity.TrainingType;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 

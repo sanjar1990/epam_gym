@@ -2,6 +2,7 @@ package com.epam.gym.service;
 
 import com.epam.gym.dto.CreateTraineeCreateRequestDTO;
 import com.epam.gym.dto.UpdateTraineeRequestDTO;
+import com.epam.gym.dto.UserChangePasswordDTO;
 import com.epam.gym.entity.Trainee;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
@@ -9,8 +10,7 @@ import com.epam.gym.repository.TraineeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
@@ -29,8 +29,7 @@ public class TraineeService {
         this.authService = authService;
     }
 
-//2. Create Trainee profile.
-
+    //2. Create Trainee profile.
     public void create(CreateTraineeCreateRequestDTO dto) {
         String username = userService.generateUsername(dto.getFirstName(), dto.getLastName());
         String password = userService.generatePassword();
@@ -51,17 +50,17 @@ public class TraineeService {
     }
 
     //6. Select Trainee profile by username.
+    // TODO:
+    //  [Optional]
+    //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainee getTraineeByUsername(String username) {
-        Optional<Trainee> optionalTrainee = traineeRepository.findByUsername(username);
-        if (optionalTrainee.isEmpty()) throw new UserNotFoundException("Trainee not found" + username);
-        return optionalTrainee.get();
+        return traineeRepository.findByUserUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("Trainee not found" + username));
     }
 
     //7. Trainee password change
-    public boolean changePassword(String username, String oldPassword, String newPassword) {
-        User user = authService.login(username, oldPassword);
-        user.setPassword(newPassword);
-        return userService.changePassword(user);
+    public void changePassword(UserChangePasswordDTO dto) {
+        userService.changePassword(dto);
     }
 
     //    10. Update trainee profile.
@@ -75,7 +74,7 @@ public class TraineeService {
         User user = trainee.getUser();
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
-
+        log.info("Trainee updated{}", trainee.getId());
         traineeRepository.save(trainee);
         return true;
     }
@@ -83,15 +82,20 @@ public class TraineeService {
     //    11. Activate/De-activate trainee.
     public boolean activateDeactivateTrainer(String username, String password) {
         User user = authService.login(username, password);
+        log.info("Trainee {} activated/deactivated {}", user.getIsActive(), user.getUsername());
         return userService.changeStatus(user);
     }
 
-//    13. Delete trainee profile by username.
-    public boolean deleteTrainee(String username, String password) {
+    //    13. Delete trainee profile by username.
+    // TODO:
+    //  What does boolean return type represent in this case?
+    @Transactional
+    public void deleteTrainee(String username, String password) {
         User user = authService.login(username, password);
         Trainee trainee = getTraineeByUsername(username);
+        log.info("Trainee deleted{}", trainee.getId());
         traineeRepository.delete(trainee);
-        return true;
     }
 
 }
+

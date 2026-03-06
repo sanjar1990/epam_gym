@@ -1,12 +1,12 @@
 package com.epam.gym.config;
 
 import org.flywaydb.core.Flyway;
-import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+
 
 @Component
 public class FlywayStarter implements CommandLineRunner {
@@ -14,7 +14,8 @@ public class FlywayStarter implements CommandLineRunner {
     private DataSource dataSource;
 
     @Override
-    public void run( String... args) throws Exception {
+    public void run(String... args)  {
         Flyway.configure().baselineOnMigrate(true).dataSource(dataSource).load().migrate();
     }
+
 }

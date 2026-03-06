@@ -1,6 +1,8 @@
 package com.epam.gym.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +10,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "users")
-public  class User {
+public class User extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -22,5 +21,5 @@ public  class User {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private Boolean isActive=false;
+    private Boolean isActive = false;
 }

@@ -3,9 +3,11 @@ package com.epam.gym.service;
 import com.epam.gym.dto.CreateTrainerRequestDTO;
 import com.epam.gym.dto.TrainerDTO;
 import com.epam.gym.dto.UpdateTrainerRequestDTO;
+import com.epam.gym.dto.UserChangePasswordDTO;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
+import com.epam.gym.mapper.trainer.TrainerMapper;
 import com.epam.gym.repository.TrainerRepository;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Setter
 @Service
@@ -23,16 +24,14 @@ public class TrainerService {
     private final TrainerRepository trainerRepository;
     private final UserService userService;
     private final AuthService authService;
-    private final TrainerAndTraineeService trainerAndTraineeService;
 
 
     @Autowired
-    public TrainerService(TrainerRepository trainerRepository, UserService userService,
-                          AuthService authService, TrainerAndTraineeService trainerAndTraineeService) {
+    public TrainerService(TrainerRepository trainerRepository, UserService userService, AuthService authService) {
         this.trainerRepository = trainerRepository;
         this.userService = userService;
         this.authService = authService;
-        this.trainerAndTraineeService = trainerAndTraineeService;
+
     }
 
     //1. Create Trainer profile.
@@ -50,27 +49,29 @@ public class TrainerService {
         trainer.setUser(user);
         trainer.setTrainingTypeId(dto.getTrainingTypeId());
         trainerRepository.save(trainer);
+        log.info("Trainer created: {}", trainer.getId());
     }
 
     //5. Select Trainer profile by username.
+    // TODO:
+    //  [Optional]
+    //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainer getTrainerByUsername(String username) {
-        Optional<Trainer> trainer = trainerRepository.findByUserUsername(username);
-        if (trainer.isEmpty()) {
-            throw new UserNotFoundException("User not found with username: " + username);
-        }
-        return trainer.get();
+        return trainerRepository.findByUserUsername(username).orElseThrow(() -> {
+            log.error("User not found with username: {}", username);
+            return new UserNotFoundException("User not found with username: " + username);
+        });
     }
 
     //8. Trainer password change
-    public boolean changePassword(String username, String oldPassword, String newPassword) {
-        User user = authService.login(username, oldPassword);
-        user.setPassword(newPassword);
-        return userService.changePassword(user);
+    public void changePassword(UserChangePasswordDTO dto) {
+        log.info("Changing password for user: {}", dto.getUsername());
+        userService.changePassword(dto);
     }
 
     //9. Update trainer profile.
     public boolean updateTrainer(String username, String password, UpdateTrainerRequestDTO dto) {
-//Authentication
+        //Authentication
         authService.login(username, password);
 
         Trainer trainer = getTrainerByUsername(username);
@@ -80,18 +81,22 @@ public class TrainerService {
         user.setLastName(dto.getLastName());
 
         trainerRepository.save(trainer);
+        log.info("Trainer updated: {}", trainer.getId());
         return true;
     }
 
     //12. Activate/De-activate trainer.
     public boolean activateDeactivateTrainer(String username, String password) {
         User user = authService.login(username, password);
+        log.info("Changing status for user: {}", user.getUsername());
         return userService.changeStatus(user);
     }
-//    17. Get trainers list that not assigned on trainee by trainee's username.
 
+    //    17. Get trainers list that not assigned on trainee by trainee's username.
     public List<TrainerDTO> getTrainersNotAssignedOnTrainee(String traineeUsername) {
-        return trainerAndTraineeService.getTrainersNotAssignedOnTrainee(traineeUsername);
+        return trainerRepository.findTrainersNotAssignedToTrainee(traineeUsername)
+                .stream().map(TrainerMapper::toTrainerDTO).toList();
     }
+
 
 }
