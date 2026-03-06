@@ -15,7 +15,7 @@ import java.time.LocalDate;
 //  name, training type). this method is requiring Trainer name or Trainee name.
 //  I don't understand should I search by firstName or lastName or username.
 //  in Username can be serial number if User's lastName and firstName are same.
-//  should I search by username?
+//  I changed it to username?
 //  2. Are both criteria for trainee and trainer same? Please double check the task on which fields are used in each case.
 //  3. For those fields which are used in both criteria, consider refactoring into a separate method to avoid code duplication.
 //  I removed the code duplication.
@@ -102,20 +102,17 @@ public class TrainingSpecification {
             Predicate predicate,
             Root<Training> root,
             CriteriaBuilder cb,
-            String trainerName) {
+            String trainerUsername) {
 
-        if (trainerName != null && !trainerName.isBlank()) {
+        if (trainerUsername != null && !trainerUsername.isBlank()) {
 
             Join<Object, Object> trainerJoin = root.join("trainer");
             Join<Object, Object> trainerUserJoin = trainerJoin.join("user");
 
-            Expression<String> fullName = cb.concat(
-                    cb.concat(trainerUserJoin.get("firstName"), " "),
-                    trainerUserJoin.get("lastName")
-            );
+
 
             predicate = cb.and(predicate,
-                    cb.like(cb.lower(fullName), "%" + trainerName.toLowerCase() + "%"));
+                    cb.like(cb.lower(trainerUserJoin.get("username")), "%" + trainerUsername.toLowerCase() + "%"));
         }
 
         return predicate;
@@ -125,20 +122,15 @@ public class TrainingSpecification {
             Predicate predicate,
             Root<Training> root,
             CriteriaBuilder cb,
-            String traineeName) {
+            String traineeUsername) {
 
-        if (traineeName != null && !traineeName.isBlank()) {
+        if (traineeUsername != null && !traineeUsername.isBlank()) {
 
             Join<Object, Object> traineeJoin = root.join("trainee");
             Join<Object, Object> traineeUserJoin = traineeJoin.join("user");
 
-            Expression<String> fullName = cb.concat(
-                    cb.concat(traineeUserJoin.get("firstName"), " "),
-                    traineeUserJoin.get("lastName")
-            );
-
             predicate = cb.and(predicate,
-                    cb.like(cb.lower(fullName), "%" + traineeName.toLowerCase() + "%"));
+                    cb.like(cb.lower(traineeUserJoin.get("username")), "%" + traineeUsername.toLowerCase() + "%"));
         }
         return predicate;
     }
