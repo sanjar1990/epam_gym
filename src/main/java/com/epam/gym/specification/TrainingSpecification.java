@@ -140,7 +140,6 @@ public class TrainingSpecification {
             predicate = cb.and(predicate,
                     cb.like(cb.lower(fullName), "%" + traineeName.toLowerCase() + "%"));
         }
-
         return predicate;
     }
 }
