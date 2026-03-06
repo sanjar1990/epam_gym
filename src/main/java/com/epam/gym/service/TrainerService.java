@@ -7,6 +7,7 @@ import com.epam.gym.dto.UserChangePasswordDTO;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
+import com.epam.gym.mapper.trainer.TrainerMapper;
 import com.epam.gym.repository.TrainerRepository;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Setter
 @Service
@@ -24,16 +24,14 @@ public class TrainerService {
     private final TrainerRepository trainerRepository;
     private final UserService userService;
     private final AuthService authService;
-    private final TrainerAndTraineeService trainerAndTraineeService;
 
 
     @Autowired
-    public TrainerService(TrainerRepository trainerRepository, UserService userService,
-                          AuthService authService, TrainerAndTraineeService trainerAndTraineeService) {
+    public TrainerService(TrainerRepository trainerRepository, UserService userService, AuthService authService) {
         this.trainerRepository = trainerRepository;
         this.userService = userService;
         this.authService = authService;
-        this.trainerAndTraineeService = trainerAndTraineeService;
+
     }
 
     //1. Create Trainer profile.
@@ -59,12 +57,10 @@ public class TrainerService {
     //  [Optional]
     //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainer getTrainerByUsername(String username) {
-        Optional<Trainer> trainer = trainerRepository.findByUserUsername(username);
-        if (trainer.isEmpty()) {
+        return trainerRepository.findByUserUsername(username).orElseThrow(() -> {
             log.error("User not found with username: {}", username);
-            throw new UserNotFoundException("User not found with username: " + username);
-        }
-        return trainer.get();
+            return new UserNotFoundException("User not found with username: " + username);
+        });
     }
 
     //8. Trainer password change
@@ -95,10 +91,12 @@ public class TrainerService {
         log.info("Changing status for user: {}", user.getUsername());
         return userService.changeStatus(user);
     }
-//    17. Get trainers list that not assigned on trainee by trainee's username.
 
+    //    17. Get trainers list that not assigned on trainee by trainee's username.
     public List<TrainerDTO> getTrainersNotAssignedOnTrainee(String traineeUsername) {
-        return trainerAndTraineeService.getTrainersNotAssignedOnTrainee(traineeUsername);
+        return trainerRepository.findTrainersNotAssignedToTrainee(traineeUsername)
+                .stream().map(TrainerMapper::toTrainerDTO).toList();
     }
+
 
 }

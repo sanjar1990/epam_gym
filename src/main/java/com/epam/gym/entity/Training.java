@@ -9,10 +9,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-public class Training {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Training extends BaseEntity {
+
     @Column(name = "trainee_id")
     private Long traineeId;
     @ManyToOne(fetch = FetchType.LAZY)

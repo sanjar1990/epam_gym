@@ -32,8 +32,6 @@ class TrainerServiceTest {
     @Mock
     private AuthService authService;
 
-    @Mock
-    private TrainerAndTraineeService trainerAndTraineeService;
 
     @InjectMocks
     private TrainerService trainerService;
@@ -162,19 +160,31 @@ class TrainerServiceTest {
     // getTrainersNotAssignedOnTrainee()
     // --------------------------------
 
+
     @Test
-    void getTrainersNotAssignedOnTrainee_shouldReturnList() {
-        List<TrainerDTO> list = List.of(new TrainerDTO());
+    void getTrainersNotAssignedOnTrainee_shouldReturnTrainerDTOList() {
 
-        when(trainerAndTraineeService
-                .getTrainersNotAssignedOnTrainee("trainee1"))
-                .thenReturn(list);
+        // given
+        String username = "john";
 
+        User user = new User();
+        user.setUsername("trainer1");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(user);
+
+        when(trainerRepository.findTrainersNotAssignedToTrainee(username))
+                .thenReturn(List.of(trainer));
+
+        // when
         List<TrainerDTO> result =
-                trainerService.getTrainersNotAssignedOnTrainee("trainee1");
+                trainerService.getTrainersNotAssignedOnTrainee(username);
 
+        // then
         assertEquals(1, result.size());
-        verify(trainerAndTraineeService)
-                .getTrainersNotAssignedOnTrainee("trainee1");
+        assertEquals("trainer1", result.getFirst().getUser().getUsername());
+
+        verify(trainerRepository)
+                .findTrainersNotAssignedToTrainee(username);
     }
 }

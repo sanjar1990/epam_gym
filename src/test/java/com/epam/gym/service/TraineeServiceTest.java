@@ -165,10 +165,7 @@ class TraineeServiceTest {
         when(authService.login(username, password)).thenReturn(user);
         when(traineeRepository.findByUsername(username))
                 .thenReturn(Optional.of(trainee));
-
-        boolean result = traineeService.deleteTrainee(username, password);
-
-        assertTrue(result);
+        traineeService.deleteTrainee(username, password);
         verify(traineeRepository).delete(trainee);
     }
 }

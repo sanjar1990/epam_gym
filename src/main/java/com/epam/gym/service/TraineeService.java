@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 @Service
 @Slf4j
 public class TraineeService {
@@ -56,12 +54,8 @@ public class TraineeService {
     //  [Optional]
     //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainee getTraineeByUsername(String username) {
-        Optional<Trainee> optionalTrainee = traineeRepository.findByUsername(username);
-        if (optionalTrainee.isEmpty()) {
-            log.error("Trainee not found" + username);
-            throw new UserNotFoundException("Trainee not found" + username);
-        }
-        return optionalTrainee.get();
+        return traineeRepository.findByUserUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("Trainee not found"+ username));
     }
 
     //7. Trainee password change
@@ -96,12 +90,11 @@ public class TraineeService {
     // TODO:
     //  What does boolean return type represent in this case?
     @Transactional
-    public boolean deleteTrainee(String username, String password) {
+    public void deleteTrainee(String username, String password) {
         User user = authService.login(username, password);
         Trainee trainee = getTraineeByUsername(username);
         log.info("Trainee deleted{}", trainee.getId());
         traineeRepository.delete(trainee);
-        return true;
     }
 
 }

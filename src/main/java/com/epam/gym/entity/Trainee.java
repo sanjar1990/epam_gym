@@ -5,15 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-public class Trainee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Trainee extends BaseEntity {
     @Column(nullable = false)
     private LocalDate dateOfBirth;
     @Column(columnDefinition = "TEXT")
@@ -25,4 +24,6 @@ public class Trainee {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Training> trainings;
+    @ManyToMany(mappedBy = "trainees")
+    private Set<Trainer> trainers = new HashSet<>();
 }

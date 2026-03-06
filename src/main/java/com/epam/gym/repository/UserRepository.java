@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    int countAllByIsActiveTrueAndUsername(String username);
+    int countAllByUsername(String username);
 
     Optional<User> findByUsernameAndPasswordAndIsActiveTrue(String username, String password);
 }
