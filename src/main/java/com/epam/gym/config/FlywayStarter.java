@@ -14,9 +14,8 @@ public class FlywayStarter implements CommandLineRunner {
     private DataSource dataSource;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args)  {
         Flyway.configure().baselineOnMigrate(true).dataSource(dataSource).load().migrate();
-
     }
 
 }

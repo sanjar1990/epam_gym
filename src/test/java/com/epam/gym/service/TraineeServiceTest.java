@@ -65,7 +65,7 @@ class TraineeServiceTest {
     void getTraineeByUsername_shouldReturnTrainee_whenExists() {
         Trainee trainee = new Trainee();
 
-        when(traineeRepository.findByUsername("john"))
+        when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
 
         Trainee result = traineeService.getTraineeByUsername("john");
@@ -75,7 +75,7 @@ class TraineeServiceTest {
 
     @Test
     void getTraineeByUsername_shouldThrowException_whenNotFound() {
-        when(traineeRepository.findByUsername("john"))
+        when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.empty());
 
         assertThrows(UserNotFoundException.class,
@@ -118,7 +118,7 @@ class TraineeServiceTest {
         dto.setDateOfBirth(LocalDate.of(1995, 5, 5));
 
         when(authService.login(username, password)).thenReturn(user);
-        when(traineeRepository.findByUsername(username))
+        when(traineeRepository.findByUserUsername(username))
                 .thenReturn(Optional.of(trainee));
 
         boolean result = traineeService.updateTrainee(username, password, dto);
@@ -163,7 +163,7 @@ class TraineeServiceTest {
         Trainee trainee = new Trainee();
 
         when(authService.login(username, password)).thenReturn(user);
-        when(traineeRepository.findByUsername(username))
+        when(traineeRepository.findByUserUsername(username))
                 .thenReturn(Optional.of(trainee));
         traineeService.deleteTrainee(username, password);
         verify(traineeRepository).delete(trainee);

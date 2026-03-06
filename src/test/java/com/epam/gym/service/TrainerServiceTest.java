@@ -5,7 +5,9 @@ import com.epam.gym.dto.TrainerDTO;
 import com.epam.gym.dto.UpdateTrainerRequestDTO;
 import com.epam.gym.dto.UserChangePasswordDTO;
 import com.epam.gym.entity.Trainer;
+import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
+import com.epam.gym.enums.TrainingTypeEnum;
 import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.repository.TrainerRepository;
 import org.junit.jupiter.api.Test;
@@ -170,8 +172,13 @@ class TrainerServiceTest {
         User user = new User();
         user.setUsername("trainer1");
 
+        TrainingType trainingType = new TrainingType();
+        trainingType.setId(1L);
+        trainingType.setTrainingTypeName(TrainingTypeEnum.CARDIO);
+
         Trainer trainer = new Trainer();
         trainer.setUser(user);
+        trainer.setTrainingType(trainingType);
 
         when(trainerRepository.findTrainersNotAssignedToTrainee(username))
                 .thenReturn(List.of(trainer));

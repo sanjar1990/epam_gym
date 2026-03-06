@@ -23,13 +23,6 @@ public class TrainingService {
     private TrainingRepository trainingRepository;
     private AuthService authService;
     private TraineeService traineeService;
-    private TrainerAndTraineeService trainerAndTraineeService;
-
-    @Autowired
-    public void setTrainerAndTraineeService(TrainerAndTraineeService trainerAndTraineeService) {
-        this.trainerAndTraineeService = trainerAndTraineeService;
-    }
-
 
     @Autowired
     public void setAuthService(AuthService authService) {
@@ -59,7 +52,6 @@ public class TrainingService {
         training.setTrainingDuration(dto.getTrainingDuration());
         trainingRepository.save(training);
         log.info("Training added {}", training.getId());
-        trainerAndTraineeService.addTrainerAndTrainee(dto.getTrainerId(), trainee.getId());
     }
 
     //    14. Get Trainee Trainings List by trainee username and criteria

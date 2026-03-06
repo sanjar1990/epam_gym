@@ -34,8 +34,6 @@ class TrainingServiceTest {
     @Mock
     private TraineeService traineeService;
 
-    @Mock
-    private TrainerAndTraineeService trainerAndTraineeService;
 
     @InjectMocks
     private TrainingService trainingService;
@@ -115,8 +113,7 @@ class TrainingServiceTest {
         trainingService.addTraining(username, password, dto);
 
         verify(trainingRepository).save(any(Training.class));
-        verify(trainerAndTraineeService)
-                .addTrainerAndTrainee(10L, 5L);
+
     }
 
     // =====================================================

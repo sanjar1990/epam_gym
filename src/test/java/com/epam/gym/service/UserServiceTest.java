@@ -39,7 +39,7 @@ class UserServiceTest {
 
     @Test
     void generateUsername_shouldReturnSimpleUsername_whenNoDuplicates() {
-        when(userRepository.countAllByIsActiveTrueAndUsername("john.doe"))
+        when(userRepository.countAllByUsername("john.doe"))
                 .thenReturn(0);
 
         String result = userService.generateUsername("john", "doe");
@@ -49,7 +49,7 @@ class UserServiceTest {
 
     @Test
     void generateUsername_shouldAppendNumber_whenDuplicateExists() {
-        when(userRepository.countAllByIsActiveTrueAndUsername("john.doe"))
+        when(userRepository.countAllByUsername("john.doe"))
                 .thenReturn(2);
 
         String result = userService.generateUsername("john", "doe");

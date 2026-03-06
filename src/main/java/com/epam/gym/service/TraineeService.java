@@ -55,7 +55,7 @@ public class TraineeService {
     //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
     public Trainee getTraineeByUsername(String username) {
         return traineeRepository.findByUserUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("Trainee not found"+ username));
+                .orElseThrow(() -> new UserNotFoundException("Trainee not found" + username));
     }
 
     //7. Trainee password change

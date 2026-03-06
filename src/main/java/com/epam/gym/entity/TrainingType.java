@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "training_type")
-public class TrainingType extends BaseEntity{
+public class TrainingType extends BaseEntity {
     @Column()
     @Enumerated(EnumType.STRING)
     private TrainingTypeEnum trainingTypeName;

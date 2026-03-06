@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;
+
 @Slf4j
 @Service
 public class UserService {
@@ -62,8 +63,8 @@ public class UserService {
     //7. Trainee password change
     public void changePassword(UserChangePasswordDTO dto) {
         User user = userRepository.findByUsernameAndPasswordAndIsActiveTrue(
-                dto.getUsername(), dto.getOldPassword())
-                .orElseThrow(() ->{
+                        dto.getUsername(), dto.getOldPassword())
+                .orElseThrow(() -> {
                     log.error("User not found {}", dto.getUsername());
                     return new RuntimeException("User not found");
 

@@ -12,7 +12,6 @@ public class GymFacade {
     private final AuthService authService;
     private final UserService userService;
     private final TrainingTypeService trainingTypeService;
-    private final TrainerAndTraineeService trainerAndTraineeService;
 
 
     @Autowired
@@ -21,8 +20,7 @@ public class GymFacade {
                      TrainingService trainingService,
                      AuthService authService,
                      UserService userService,
-                     TrainingTypeService trainingTypeService,
-                     TrainerAndTraineeService trainerAndTraineeService) {
+                     TrainingTypeService trainingTypeService) {
 
         this.traineeService = traineeService;
         this.trainerService = trainerService;
@@ -30,6 +28,5 @@ public class GymFacade {
         this.authService = authService;
         this.userService = userService;
         this.trainingTypeService = trainingTypeService;
-        this.trainerAndTraineeService = trainerAndTraineeService;
     }
 }
