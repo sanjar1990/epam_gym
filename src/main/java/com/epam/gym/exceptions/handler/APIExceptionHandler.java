@@ -46,6 +46,8 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({APIException.class})
     public ResponseEntity<ApiResponse<String>> apiException(APIException exception) {
         log.error(exception.getMessage());
+        // TODO:
+        //  Is it 200 OK with a 400 inside? You API clients will go crazy :)
         return ResponseEntity.ok(ApiResponse.bad(exception.getMessage()));
     }
 

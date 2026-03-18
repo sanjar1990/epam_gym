@@ -45,6 +45,10 @@ public class TrainerController {
         return ResponseEntity.ok(trainerService.updateTrainer(dto));
     }
 
+    // TODO:
+    //  [Optional]
+    //  How about GET /api/v1/trainer/unassigned?trainee=<username>?
+
     //    10. Get not assigned on trainee active trainers. (GET method)
     @GetMapping("/not-assigned-on-trainee")
     @Operation(summary = "Get not assigned on trainee active trainers.  ", description = "")

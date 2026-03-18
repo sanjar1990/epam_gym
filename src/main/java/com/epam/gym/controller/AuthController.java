@@ -21,11 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/auth")
 @Tag(name = "Auth Api list", description = "this api is for Authentication")
+// TODO:
+//  With a single constructor, @Autowired (and onConstructor) is unnecessary since Spring 4.3.
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthController {
 
     private final AuthService authService;
     private final UserService userService;
+
+    // TODO:
+    //  [Optional]
+    //  1. Be careful with introducing conventions like "/public" in URLs — they often don’t scale well.
+    //  For example, would we then introduce "/private/login" or "/private/logout" later?
+    //  Typically, access control is better handled via security configuration rather than encoded in the path
+    //  2. Consider whether we really need to introduce a custom ApiResponse<T> wrapper. ResponseEntity already covers
+    //  HTTP-level metadata, so this may add extra nesting and duplicate status/error information without much benefit.
+    //  3. Also please recheck your comments, they can be misleading if different from the actual source code
 
     //    3. Login (GET method)
     @PostMapping("/public/login")

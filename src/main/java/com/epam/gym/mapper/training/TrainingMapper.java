@@ -7,6 +7,9 @@ import com.epam.gym.mapper.trainee.TraineeMapper;
 import com.epam.gym.mapper.trainer.TrainerMapper;
 import com.epam.gym.mapper.training_type.TrainingTypeMapper;
 
+// TODO:
+//  [Optional]
+//  I would recommend to look into MapStruct library for mappers - it helps to reduce boilerplate a lot.
 public class TrainingMapper {
     public static TraineeTrainingResponseDTO toTraineeTrainingResponseDTO(Training training) {
         TraineeTrainingResponseDTO trainingResponseDTO = new TraineeTrainingResponseDTO();

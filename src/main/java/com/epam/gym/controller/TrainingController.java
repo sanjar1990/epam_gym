@@ -25,6 +25,9 @@ public class TrainingController {
     private final TrainingService trainingService;
 
     //    12. Get Trainee Trainings List (GET method)
+    // TODO:
+    //  [Optional]
+    //  For this particular case, when there is not a huge list of filters I would use GET
     @PostMapping("/trainee")
     @Operation(summary = "Get Trainee Trainings List", description = "")
     public ResponseEntity<ApiResponse<List<TraineeTrainingResponseDTO>>> getTraineeTrainings(
@@ -39,6 +42,9 @@ public class TrainingController {
             @RequestBody GetTrainerTrainingsCriteriaFilterDTO dto) {
         return ResponseEntity.ok(trainingService.getTrainingsByTrainerUsernameCriteria(dto));
     }
+
+    // TODO:
+    //  More RESTful could be just POST /api/v1/training
 
     //    14 Add Training (POST method)
     @PostMapping("/add-training")

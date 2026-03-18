@@ -29,6 +29,12 @@ public class TraineeController {
         return ResponseEntity.ok(traineeService.createTrainee(dto));
     }
 
+    // TODO:
+    //  [Optional]
+    //  It is not a big deal, but could be more RESTful with GET /api/v1/trainee/{username} instead of query param
+    //  Same applies to other HTTP verbs, you approach works though.
+    //  Just remember to think of your data as a resource when working in REST methodology
+
     //    5. Get Trainee Profile (GET method)
     @GetMapping()
     @Operation(summary = "Get Trainee", description = "")
@@ -49,6 +55,12 @@ public class TraineeController {
     public ResponseEntity<ApiResponse<?>> deleteTrainee(@RequestParam(name = "username") String username) {
         return ResponseEntity.ok(traineeService.deleteTrainee(username));
     }
+
+    // TODO:
+    //  [Optional]
+    //  Can be more RESTful with PUT /api/v1/trainee/{username}/trainers and PATCH /api/v1/trainee/{username}/active
+    //  An HTTP verb already suggests the action, so no need to add it in the path.
+    //  Again not a strict requirement but verbs in paths are more RPC-style API, than REST
 
     //    11. Update Trainee's Trainer List (PUT method)
     @PutMapping("/update-trainers")
