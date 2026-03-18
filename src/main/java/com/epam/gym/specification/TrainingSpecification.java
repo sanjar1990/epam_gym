@@ -3,7 +3,10 @@ package com.epam.gym.specification;
 import com.epam.gym.dto.GetTraineeTrainingsCriteriaFilterDTO;
 import com.epam.gym.dto.GetTrainerTrainingsCriteriaFilterDTO;
 import com.epam.gym.entity.Training;
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDate;
@@ -108,7 +111,6 @@ public class TrainingSpecification {
 
             Join<Object, Object> trainerJoin = root.join("trainer");
             Join<Object, Object> trainerUserJoin = trainerJoin.join("user");
-
 
 
             predicate = cb.and(predicate,

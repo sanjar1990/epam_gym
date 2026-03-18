@@ -1,9 +1,6 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.CreateTrainingDTO;
-import com.epam.gym.dto.GetTraineeTrainingsCriteriaFilterDTO;
-import com.epam.gym.dto.GetTrainerTrainingsCriteriaFilterDTO;
-import com.epam.gym.dto.TrainingResponseDTO;
+import com.epam.gym.dto.*;
 import com.epam.gym.entity.*;
 import com.epam.gym.enums.TrainingTypeEnum;
 import com.epam.gym.repository.TrainingRepository;
@@ -15,11 +12,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,96 +26,80 @@ class TrainingServiceTest {
     private TrainingRepository trainingRepository;
 
     @Mock
-    private AuthService authService;
-
-    @Mock
     private TraineeService traineeService;
 
+    @Mock
+    private TrainerService trainerService;
 
     @InjectMocks
     private TrainingService trainingService;
 
-    // =====================================================
-    // Helper method to build FULL valid Training object
-    // =====================================================
-
-    private Training buildFullTraining() {
-
-        // ---------- TRAINEE USER ----------
-        User traineeUser = new User();
-        traineeUser.setId(1L);
-        traineeUser.setFirstName("John");
-        traineeUser.setLastName("Doe");
-        traineeUser.setUsername("john");
-
-        // ---------- TRAINEE ----------
-        Trainee trainee = new Trainee();
-        trainee.setId(1L);
-        trainee.setUser(traineeUser);
-
-        // ---------- TRAINER USER ----------
-        User trainerUser = new User();
-        trainerUser.setId(2L);
-        trainerUser.setFirstName("Mike");
-        trainerUser.setLastName("Smith");
-        trainerUser.setUsername("mike");
-
-        // ---------- TRAINING TYPE ----------
-        TrainingType trainingType = new TrainingType();
-        trainingType.setId(5L);
-        trainingType.setTrainingTypeName(TrainingTypeEnum.CARDIO);
-
-        // ---------- TRAINER ----------
-        Trainer trainer = new Trainer();
-        trainer.setId(10L);
-        trainer.setUser(trainerUser);
-        trainer.setTrainingType(trainingType);
-
-        // ---------- TRAINING ----------
-        Training training = new Training();
-        training.setId(100L);
-        training.setTrainee(trainee);
-        training.setTrainer(trainer);
-        training.setTrainingType(trainingType);   // IMPORTANT
-        training.setTrainingName("Cardio");
-        training.setTrainingDuration(60);
-        training.setTrainingDate(LocalDate.now());
-
-        return training;
-    }
-
-    // =====================================================
-    // addTraining()
-    // =====================================================
 
     @Test
-    void addTraining_shouldAuthenticateSaveAndAssignTrainer() {
+    void addTraining_shouldSaveTraining_whenValid() {
 
-        String username = "john";
-        String password = "123";
-
+        // ---------- Arrange ----------
         CreateTrainingDTO dto = new CreateTrainingDTO();
-        dto.setTrainerId(10L);
-        dto.setTrainingName("Cardio");
-        dto.setTrainingTypeId(1L);
+        dto.setTraineeUsername("john");
+        dto.setTrainerUsername("mike");
+        dto.setTrainingTypeId(5L);
         dto.setTrainingDate(LocalDate.now());
         dto.setTrainingDuration(60);
 
+        // Trainee
         Trainee trainee = new Trainee();
-        trainee.setId(5L);
+        trainee.setTrainings(new ArrayList<>());
+        trainee.setTrainers(new HashSet<>());
 
-        when(authService.login(username, password)).thenReturn(new User());
-        when(traineeService.getTraineeByUsername(username)).thenReturn(trainee);
+        // TrainingType
+        TrainingType trainingType = new TrainingType();
+        trainingType.setId(5L);
 
-        trainingService.addTraining(username, password, dto);
+        // Trainer
+        Trainer trainer = new Trainer();
+        trainer.setTrainingType(trainingType);
+        trainer.setTrainees(new HashSet<>());
+
+        when(traineeService.getTrainee("john")).thenReturn(trainee);
+        when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
+
+        ApiResponse<?> response = trainingService.addTraining(dto);
+
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
 
         verify(trainingRepository).save(any(Training.class));
-
+        assertEquals(1, trainee.getTrainings().size());
+        assertEquals(1, trainee.getTrainers().size());
     }
 
-    // =====================================================
-    // getTrainingsByTraineeUsernameCriteria()
-    // =====================================================
+    @Test
+    void addTraining_shouldThrowException_whenTrainingTypeMismatch() {
+
+        CreateTrainingDTO dto = new CreateTrainingDTO();
+        dto.setTraineeUsername("john");
+        dto.setTrainerUsername("mike");
+        dto.setTrainingTypeId(99L); // mismatch
+
+        Trainee trainee = new Trainee();
+        trainee.setTrainings(new ArrayList<>());
+        trainee.setTrainers(new HashSet<>());
+
+        TrainingType trainingType = new TrainingType();
+        trainingType.setId(1L);
+
+        Trainer trainer = new Trainer();
+        trainer.setTrainingType(trainingType);
+        trainer.setTrainees(new HashSet<>());
+
+        when(traineeService.getTrainee("john")).thenReturn(trainee);
+        when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
+
+        assertThrows(RuntimeException.class,
+                () -> trainingService.addTraining(dto));
+    }
+
 
     @Test
     void getTrainingsByTraineeUsernameCriteria_shouldReturnList() {
@@ -126,19 +107,22 @@ class TrainingServiceTest {
         GetTraineeTrainingsCriteriaFilterDTO dto =
                 new GetTraineeTrainingsCriteriaFilterDTO();
 
-        when(trainingRepository.findAll(any(Specification.class)))
-                .thenReturn(List.of(buildFullTraining()));
+        Training training = buildFullTraining();
 
-        List<TrainingResponseDTO> result =
+        when(trainingRepository.findAll(any(Specification.class)))
+                .thenReturn(List.of(training));
+
+        ApiResponse<List<TraineeTrainingResponseDTO>> response =
                 trainingService.getTrainingsByTraineeUsernameCriteria(dto);
 
+        List<TraineeTrainingResponseDTO> result = response.getData();
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
         assertEquals(1, result.size());
+
         verify(trainingRepository).findAll(any(Specification.class));
     }
-
-    // =====================================================
-    // getTrainingsByTrainerUsernameCriteria()
-    // =====================================================
 
     @Test
     void getTrainingsByTrainerUsernameCriteria_shouldReturnList() {
@@ -146,51 +130,48 @@ class TrainingServiceTest {
         GetTrainerTrainingsCriteriaFilterDTO dto =
                 new GetTrainerTrainingsCriteriaFilterDTO();
 
-        when(trainingRepository.findAll(any(Specification.class)))
-                .thenReturn(List.of(buildFullTraining()));
+        Training training = buildFullTraining();
 
-        List<TrainingResponseDTO> result =
+        when(trainingRepository.findAll(any(Specification.class)))
+                .thenReturn(List.of(training));
+
+        ApiResponse<List<TrainerTrainingResponseDTO>> response =
                 trainingService.getTrainingsByTrainerUsernameCriteria(dto);
 
+        List<TrainerTrainingResponseDTO> result = response.getData();
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
         assertEquals(1, result.size());
+
         verify(trainingRepository).findAll(any(Specification.class));
     }
 
-    // =====================================================
-    // updateTrainerList()
-    // =====================================================
+    private Training buildFullTraining() {
 
-    @Test
-    void updateTrainerList_shouldUpdateTrainerId() {
+        User traineeUser = new User();
+        traineeUser.setUsername("john");
 
-        String username = "john";
-        String password = "123";
-        Long trainerId = 20L;
-        Long trainingId = 1L;
+        Trainee trainee = new Trainee();
+        trainee.setUser(traineeUser);
+
+        User trainerUser = new User();
+        trainerUser.setUsername("mike");
+
+        TrainingType type = new TrainingType();
+        type.setId(5L);
+        type.setTrainingTypeName(TrainingTypeEnum.CARDIO);
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(trainerUser);
+        trainer.setTrainingType(type);
 
         Training training = new Training();
-        training.setId(trainingId);
-
-        when(authService.login(username, password)).thenReturn(new User());
-        when(trainingRepository.findById(trainingId))
-                .thenReturn(Optional.of(training));
-
-        trainingService.updateTrainerList(
-                username, password, trainerId, trainingId);
-
-        assertEquals(trainerId, training.getTrainerId());
-        verify(trainingRepository).save(training);
-    }
-
-    @Test
-    void updateTrainerList_shouldThrowException_whenTrainingNotFound() {
-
-        when(authService.login(any(), any())).thenReturn(new User());
-        when(trainingRepository.findById(1L))
-                .thenReturn(Optional.empty());
-
-        assertThrows(RuntimeException.class, () ->
-                trainingService.updateTrainerList(
-                        "john", "123", 10L, 1L));
+        training.setTrainee(trainee);
+        training.setTrainer(trainer);
+        training.setTrainingType(type);
+        training.setTrainingDate(LocalDate.now());
+        training.setTrainingDuration(60);
+        return training;
     }
 }

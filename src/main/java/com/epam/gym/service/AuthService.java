@@ -1,5 +1,7 @@
 package com.epam.gym.service;
 
+import com.epam.gym.dto.ApiResponse;
+import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +23,12 @@ public class AuthService {
 
     //3. Trainee username and password matching.
     //4. Trainer username and password matching.
-    public User login(String username, String password) {
-        Optional<User> user = userService.isUserExists(username, password);
+    public ApiResponse<?> login(AuthDTO dto) {
+        Optional<User> user = userService.isUserExists(dto.getUsername(), dto.getPassword());
         if (user.isEmpty()) {
-            log.info("User {}  failed to log in", username);
+            log.info("User {}  failed to log in", dto.getUsername());
             throw new UserNotFoundException("User not found");
         }
-        return user.get();
+        return ApiResponse.ok();
     }
 }

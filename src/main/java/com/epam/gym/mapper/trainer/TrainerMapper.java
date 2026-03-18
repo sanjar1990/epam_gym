@@ -8,7 +8,6 @@ import com.epam.gym.mapper.user.UserMapper;
 public class TrainerMapper {
     public static TrainerDTO toTrainerDTO(Trainer trainer) {
         TrainerDTO trainerDTO = new TrainerDTO();
-        trainerDTO.setId(trainer.getId());
         trainerDTO.setUser(UserMapper.toUserDTO(trainer.getUser()));
         trainerDTO.setTrainingType(TrainingTypeMapper
                 .toTrainingTypeDTO(trainer.getTrainingType()));

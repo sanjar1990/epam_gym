@@ -1,5 +1,7 @@
 package com.epam.gym.service;
 
+import com.epam.gym.dto.ApiResponse;
+import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
 import org.junit.jupiter.api.Test;
@@ -23,10 +25,14 @@ class AuthServiceTest {
     private AuthService authService;
 
     @Test
-    void login_shouldReturnUser_whenUserExists() {
+    void login_shouldReturnOk_whenUserExists() {
         // given
         String username = "john";
         String password = "1234";
+
+        AuthDTO dto = new AuthDTO();
+        dto.setUsername(username);
+        dto.setPassword(password);
 
         User mockUser = new User();
         mockUser.setUsername(username);
@@ -35,11 +41,12 @@ class AuthServiceTest {
                 .thenReturn(Optional.of(mockUser));
 
         // when
-        User result = authService.login(username, password);
+        ApiResponse<?> response = authService.login(dto);
 
         // then
-        assertNotNull(result);
-        assertEquals(username, result.getUsername());
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+
         verify(userService, times(1))
                 .isUserExists(username, password);
     }
@@ -50,12 +57,16 @@ class AuthServiceTest {
         String username = "wrong";
         String password = "wrong";
 
+        AuthDTO dto = new AuthDTO();
+        dto.setUsername(username);
+        dto.setPassword(password);
+
         when(userService.isUserExists(username, password))
                 .thenReturn(Optional.empty());
 
-        // when & then
+
         assertThrows(UserNotFoundException.class, () ->
-                authService.login(username, password)
+                authService.login(dto)
         );
 
         verify(userService, times(1))

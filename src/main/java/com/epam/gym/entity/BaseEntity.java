@@ -9,8 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-// TODO:
-//  Nice base class! Let's use it for your entities
+
 @Getter
 @Setter
 @MappedSuperclass
@@ -19,9 +18,9 @@ public abstract class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @CreationTimestamp
+    @CreationTimestamp()
     @Column(name = "created_on", updatable = false)
-    private LocalDateTime createdOn;
+    private LocalDateTime createdOn = LocalDateTime.now();
 
     @UpdateTimestamp
     @Column(name = "updated_on")

@@ -1,9 +1,9 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.CreateTraineeCreateRequestDTO;
-import com.epam.gym.dto.UpdateTraineeRequestDTO;
-import com.epam.gym.dto.UserChangePasswordDTO;
+import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainee;
+import com.epam.gym.entity.Trainer;
+import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.repository.TraineeRepository;
@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,48 +31,55 @@ class TraineeServiceTest {
     private UserService userService;
 
     @Mock
-    private AuthService authService;
+    private TrainerService trainerService;
 
     @InjectMocks
     private TraineeService traineeService;
 
-    // --------------------------------
-    // create()
-    // --------------------------------
-
     @Test
-    void create_shouldSaveTrainee() {
-        CreateTraineeCreateRequestDTO dto = new CreateTraineeCreateRequestDTO();
+    void createTrainee_shouldSaveTrainee_andReturnAuthDTO() {
+        CreateTraineeRequestDTO dto = new CreateTraineeRequestDTO();
         dto.setFirstName("John");
         dto.setLastName("Doe");
         dto.setAddress("Seoul");
         dto.setDateOfBirth(LocalDate.of(1990, 1, 1));
 
         when(userService.generateUsername("John", "Doe"))
-                .thenReturn("John.Doe");
+                .thenReturn("john.doe");
 
         when(userService.generatePassword())
-                .thenReturn("password123");
+                .thenReturn("pass123");
 
-        traineeService.create(dto);
+        ApiResponse<AuthDTO> response =
+                traineeService.createTrainee(dto);
 
-        verify(traineeRepository, times(1)).save(any(Trainee.class));
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+        assertEquals("john.doe", response.getData().getUsername());
+
+        verify(traineeRepository).save(any(Trainee.class));
     }
 
-    // --------------------------------
-    // getTraineeByUsername()
-    // --------------------------------
 
     @Test
-    void getTraineeByUsername_shouldReturnTrainee_whenExists() {
+    void getTraineeByUsername_shouldReturnDTO_whenExists() {
+        User user = new User();
+        user.setUsername("john");
+
         Trainee trainee = new Trainee();
+        trainee.setUser(user);
 
         when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
 
-        Trainee result = traineeService.getTraineeByUsername("john");
+        ApiResponse<TraineeDTO> response =
+                traineeService.getTraineeByUsername("john");
 
-        assertNotNull(result);
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+        assertNotNull(response.getData());
+
+        verify(traineeRepository).findByUserUsername("john");
     }
 
     @Test
@@ -82,90 +91,118 @@ class TraineeServiceTest {
                 () -> traineeService.getTraineeByUsername("john"));
     }
 
-    // --------------------------------
-    // changePassword()
-    // --------------------------------
-
     @Test
     void changePassword_shouldDelegateToUserService() {
-        UserChangePasswordDTO dto = new UserChangePasswordDTO();
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
 
         traineeService.changePassword(dto);
 
         verify(userService).changePassword(dto);
     }
 
-    // --------------------------------
-    // updateTrainee()
-    // --------------------------------
-
     @Test
     void updateTrainee_shouldUpdateAndSave() {
-        String username = "john";
-        String password = "123";
-
         User user = new User();
         user.setFirstName("Old");
         user.setLastName("Name");
+        user.setIsActive(true);
 
         Trainee trainee = new Trainee();
         trainee.setUser(user);
 
         UpdateTraineeRequestDTO dto = new UpdateTraineeRequestDTO();
+        dto.setUsername("john");
         dto.setFirstName("New");
         dto.setLastName("Name");
         dto.setAddress("Busan");
         dto.setDateOfBirth(LocalDate.of(1995, 5, 5));
+        dto.setIsActive(false);
 
-        when(authService.login(username, password)).thenReturn(user);
-        when(traineeRepository.findByUserUsername(username))
+        when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
 
-        boolean result = traineeService.updateTrainee(username, password, dto);
+        when(traineeRepository.save(any(Trainee.class)))
+                .thenReturn(trainee);
 
-        assertTrue(result);
-        assertEquals("New", trainee.getUser().getFirstName());
+        ApiResponse<TraineeDTO> response =
+                traineeService.updateTrainee(dto);
+
+        assertEquals("New", user.getFirstName());
         assertEquals("Busan", trainee.getAddress());
+        assertFalse(user.getIsActive());
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+
         verify(traineeRepository).save(trainee);
     }
 
-    // --------------------------------
-    // activateDeactivateTrainer()
-    // --------------------------------
-
     @Test
-    void activateDeactivateTrainer_shouldCallChangeStatus() {
-        String username = "john";
-        String password = "123";
+    void changeStatusTrainee_shouldReturnStatus() {
+        ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
+        dto.setUsername("john");
+        dto.setIsActive(false);
 
-        User user = new User();
-        user.setIsActive(true);
+        when(userService.changeStatus(dto))
+                .thenReturn(false);
 
-        when(authService.login(username, password)).thenReturn(user);
-        when(userService.changeStatus(user)).thenReturn(false);
+        ApiResponse<?> response =
+                traineeService.changeStatusTrainee(dto);
 
-        boolean result = traineeService.activateDeactivateTrainer(username, password);
+        assertFalse(response.getIsError());
+        assertEquals(false, response.getData());
 
-        assertFalse(result);
-        verify(userService).changeStatus(user);
+        verify(userService).changeStatus(dto);
     }
-
-    // --------------------------------
-    // deleteTrainee()
-    // --------------------------------
 
     @Test
     void deleteTrainee_shouldDeleteTrainee() {
-        String username = "john";
-        String password = "123";
-
-        User user = new User();
         Trainee trainee = new Trainee();
+        trainee.setTrainers(new HashSet<>());
 
-        when(authService.login(username, password)).thenReturn(user);
-        when(traineeRepository.findByUserUsername(username))
+        when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
-        traineeService.deleteTrainee(username, password);
+
+        ApiResponse<?> response =
+                traineeService.deleteTrainee("john");
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+
         verify(traineeRepository).delete(trainee);
+    }
+
+    @Test
+    void updateTrainerList_shouldReplaceTrainerList() {
+        User user = new User();
+        user.setUsername("trainer1");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(user);
+        TrainingType trainingType = new TrainingType();
+        trainingType.setId(1L);
+
+        trainer.setTrainingType(trainingType);
+        Trainee trainee = new Trainee();
+        trainee.setTrainers(new HashSet<>());
+
+        UpdateTrainersRequestDTO dto = new UpdateTrainersRequestDTO();
+        dto.setTraineeUsername("john");
+        dto.setTrainerUsernames(List.of("trainer1"));
+
+        when(traineeRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainee));
+
+        when(trainerService.getTrainersByUsernames(List.of("trainer1")))
+                .thenReturn(List.of(trainer));
+
+        ApiResponse<List<TrainerDTO>> response =
+                traineeService.updateTrainerList(dto);
+
+        assertEquals(1, trainee.getTrainers().size());
+        assert response != null;
+        assertFalse(response.getIsError());
+
+        verify(traineeRepository).save(trainee);
     }
 }

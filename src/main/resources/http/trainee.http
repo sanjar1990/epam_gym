@@ -1,0 +1,52 @@
+    //1. Trainee Registration (POST method)
+POST localhost:8080/api/v1/trainee/public
+Content-Type: application/json
+
+{
+  "firstName": "Liza",
+  "lastName": "Alexandrovna",
+  "dateOfBirth": "1993-01-01",
+  "address": "Russia ganamgu"
+  }
+
+#### 5. Get Trainee Profile (GET method)
+
+GET localhost:8080/api/v1/trainee?username=Tay.Smith
+
+#### 6. Update Trainee Profile (PUT method)
+
+PUT localhost:8080/api/v1/trainee
+Content-Type: application/json
+
+{
+  "username": "Tay.Smith",
+  "firstName": "Sanjar",
+  "lastName": "Niyazov",
+  "dateOfBirth": "1990-01-01",
+  "address": "Seoul ganamgu",
+  "isActive": true
+  }
+
+#### 7. Delete Trainee Profile (DELETE method)
+
+DELETE localhost:8080/api/v1/trainee?username=Tay.Smith
+
+### 11. Update Trainee's Trainer List (PUT method)
+
+PUT localhost:8080/api/v1/trainee/update-trainers
+Content-Type: application/json
+
+{
+  "traineeUsername": "Tay.Smith",
+  "trainerUsernames": ["Mike.Smith","Anna.Edwards","Ali.Aliyev_trainer"]
+
+  }
+
+### 15. Activate/De-Activate Trainee (PATCH method)
+PATCH localhost:8080/api/v1/trainee/is-active
+Content-Type: application/json
+
+{
+  "username": "Tay.Smith",
+  "isActive": true
+  }

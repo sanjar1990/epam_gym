@@ -17,7 +17,7 @@ public class Trainee extends BaseEntity {
     private LocalDate dateOfBirth;
     @Column(columnDefinition = "TEXT")
     private String address;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
     @OneToMany(mappedBy = "trainee",
@@ -26,4 +26,14 @@ public class Trainee extends BaseEntity {
     private List<Training> trainings;
     @ManyToMany(mappedBy = "trainees")
     private Set<Trainer> trainers = new HashSet<>();
+
+    public void addTrainer(Trainer trainer) {
+        this.trainers.add(trainer);
+        trainer.getTrainees().add(this);
+    }
+
+    public void removeTrainer(Trainer trainer) {
+        this.trainers.remove(trainer);
+        trainer.getTrainees().remove(this);
+    }
 }

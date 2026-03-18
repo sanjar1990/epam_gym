@@ -7,12 +7,12 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class TrainingResponseDTO {
+
+public class TrainerTrainingResponseDTO {
     private Long id;
-    private TraineeDTO trainee;
-    private TrainerDTO trainer;
     private String trainingName;
-    private TrainingTypeDTO trainingType;
     private LocalDate trainingDate;
+    private TrainingTypeDTO trainingType;
     private Integer trainingDuration;
+    private TraineeDTO trainer;
 }

@@ -5,19 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
-public class UpdateTraineeRequestDTO {
+public class ChangeStatusRequestDTO {
     @NotBlank(message = "Username cannot be empty or null")
     private String username;
-    @NotBlank(message = "First name cannot be empty or null")
-    private String firstName;
-    @NotBlank(message = "Last name cannot be empty or null")
-    private String lastName;
-    private LocalDate dateOfBirth;
-    private String address;
     @NotNull(message = "isActive cannot be empty or null")
     private Boolean isActive;
 }

@@ -1,6 +1,7 @@
 package com.epam.gym.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,6 @@ public class CreateTrainerRequestDTO {
     private String firstName;
     @NotBlank(message = "Last name cannot be empty or null")
     private String lastName;
-    @NotBlank(message = "specialization cannot be empty or null")
+    @NotNull(message = "specialization cannot be empty or null")
     private Long trainingTypeId;
 }

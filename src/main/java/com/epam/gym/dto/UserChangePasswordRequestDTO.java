@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserChangePasswordDTO {
+public class UserChangePasswordRequestDTO {
     @NotBlank(message = "Username cannot be empty or null")
     private String username;
     @NotBlank(message = "Old password cannot be empty or null")

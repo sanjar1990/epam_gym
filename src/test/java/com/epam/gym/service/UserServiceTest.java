@@ -1,7 +1,9 @@
 package com.epam.gym.service;
 
 
-import com.epam.gym.dto.UserChangePasswordDTO;
+import com.epam.gym.dto.ApiResponse;
+import com.epam.gym.dto.ChangeStatusRequestDTO;
+import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.entity.User;
 import com.epam.gym.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,13 +31,8 @@ class UserServiceTest {
 
     @BeforeEach
     void setUp() {
-        // manually inject @Value field
         ReflectionTestUtils.setField(userService, "CHARS", "ABC123");
     }
-
-    // -------------------------
-    // generateUsername()
-    // -------------------------
 
     @Test
     void generateUsername_shouldReturnSimpleUsername_whenNoDuplicates() {
@@ -57,9 +54,6 @@ class UserServiceTest {
         assertEquals("john.doe2", result);
     }
 
-    // -------------------------
-    // generatePassword()
-    // -------------------------
 
     @Test
     void generatePassword_shouldReturn10CharacterPassword() {
@@ -69,9 +63,6 @@ class UserServiceTest {
         assertEquals(10, password.length());
     }
 
-    // -------------------------
-    // isUserExists()
-    // -------------------------
 
     @Test
     void isUserExists_shouldReturnUser_whenUserActive() {
@@ -87,17 +78,6 @@ class UserServiceTest {
     }
 
     @Test
-    void isUserExists_shouldReturnEmpty_whenUserInactive() {
-
-        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
-                .thenReturn(Optional.empty());
-
-        Optional<User> result = userService.isUserExists("john", "123");
-
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
     void isUserExists_shouldReturnEmpty_whenUserNotFound() {
         when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
                 .thenReturn(Optional.empty());
@@ -107,24 +87,42 @@ class UserServiceTest {
         assertTrue(result.isEmpty());
     }
 
-    // -------------------------
-    // changeStatus()
-    // -------------------------
-
     @Test
-    void changeStatus_shouldToggleStatus() {
+    void changeStatus_shouldUpdateStatus() {
+        // given
         User user = new User();
+        user.setUsername("john");
         user.setIsActive(true);
 
-        boolean result = userService.changeStatus(user);
+        ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
+        dto.setUsername("john");
+        dto.setIsActive(false);
 
+        when(userRepository.findByUsername("john"))
+                .thenReturn(Optional.of(user));
+
+        // when
+        boolean result = userService.changeStatus(dto);
+
+        // then
         assertFalse(result);
+        assertFalse(user.getIsActive());
         verify(userRepository).save(user);
     }
 
-    // -------------------------
-    // changePassword()
-    // -------------------------
+    @Test
+    void changeStatus_shouldThrowException_whenUserNotFound() {
+        ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
+        dto.setUsername("john");
+        dto.setIsActive(false);
+
+        when(userRepository.findByUsername("john"))
+                .thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () ->
+                userService.changeStatus(dto)
+        );
+    }
 
     @Test
     void changePassword_shouldUpdatePassword() {
@@ -133,18 +131,35 @@ class UserServiceTest {
         user.setPassword("old");
         user.setIsActive(true);
 
-        UserChangePasswordDTO dto = new UserChangePasswordDTO();
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
         dto.setUsername("john");
         dto.setOldPassword("old");
         dto.setNewPassword("new123");
 
-        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue(
-                "john", "old"))
+        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "old"))
                 .thenReturn(Optional.of(user));
 
-        userService.changePassword(dto);
+        ApiResponse<?> response = userService.changePassword(dto);
 
         assertEquals("new123", user.getPassword());
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+
         verify(userRepository).save(user);
+    }
+
+    @Test
+    void changePassword_shouldThrowException_whenUserNotFound() {
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
+        dto.setUsername("john");
+        dto.setOldPassword("wrong");
+        dto.setNewPassword("new123");
+
+        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "wrong"))
+                .thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () ->
+                userService.changePassword(dto)
+        );
     }
 }

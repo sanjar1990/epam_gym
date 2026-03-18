@@ -11,20 +11,15 @@ import java.time.LocalDate;
 @Entity
 public class Training extends BaseEntity {
 
-    @Column(name = "trainee_id")
-    private Long traineeId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainee_id", insertable = false, updatable = false)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "trainee_id", nullable = false)
     private Trainee trainee;
-    @Column(name = "trainer_id")
-    private Long trainerId;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trainer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "trainer_id", nullable = false)
     private Trainer trainer;
 
-    @Column(nullable = false)
-    private String trainingName;
+
     @Column(name = "training_type_id")
     private Long trainingTypeId;
     @ManyToOne(fetch = FetchType.LAZY)

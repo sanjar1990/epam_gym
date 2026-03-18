@@ -1,9 +1,6 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.CreateTrainerRequestDTO;
-import com.epam.gym.dto.TrainerDTO;
-import com.epam.gym.dto.UpdateTrainerRequestDTO;
-import com.epam.gym.dto.UserChangePasswordDTO;
+import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
@@ -23,19 +20,16 @@ public class TrainerService {
 
     private final TrainerRepository trainerRepository;
     private final UserService userService;
-    private final AuthService authService;
 
 
     @Autowired
-    public TrainerService(TrainerRepository trainerRepository, UserService userService, AuthService authService) {
+    public TrainerService(TrainerRepository trainerRepository, UserService userService) {
         this.trainerRepository = trainerRepository;
         this.userService = userService;
-        this.authService = authService;
-
     }
 
     //1. Create Trainer profile.
-    public void create(CreateTrainerRequestDTO dto) {
+    public ApiResponse<AuthDTO> createTrainer(CreateTrainerRequestDTO dto) {
         String username = userService.generateUsername(dto.getFirstName(), dto.getLastName());
         String password = userService.generatePassword();
 
@@ -50,53 +44,55 @@ public class TrainerService {
         trainer.setTrainingTypeId(dto.getTrainingTypeId());
         trainerRepository.save(trainer);
         log.info("Trainer created: {}", trainer.getId());
+        return ApiResponse.ok(new AuthDTO(username, password));
     }
 
     //5. Select Trainer profile by username.
     // TODO:
     //  [Optional]
     //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
-    public Trainer getTrainerByUsername(String username) {
-        return trainerRepository.findByUserUsername(username).orElseThrow(() -> {
-            log.error("User not found with username: {}", username);
-            return new UserNotFoundException("User not found with username: " + username);
-        });
+    public ApiResponse<TrainerDTO> getTrainerByUsername(String username) {
+        Trainer trainer = getTrainerEntityByUsername(username);
+        return ApiResponse.ok(TrainerMapper.toTrainerDTO(trainer));
     }
 
     //8. Trainer password change
-    public void changePassword(UserChangePasswordDTO dto) {
+    public void changePassword(UserChangePasswordRequestDTO dto) {
         log.info("Changing password for user: {}", dto.getUsername());
         userService.changePassword(dto);
     }
 
     //9. Update trainer profile.
-    public boolean updateTrainer(String username, String password, UpdateTrainerRequestDTO dto) {
-        //Authentication
-        authService.login(username, password);
-
-        Trainer trainer = getTrainerByUsername(username);
+    public ApiResponse<TrainerDTO> updateTrainer(UpdateTrainerRequestDTO dto) {
+        Trainer trainer = getTrainerEntityByUsername(dto.getUsername());
         trainer.setTrainingTypeId(dto.getTrainingTypeId());
         User user = trainer.getUser();
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
-
+        user.setIsActive(dto.getIsActive());
         trainerRepository.save(trainer);
         log.info("Trainer updated: {}", trainer.getId());
-        return true;
+        return ApiResponse.ok(TrainerMapper.toTrainerDTO(trainer));
     }
 
     //12. Activate/De-activate trainer.
-    public boolean activateDeactivateTrainer(String username, String password) {
-        User user = authService.login(username, password);
-        log.info("Changing status for user: {}", user.getUsername());
-        return userService.changeStatus(user);
+    public ApiResponse<?> changeStatusTrainee(ChangeStatusRequestDTO dto) {
+        log.info("Changing status for user: {}", dto.getUsername());
+        return ApiResponse.ok(userService.changeStatus(dto));
     }
 
     //    17. Get trainers list that not assigned on trainee by trainee's username.
-    public List<TrainerDTO> getTrainersNotAssignedOnTrainee(String traineeUsername) {
-        return trainerRepository.findTrainersNotAssignedToTrainee(traineeUsername)
-                .stream().map(TrainerMapper::toTrainerDTO).toList();
+    public ApiResponse<List<TrainerDTO>> getTrainersNotAssignedOnTrainee(String traineeUsername) {
+        return ApiResponse.ok(trainerRepository.findTrainersNotAssignedToTrainee(traineeUsername)
+                .stream().map(TrainerMapper::toTrainerDTO).toList());
     }
 
+    public Trainer getTrainerEntityByUsername(String username) {
+        return trainerRepository.findByUserUsername(username)
+                .orElseThrow(() -> new UserNotFoundException(username));
+    }
 
+    public List<Trainer> getTrainersByUsernames(List<String> trainerUsernames) {
+        return trainerRepository.findByUserUsernameIn(trainerUsernames);
+    }
 }

@@ -1,13 +1,9 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.CreateTrainerRequestDTO;
-import com.epam.gym.dto.TrainerDTO;
-import com.epam.gym.dto.UpdateTrainerRequestDTO;
-import com.epam.gym.dto.UserChangePasswordDTO;
+import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
-import com.epam.gym.enums.TrainingTypeEnum;
 import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.repository.TrainerRepository;
 import org.junit.jupiter.api.Test;
@@ -31,49 +27,54 @@ class TrainerServiceTest {
     @Mock
     private UserService userService;
 
-    @Mock
-    private AuthService authService;
-
-
     @InjectMocks
     private TrainerService trainerService;
 
-    // --------------------------------
-    // create()
-    // --------------------------------
-
     @Test
-    void create_shouldSaveTrainer() {
+    void createTrainer_shouldCreateTrainer_andReturnAuthDTO() {
         CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
         dto.setFirstName("John");
         dto.setLastName("Smith");
         dto.setTrainingTypeId(1L);
 
         when(userService.generateUsername("John", "Smith"))
-                .thenReturn("John.Smith");
+                .thenReturn("john.smith");
 
         when(userService.generatePassword())
-                .thenReturn("password123");
+                .thenReturn("pass123");
 
-        trainerService.create(dto);
+        ApiResponse<AuthDTO> response = trainerService.createTrainer(dto);
 
-        verify(trainerRepository, times(1)).save(any(Trainer.class));
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+        assertEquals("john.smith", response.getData().getUsername());
+
+        verify(trainerRepository).save(any(Trainer.class));
     }
 
-    // --------------------------------
-    // getTrainerByUsername()
-    // --------------------------------
-
     @Test
-    void getTrainerByUsername_shouldReturnTrainer_whenExists() {
+    void getTrainerByUsername_shouldReturnDTO_whenExists() {
+        User user = new User();
+        user.setUsername("john");
+
+        TrainingType trainingType = new TrainingType();
+        trainingType.setId(1L);
+
         Trainer trainer = new Trainer();
+        trainer.setUser(user);
+        trainer.setTrainingType(trainingType);
 
         when(trainerRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainer));
 
-        Trainer result = trainerService.getTrainerByUsername("john");
+        ApiResponse<TrainerDTO> response =
+                trainerService.getTrainerByUsername("john");
 
-        assertNotNull(result);
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+        assertNotNull(response.getData());
+
+        verify(trainerRepository).findByUserUsername("john");
     }
 
     @Test
@@ -85,13 +86,9 @@ class TrainerServiceTest {
                 () -> trainerService.getTrainerByUsername("john"));
     }
 
-    // --------------------------------
-    // changePassword()
-    // --------------------------------
-
     @Test
     void changePassword_shouldDelegateToUserService() {
-        UserChangePasswordDTO dto = new UserChangePasswordDTO();
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
         dto.setUsername("john");
 
         trainerService.changePassword(dto);
@@ -99,99 +96,121 @@ class TrainerServiceTest {
         verify(userService).changePassword(dto);
     }
 
-    // --------------------------------
-    // updateTrainer()
-    // --------------------------------
-
     @Test
-    void updateTrainer_shouldAuthenticateUpdateAndSave() {
-        String username = "john";
-        String password = "123";
-
+    void updateTrainer_shouldUpdateTrainer_andReturnDTO() {
         User user = new User();
         user.setFirstName("Old");
         user.setLastName("Name");
-
-        Trainer trainer = new Trainer();
-        trainer.setUser(user);
-
-        UpdateTrainerRequestDTO dto = new UpdateTrainerRequestDTO();
-        dto.setFirstName("New");
-        dto.setLastName("Name");
-        dto.setTrainingTypeId(5L);
-
-        when(authService.login(username, password))
-                .thenReturn(user);
-
-        when(trainerRepository.findByUserUsername(username))
-                .thenReturn(Optional.of(trainer));
-
-        boolean result = trainerService.updateTrainer(username, password, dto);
-
-        assertTrue(result);
-        assertEquals("New", trainer.getUser().getFirstName());
-        assertEquals(5L, trainer.getTrainingTypeId());
-        verify(trainerRepository).save(trainer);
-    }
-
-    // --------------------------------
-    // activateDeactivateTrainer()
-    // --------------------------------
-
-    @Test
-    void activateDeactivateTrainer_shouldCallChangeStatus() {
-        String username = "john";
-        String password = "123";
-
-        User user = new User();
-        user.setUsername("john");
-
-        when(authService.login(username, password))
-                .thenReturn(user);
-
-        when(userService.changeStatus(user))
-                .thenReturn(false);
-
-        boolean result = trainerService.activateDeactivateTrainer(username, password);
-
-        assertFalse(result);
-        verify(userService).changeStatus(user);
-    }
-
-    // --------------------------------
-    // getTrainersNotAssignedOnTrainee()
-    // --------------------------------
-
-
-    @Test
-    void getTrainersNotAssignedOnTrainee_shouldReturnTrainerDTOList() {
-
-        // given
-        String username = "john";
-
-        User user = new User();
-        user.setUsername("trainer1");
+        user.setIsActive(true);
 
         TrainingType trainingType = new TrainingType();
         trainingType.setId(1L);
-        trainingType.setTrainingTypeName(TrainingTypeEnum.CARDIO);
 
         Trainer trainer = new Trainer();
         trainer.setUser(user);
         trainer.setTrainingType(trainingType);
+        trainer.setTrainingTypeId(1L);
 
-        when(trainerRepository.findTrainersNotAssignedToTrainee(username))
+        UpdateTrainerRequestDTO dto = new UpdateTrainerRequestDTO();
+        dto.setUsername("john");
+        dto.setFirstName("New");
+        dto.setLastName("Name");
+        dto.setTrainingTypeId(5L);
+        dto.setIsActive(false);
+
+        when(trainerRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainer));
+
+        ApiResponse<TrainerDTO> response =
+                trainerService.updateTrainer(dto);
+
+        assertFalse(user.getIsActive());
+        assertEquals("New", user.getFirstName());
+        assertEquals(5L, trainer.getTrainingTypeId());
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+
+        verify(trainerRepository).save(trainer);
+    }
+
+    @Test
+    void changeStatusTrainee_shouldReturnStatusFromUserService() {
+        ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
+        dto.setUsername("john");
+        dto.setIsActive(false);
+
+        when(userService.changeStatus(dto))
+                .thenReturn(false);
+
+        ApiResponse<?> response =
+                trainerService.changeStatusTrainee(dto);
+
+        assertNotNull(response);
+        assertFalse(response.getIsError());
+        assertEquals(false, response.getData());
+
+        verify(userService).changeStatus(dto);
+    }
+
+    @Test
+    void getTrainersNotAssignedOnTrainee_shouldReturnDTOList() {
+        User user = new User();
+        user.setUsername("trainer1");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(user);
+        TrainingType trainingType = new TrainingType();
+        trainingType.setId(1L);
+
+        trainer.setTrainingType(trainingType);
+        when(trainerRepository.findTrainersNotAssignedToTrainee("john"))
                 .thenReturn(List.of(trainer));
 
-        // when
-        List<TrainerDTO> result =
-                trainerService.getTrainersNotAssignedOnTrainee(username);
+        ApiResponse<List<TrainerDTO>> response =
+                trainerService.getTrainersNotAssignedOnTrainee("john");
 
-        // then
-        assertEquals(1, result.size());
-        assertEquals("trainer1", result.getFirst().getUser().getUsername());
+        assertEquals(1, response.getData().size());
+        assertEquals("trainer1",
+                response.getData().getFirst().getUser().getUsername());
 
         verify(trainerRepository)
-                .findTrainersNotAssignedToTrainee(username);
+                .findTrainersNotAssignedToTrainee("john");
+    }
+
+
+    @Test
+    void getTrainerEntityByUsername_shouldReturnTrainer() {
+        Trainer trainer = new Trainer();
+
+        when(trainerRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainer));
+
+        Trainer result =
+                trainerService.getTrainerEntityByUsername("john");
+
+        assertNotNull(result);
+    }
+
+    @Test
+    void getTrainerEntityByUsername_shouldThrowException() {
+        when(trainerRepository.findByUserUsername("john"))
+                .thenReturn(Optional.empty());
+
+        assertThrows(UserNotFoundException.class,
+                () -> trainerService.getTrainerEntityByUsername("john"));
+    }
+
+    @Test
+    void getTrainersByUsernames_shouldReturnList() {
+        List<String> usernames = List.of("john", "alex");
+
+        when(trainerRepository.findByUserUsernameIn(usernames))
+                .thenReturn(List.of(new Trainer(), new Trainer()));
+
+        List<Trainer> result =
+                trainerService.getTrainersByUsernames(usernames);
+
+        assertEquals(2, result.size());
     }
 }

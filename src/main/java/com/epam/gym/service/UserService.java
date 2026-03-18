@@ -1,6 +1,8 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.UserChangePasswordDTO;
+import com.epam.gym.dto.ApiResponse;
+import com.epam.gym.dto.ChangeStatusRequestDTO;
+import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.entity.User;
 import com.epam.gym.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -54,14 +56,15 @@ public class UserService {
     }
 
 
-    public boolean changeStatus(User user) {
-        user.setIsActive(!user.getIsActive());
+    public boolean changeStatus(ChangeStatusRequestDTO dto) {
+        User user = getUser(dto.getUsername());
+        user.setIsActive(dto.getIsActive());
         userRepository.save(user);
         return user.getIsActive();
     }
 
     //7. Trainee password change
-    public void changePassword(UserChangePasswordDTO dto) {
+    public ApiResponse<?> changePassword(UserChangePasswordRequestDTO dto) {
         User user = userRepository.findByUsernameAndPasswordAndIsActiveTrue(
                         dto.getUsername(), dto.getOldPassword())
                 .orElseThrow(() -> {
@@ -71,6 +74,12 @@ public class UserService {
                 });
         user.setPassword(dto.getNewPassword());
         userRepository.save(user);
+        return ApiResponse.ok();
+    }
+
+    private User getUser(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found")
+        );
     }
 
 }

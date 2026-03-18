@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class CreateTraineeCreateRequestDTO {
+public class CreateTraineeRequestDTO {
     @NotBlank(message = "First name cannot be empty or null")
     private String firstName;
     @NotBlank(message = "Last name cannot be empty or null")
