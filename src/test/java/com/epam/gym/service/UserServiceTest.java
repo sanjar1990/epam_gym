@@ -1,7 +1,5 @@
 package com.epam.gym.service;
 
-
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.ChangeStatusRequestDTO;
 import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.entity.User;
@@ -17,8 +15,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
@@ -54,7 +51,6 @@ class UserServiceTest {
         assertEquals("john.doe2", result);
     }
 
-
     @Test
     void generatePassword_shouldReturn10CharacterPassword() {
         String password = userService.generatePassword();
@@ -62,7 +58,6 @@ class UserServiceTest {
         assertNotNull(password);
         assertEquals(10, password.length());
     }
-
 
     @Test
     void isUserExists_shouldReturnUser_whenUserActive() {
@@ -89,7 +84,6 @@ class UserServiceTest {
 
     @Test
     void changeStatus_shouldUpdateStatus() {
-        // given
         User user = new User();
         user.setUsername("john");
         user.setIsActive(true);
@@ -101,11 +95,10 @@ class UserServiceTest {
         when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.of(user));
 
-        // when
-        boolean result = userService.changeStatus(dto);
+        // act
+        assertDoesNotThrow(() -> userService.changeStatus(dto));
 
-        // then
-        assertFalse(result);
+        // assert
         assertFalse(user.getIsActive());
         verify(userRepository).save(user);
     }
@@ -139,12 +132,11 @@ class UserServiceTest {
         when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "old"))
                 .thenReturn(Optional.of(user));
 
-        ApiResponse<?> response = userService.changePassword(dto);
+        // act
+        assertDoesNotThrow(() -> userService.changePassword(dto));
 
+        // assert
         assertEquals("new123", user.getPassword());
-        assertNotNull(response);
-        assertFalse(response.getIsError());
-
         verify(userRepository).save(user);
     }
 

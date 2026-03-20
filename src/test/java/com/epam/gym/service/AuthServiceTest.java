@@ -1,6 +1,5 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
@@ -25,7 +24,7 @@ class AuthServiceTest {
     private AuthService authService;
 
     @Test
-    void login_shouldReturnOk_whenUserExists() {
+    void login_shouldPass_whenUserExists() {
         // given
         String username = "john";
         String password = "1234";
@@ -40,12 +39,8 @@ class AuthServiceTest {
         when(userService.isUserExists(username, password))
                 .thenReturn(Optional.of(mockUser));
 
-        // when
-        ApiResponse<?> response = authService.login(dto);
-
-        // then
-        assertNotNull(response);
-        assertFalse(response.getIsError());
+        // when + then (no exception expected)
+        assertDoesNotThrow(() -> authService.login(dto));
 
         verify(userService, times(1))
                 .isUserExists(username, password);
@@ -64,7 +59,7 @@ class AuthServiceTest {
         when(userService.isUserExists(username, password))
                 .thenReturn(Optional.empty());
 
-
+        // when + then
         assertThrows(UserNotFoundException.class, () ->
                 authService.login(dto)
         );

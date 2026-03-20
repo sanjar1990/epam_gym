@@ -1,7 +1,6 @@
 
 package com.epam.gym.exceptions.handler;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.exceptions.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,23 +42,15 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
-    @ExceptionHandler({APIException.class})
-    public ResponseEntity<ApiResponse<String>> apiException(APIException exception) {
-        log.error(exception.getMessage());
-        // TODO:
-        //  Is it 200 OK with a 400 inside? You API clients will go crazy :)
-        return ResponseEntity.ok(ApiResponse.bad(exception.getMessage()));
-    }
-
     @ExceptionHandler({UserNotFoundException.class})
-    public ResponseEntity<ApiResponse<String>> handler(UserNotFoundException exception) {
+    public ResponseEntity<String> handler(UserNotFoundException exception) {
         log.error(exception.getMessage());
-        return ResponseEntity.ok(ApiResponse.bad(exception.getMessage()));
+        return ResponseEntity.badRequest().body(exception.getMessage());
     }
 
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<?> handler(RuntimeException exception) {
         log.error(exception.getMessage());
-        return ResponseEntity.ok(ApiResponse.bad(exception.getMessage()));
+        return ResponseEntity.badRequest().body((exception.getMessage()));
     }
 }

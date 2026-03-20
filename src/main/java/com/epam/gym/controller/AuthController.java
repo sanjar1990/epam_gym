@@ -1,6 +1,5 @@
 package com.epam.gym.controller;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.service.AuthService;
@@ -10,12 +9,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -23,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Auth Api list", description = "this api is for Authentication")
 // TODO:
 //  With a single constructor, @Autowired (and onConstructor) is unnecessary since Spring 4.3.
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor()
 public class AuthController {
 
     private final AuthService authService;
@@ -39,19 +34,21 @@ public class AuthController {
     //  3. Also please recheck your comments, they can be misleading if different from the actual source code
 
     //    3. Login (GET method)
-    @PostMapping("/public/login")
+    @PostMapping("/login")
     @Operation(summary = "User login", description = "")
-    public ResponseEntity<ApiResponse<?>> login(@Valid @RequestBody AuthDTO dto) {
+    @ResponseStatus(HttpStatus.OK)
+    public void login(@Valid @RequestBody AuthDTO dto) {
         log.info("Login auth: {} ", dto.getUsername());
-        return ResponseEntity.ok(authService.login(dto));
+        authService.login(dto);
     }
 
-    //    4. Change Login (PUT method)
-    @PostMapping("/public/change-password")
+    //    4. Change Password (PUT method)
+    @PostMapping("/change-password")
     @Operation(summary = "User Change Password", description = "")
-    public ResponseEntity<ApiResponse<?>> changePassword(@Valid @RequestBody UserChangePasswordRequestDTO dto) {
+    @ResponseStatus(HttpStatus.OK)
+    public void changePassword(@Valid @RequestBody UserChangePasswordRequestDTO dto) {
         System.out.println("Login auth: " + dto.getNewPassword());
-        return ResponseEntity.ok(userService.changePassword(dto));
+        userService.changePassword(dto);
     }
 
 }

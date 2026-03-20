@@ -1,6 +1,5 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.TrainingTypeDTO;
 import com.epam.gym.entity.TrainingType;
 import com.epam.gym.mapper.training_type.TrainingTypeMapper;
@@ -15,11 +14,11 @@ import java.util.List;
 public class TrainingTypeService {
     private final TrainingTypeRepository trainingTypeRepository;
 
-    public ApiResponse<List<TrainingTypeDTO>> getAllTrainingTypes() {
+    public List<TrainingTypeDTO> getAllTrainingTypes() {
         List<TrainingType> trainingTypes = trainingTypeRepository.findAll();
-        return ApiResponse.ok(trainingTypes.stream()
+        return trainingTypes.stream()
                 .map(TrainingTypeMapper::toTrainingTypeDTO)
-                .toList());
+                .toList();
     }
 
 

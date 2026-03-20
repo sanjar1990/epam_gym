@@ -1,0 +1,112 @@
+package com.epam.gym.controller;
+
+import com.epam.gym.dto.*;
+import com.epam.gym.service.TrainingService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.http.MediaType;
+
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.web.servlet.MockMvc;
+import tools.jackson.databind.ObjectMapper;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(TrainingController.class)
+class TrainingControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockitoBean
+    private TrainingService trainingService;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Test
+    void getTraineeTrainings_shouldReturnList() throws Exception {
+
+        GetTraineeTrainingsCriteriaFilterDTO request =
+                new GetTraineeTrainingsCriteriaFilterDTO();
+
+        TraineeTrainingResponseDTO responseDTO =
+                new TraineeTrainingResponseDTO();
+        responseDTO.setTrainingDate(LocalDate.now());
+
+        when(trainingService.getTrainingsByTraineeUsernameCriteria(any()))
+                .thenReturn(List.of(responseDTO));
+
+        mockMvc.perform(post("/api/v1/training/trainee")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0]").exists());
+
+        verify(trainingService)
+                .getTrainingsByTraineeUsernameCriteria(any());
+    }
+
+    @Test
+    void getTrainerTrainings_shouldReturnList() throws Exception {
+
+        GetTrainerTrainingsCriteriaFilterDTO request =
+                new GetTrainerTrainingsCriteriaFilterDTO();
+
+        TrainerTrainingResponseDTO responseDTO =
+                new TrainerTrainingResponseDTO();
+        responseDTO.setTrainingDate(LocalDate.now());
+
+        when(trainingService.getTrainingsByTrainerUsernameCriteria(any()))
+                .thenReturn(List.of(responseDTO));
+
+        mockMvc.perform(post("/api/v1/training/trainer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0]").exists());
+
+        verify(trainingService)
+                .getTrainingsByTrainerUsernameCriteria(any());
+    }
+
+    @Test
+    void addTraining_shouldReturn200() throws Exception {
+
+        CreateTrainingDTO request = new CreateTrainingDTO();
+        request.setTraineeUsername("john");
+        request.setTrainerUsername("mike");
+        request.setTrainingTypeId(1L);
+        request.setTrainingDate(LocalDate.now());
+        request.setTrainingDuration(60);
+
+        doNothing().when(trainingService).addTraining(any());
+
+        mockMvc.perform(post("/api/v1/training")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk());
+
+        verify(trainingService).addTraining(any());
+    }
+
+    @Test
+    void addTraining_shouldReturn400_whenInvalid() throws Exception {
+
+        CreateTrainingDTO request = new CreateTrainingDTO(); // empty -> invalid
+
+        mockMvc.perform(post("/api/v1/training")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest());
+    }
+}

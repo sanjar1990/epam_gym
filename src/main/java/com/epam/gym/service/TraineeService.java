@@ -35,7 +35,7 @@ public class TraineeService {
     }
 
     //2. Create Trainee profile.
-    public ApiResponse<AuthDTO> createTrainee(CreateTraineeRequestDTO dto) {
+    public AuthDTO createTrainee(CreateTraineeRequestDTO dto) {
         String username = userService.generateUsername(dto.getFirstName(), dto.getLastName());
         String password = userService.generatePassword();
 
@@ -52,16 +52,14 @@ public class TraineeService {
         trainee.setUser(user);
 
         traineeRepository.save(trainee);
-        return ApiResponse.ok(new AuthDTO(username, password));
+        return new AuthDTO(username, password);
     }
 
     //6. Select Trainee profile by username.
-    // TODO:
-    //  [Optional]
-    //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
-    public ApiResponse<TraineeDTO> getTraineeByUsername(String username) {
+
+    public TraineeDTO getTraineeByUsername(String username) {
         Trainee trainee = getTrainee(username);
-        return ApiResponse.ok(TraineeMapper.toTraineeDTO(trainee));
+        return TraineeMapper.toTraineeDTO(trainee);
     }
 
     //7. Trainee password change
@@ -70,7 +68,7 @@ public class TraineeService {
     }
 
     //    10. Update trainee profile.
-    public ApiResponse<TraineeDTO> updateTrainee(UpdateTraineeRequestDTO dto) {
+    public TraineeDTO updateTrainee(UpdateTraineeRequestDTO dto) {
         Trainee trainee = getTrainee(dto.getUsername());
         trainee.setAddress(dto.getAddress());
         trainee.setDateOfBirth(dto.getDateOfBirth());
@@ -80,20 +78,20 @@ public class TraineeService {
         user.setIsActive(dto.getIsActive());
         log.info("Trainee updated{}", trainee.getId());
         trainee = traineeRepository.save(trainee);
-        return ApiResponse.ok(TraineeMapper.toTraineeDTO(trainee));
+        return TraineeMapper.toTraineeDTO(trainee);
     }
 
     //    11. Activate/De-activate trainee.
-    public ApiResponse<?> changeStatusTrainee(ChangeStatusRequestDTO dto) {
+    public void changeStatusTrainee(ChangeStatusRequestDTO dto) {
         log.info("Trainee {} activated/deactivated {}", dto.getIsActive(), dto.getUsername());
-        return ApiResponse.ok(userService.changeStatus(dto));
+        userService.changeStatus(dto);
     }
 
     //    13. Delete trainee profile by username.
-    // TODO:
     //  What does boolean return type represent in this case?
+//    DONE
     @Transactional
-    public ApiResponse<?> deleteTrainee(String username) {
+    public void deleteTrainee(String username) {
         Trainee trainee = getTrainee(username);
         for (Trainer trainer : trainee.getTrainers()) {
             trainer.getTrainees().remove(trainee);
@@ -102,7 +100,7 @@ public class TraineeService {
         trainee.getTrainers().clear();
         log.info("Trainee deleted{}", trainee.getId());
         traineeRepository.delete(trainee);
-        return ApiResponse.ok();
+
     }
 
     public Trainee getTrainee(String username) {
@@ -111,8 +109,8 @@ public class TraineeService {
     }
 
     @Transactional
-    public @Nullable ApiResponse<List<TrainerDTO>> updateTrainerList(UpdateTrainersRequestDTO dto) {
-        Trainee trainee = getTrainee(dto.getTraineeUsername());
+    public List<TrainerDTO> updateTrainerList(String traineeUsername, UpdateTrainersRequestDTO dto) {
+        Trainee trainee = getTrainee(traineeUsername);
         List<Trainer> newTrainers = trainerService.getTrainersByUsernames(dto.getTrainerUsernames());
 
         new HashSet<>(trainee.getTrainers())
@@ -121,7 +119,7 @@ public class TraineeService {
         newTrainers.forEach(trainee::addTrainer);
 
         traineeRepository.save(trainee);
-        return ApiResponse.ok(trainee.getTrainers().stream().map(TrainerMapper::toTrainerDTO).toList());
+        return trainee.getTrainers().stream().map(TrainerMapper::toTrainerDTO).toList();
     }
 }
 

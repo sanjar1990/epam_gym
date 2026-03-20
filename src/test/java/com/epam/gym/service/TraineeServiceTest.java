@@ -50,16 +50,14 @@ class TraineeServiceTest {
         when(userService.generatePassword())
                 .thenReturn("pass123");
 
-        ApiResponse<AuthDTO> response =
-                traineeService.createTrainee(dto);
+        AuthDTO response = traineeService.createTrainee(dto);
 
         assertNotNull(response);
-        assertFalse(response.getIsError());
-        assertEquals("john.doe", response.getData().getUsername());
+        assertEquals("john.doe", response.getUsername());
+        assertEquals("pass123", response.getPassword());
 
         verify(traineeRepository).save(any(Trainee.class));
     }
-
 
     @Test
     void getTraineeByUsername_shouldReturnDTO_whenExists() {
@@ -72,12 +70,9 @@ class TraineeServiceTest {
         when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
 
-        ApiResponse<TraineeDTO> response =
-                traineeService.getTraineeByUsername("john");
+        TraineeDTO response = traineeService.getTraineeByUsername("john");
 
         assertNotNull(response);
-        assertFalse(response.getIsError());
-        assertNotNull(response.getData());
 
         verify(traineeRepository).findByUserUsername("john");
     }
@@ -124,33 +119,24 @@ class TraineeServiceTest {
         when(traineeRepository.save(any(Trainee.class)))
                 .thenReturn(trainee);
 
-        ApiResponse<TraineeDTO> response =
-                traineeService.updateTrainee(dto);
+        TraineeDTO response = traineeService.updateTrainee(dto);
 
         assertEquals("New", user.getFirstName());
         assertEquals("Busan", trainee.getAddress());
         assertFalse(user.getIsActive());
 
         assertNotNull(response);
-        assertFalse(response.getIsError());
 
         verify(traineeRepository).save(trainee);
     }
 
     @Test
-    void changeStatusTrainee_shouldReturnStatus() {
+    void changeStatusTrainee_shouldDelegateToUserService() {
         ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
         dto.setUsername("john");
         dto.setIsActive(false);
 
-        when(userService.changeStatus(dto))
-                .thenReturn(false);
-
-        ApiResponse<?> response =
-                traineeService.changeStatusTrainee(dto);
-
-        assertFalse(response.getIsError());
-        assertEquals(false, response.getData());
+        traineeService.changeStatusTrainee(dto);
 
         verify(userService).changeStatus(dto);
     }
@@ -163,11 +149,7 @@ class TraineeServiceTest {
         when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
 
-        ApiResponse<?> response =
-                traineeService.deleteTrainee("john");
-
-        assertNotNull(response);
-        assertFalse(response.getIsError());
+        assertDoesNotThrow(() -> traineeService.deleteTrainee("john"));
 
         verify(traineeRepository).delete(trainee);
     }
@@ -179,15 +161,15 @@ class TraineeServiceTest {
 
         Trainer trainer = new Trainer();
         trainer.setUser(user);
+
         TrainingType trainingType = new TrainingType();
         trainingType.setId(1L);
-
         trainer.setTrainingType(trainingType);
+
         Trainee trainee = new Trainee();
         trainee.setTrainers(new HashSet<>());
 
         UpdateTrainersRequestDTO dto = new UpdateTrainersRequestDTO();
-        dto.setTraineeUsername("john");
         dto.setTrainerUsernames(List.of("trainer1"));
 
         when(traineeRepository.findByUserUsername("john"))
@@ -196,12 +178,11 @@ class TraineeServiceTest {
         when(trainerService.getTrainersByUsernames(List.of("trainer1")))
                 .thenReturn(List.of(trainer));
 
-        ApiResponse<List<TrainerDTO>> response =
-                traineeService.updateTrainerList(dto);
+        List<TrainerDTO> response =
+                traineeService.updateTrainerList("john", dto);
 
+        assertEquals(1, response.size());
         assertEquals(1, trainee.getTrainers().size());
-        assert response != null;
-        assertFalse(response.getIsError());
 
         verify(traineeRepository).save(trainee);
     }

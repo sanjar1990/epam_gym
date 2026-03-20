@@ -29,7 +29,7 @@ public class TrainerService {
     }
 
     //1. Create Trainer profile.
-    public ApiResponse<AuthDTO> createTrainer(CreateTrainerRequestDTO dto) {
+    public AuthDTO createTrainer(CreateTrainerRequestDTO dto) {
         String username = userService.generateUsername(dto.getFirstName(), dto.getLastName());
         String password = userService.generatePassword();
 
@@ -44,16 +44,17 @@ public class TrainerService {
         trainer.setTrainingTypeId(dto.getTrainingTypeId());
         trainerRepository.save(trainer);
         log.info("Trainer created: {}", trainer.getId());
-        return ApiResponse.ok(new AuthDTO(username, password));
+        return new AuthDTO(username, password);
     }
 
     //5. Select Trainer profile by username.
-    // TODO:
+
     //  [Optional]
     //  You can chain repository result and Optional methods findBy...(...).orElseThrow(...)
-    public ApiResponse<TrainerDTO> getTrainerByUsername(String username) {
+//    DONE
+    public TrainerDTO getTrainerByUsername(String username) {
         Trainer trainer = getTrainerEntityByUsername(username);
-        return ApiResponse.ok(TrainerMapper.toTrainerDTO(trainer));
+        return TrainerMapper.toTrainerDTO(trainer);
     }
 
     //8. Trainer password change
@@ -63,7 +64,7 @@ public class TrainerService {
     }
 
     //9. Update trainer profile.
-    public ApiResponse<TrainerDTO> updateTrainer(UpdateTrainerRequestDTO dto) {
+    public TrainerDTO updateTrainer(UpdateTrainerRequestDTO dto) {
         Trainer trainer = getTrainerEntityByUsername(dto.getUsername());
         trainer.setTrainingTypeId(dto.getTrainingTypeId());
         User user = trainer.getUser();
@@ -72,19 +73,19 @@ public class TrainerService {
         user.setIsActive(dto.getIsActive());
         trainerRepository.save(trainer);
         log.info("Trainer updated: {}", trainer.getId());
-        return ApiResponse.ok(TrainerMapper.toTrainerDTO(trainer));
+        return TrainerMapper.toTrainerDTO(trainer);
     }
 
     //12. Activate/De-activate trainer.
-    public ApiResponse<?> changeStatusTrainee(ChangeStatusRequestDTO dto) {
+    public void changeStatusTrainee(ChangeStatusRequestDTO dto) {
         log.info("Changing status for user: {}", dto.getUsername());
-        return ApiResponse.ok(userService.changeStatus(dto));
+         userService.changeStatus(dto);
     }
 
     //    17. Get trainers list that not assigned on trainee by trainee's username.
-    public ApiResponse<List<TrainerDTO>> getTrainersNotAssignedOnTrainee(String traineeUsername) {
-        return ApiResponse.ok(trainerRepository.findTrainersNotAssignedToTrainee(traineeUsername)
-                .stream().map(TrainerMapper::toTrainerDTO).toList());
+    public List<TrainerDTO> getTrainersNotAssignedOnTrainee(String traineeUsername) {
+        return trainerRepository.findTrainersNotAssignedToTrainee(traineeUsername)
+                .stream().map(TrainerMapper::toTrainerDTO).toList();
     }
 
     public Trainer getTrainerEntityByUsername(String username) {

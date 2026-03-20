@@ -1,6 +1,5 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.TrainingTypeDTO;
 import com.epam.gym.entity.TrainingType;
 import com.epam.gym.enums.TrainingTypeEnum;
@@ -29,7 +28,6 @@ class TrainingTypeServiceTest {
     @Test
     void getAllTrainingTypes_shouldReturnMappedDTOList() {
 
-
         TrainingType type1 = new TrainingType();
         type1.setId(1L);
         type1.setTrainingTypeName(TrainingTypeEnum.CARDIO);
@@ -41,14 +39,10 @@ class TrainingTypeServiceTest {
         when(trainingTypeRepository.findAll())
                 .thenReturn(List.of(type1, type2));
 
-        ApiResponse<List<TrainingTypeDTO>> response =
+        List<TrainingTypeDTO> result =
                 trainingTypeService.getAllTrainingTypes();
 
-        List<TrainingTypeDTO> result = response.getData();
-
-        assertNotNull(response);
-        assertFalse(response.getIsError());
-
+        assertNotNull(result);
         assertEquals(2, result.size());
         assertEquals(TrainingTypeEnum.CARDIO, result.get(0).getTrainingTypeName());
         assertEquals(TrainingTypeEnum.STRENGTH, result.get(1).getTrainingTypeName());
@@ -62,13 +56,10 @@ class TrainingTypeServiceTest {
         when(trainingTypeRepository.findAll())
                 .thenReturn(List.of());
 
-        ApiResponse<List<TrainingTypeDTO>> response =
+        List<TrainingTypeDTO> result =
                 trainingTypeService.getAllTrainingTypes();
 
-        List<TrainingTypeDTO> result = response.getData();
-
-        assertNotNull(response);
-        assertFalse(response.getIsError());
+        assertNotNull(result);
         assertTrue(result.isEmpty());
 
         verify(trainingTypeRepository).findAll();

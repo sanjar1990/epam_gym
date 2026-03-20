@@ -1,6 +1,5 @@
 package com.epam.gym.controller;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.TrainingTypeDTO;
 import com.epam.gym.service.TrainingTypeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,14 +18,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/training-type")
 @Tag(name = "Training Type Api", description = "this api is for Training Type")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor()
 public class TrainingTypeController {
     private final TrainingTypeService trainingTypeService;
 
     //17. Get Training types (GET method)
-    @GetMapping("/public")
+    @GetMapping()
     @Operation(summary = "Get Training types", description = "")
-    public ResponseEntity<ApiResponse<List<TrainingTypeDTO>>> getTrainingTypes() {
+    public ResponseEntity<List<TrainingTypeDTO>> getTrainingTypes() {
         return ResponseEntity.ok(trainingTypeService.getAllTrainingTypes());
     }
 

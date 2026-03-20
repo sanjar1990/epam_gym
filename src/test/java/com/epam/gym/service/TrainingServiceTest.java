@@ -34,7 +34,6 @@ class TrainingServiceTest {
     @InjectMocks
     private TrainingService trainingService;
 
-
     @Test
     void addTraining_shouldSaveTraining_whenValid() {
 
@@ -46,16 +45,13 @@ class TrainingServiceTest {
         dto.setTrainingDate(LocalDate.now());
         dto.setTrainingDuration(60);
 
-        // Trainee
         Trainee trainee = new Trainee();
         trainee.setTrainings(new ArrayList<>());
         trainee.setTrainers(new HashSet<>());
 
-        // TrainingType
         TrainingType trainingType = new TrainingType();
         trainingType.setId(5L);
 
-        // Trainer
         Trainer trainer = new Trainer();
         trainer.setTrainingType(trainingType);
         trainer.setTrainees(new HashSet<>());
@@ -63,15 +59,14 @@ class TrainingServiceTest {
         when(traineeService.getTrainee("john")).thenReturn(trainee);
         when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
 
-        ApiResponse<?> response = trainingService.addTraining(dto);
-
-
-        assertNotNull(response);
-        assertFalse(response.getIsError());
+        // ---------- Act + Assert ----------
+        assertDoesNotThrow(() -> trainingService.addTraining(dto));
 
         verify(trainingRepository).save(any(Training.class));
+
         assertEquals(1, trainee.getTrainings().size());
         assertEquals(1, trainee.getTrainers().size());
+        assertEquals(1, trainer.getTrainees().size());
     }
 
     @Test
@@ -100,7 +95,6 @@ class TrainingServiceTest {
                 () -> trainingService.addTraining(dto));
     }
 
-
     @Test
     void getTrainingsByTraineeUsernameCriteria_shouldReturnList() {
 
@@ -112,13 +106,10 @@ class TrainingServiceTest {
         when(trainingRepository.findAll(any(Specification.class)))
                 .thenReturn(List.of(training));
 
-        ApiResponse<List<TraineeTrainingResponseDTO>> response =
+        List<TraineeTrainingResponseDTO> result =
                 trainingService.getTrainingsByTraineeUsernameCriteria(dto);
 
-        List<TraineeTrainingResponseDTO> result = response.getData();
-
-        assertNotNull(response);
-        assertFalse(response.getIsError());
+        assertNotNull(result);
         assertEquals(1, result.size());
 
         verify(trainingRepository).findAll(any(Specification.class));
@@ -135,13 +126,10 @@ class TrainingServiceTest {
         when(trainingRepository.findAll(any(Specification.class)))
                 .thenReturn(List.of(training));
 
-        ApiResponse<List<TrainerTrainingResponseDTO>> response =
+        List<TrainerTrainingResponseDTO> result =
                 trainingService.getTrainingsByTrainerUsernameCriteria(dto);
 
-        List<TrainerTrainingResponseDTO> result = response.getData();
-
-        assertNotNull(response);
-        assertFalse(response.getIsError());
+        assertNotNull(result);
         assertEquals(1, result.size());
 
         verify(trainingRepository).findAll(any(Specification.class));
@@ -172,6 +160,7 @@ class TrainingServiceTest {
         training.setTrainingType(type);
         training.setTrainingDate(LocalDate.now());
         training.setTrainingDuration(60);
+
         return training;
     }
 }

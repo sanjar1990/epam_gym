@@ -11,7 +11,6 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDate;
 
-// TODO:
 //  Good job on using Criteria API! Just a couple of questions:
 //  1. Is there any specific reason to concatenate first&last names instead of using 'username' field directly?
 //  14. Get Trainee Trainings List by trainee username and criteria (from date, to date, trainer
@@ -22,6 +21,7 @@ import java.time.LocalDate;
 //  2. Are both criteria for trainee and trainer same? Please double check the task on which fields are used in each case.
 //  3. For those fields which are used in both criteria, consider refactoring into a separate method to avoid code duplication.
 //  I removed the code duplication.
+//DONE
 public class TrainingSpecification {
 
     public static Specification<Training> filterByCriteriaForTrainee(GetTraineeTrainingsCriteriaFilterDTO dto) {

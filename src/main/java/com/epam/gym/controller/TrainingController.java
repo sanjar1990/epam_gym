@@ -8,11 +8,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/training")
 @Tag(name = "Training Api list", description = "this api is for Training")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor()
 public class TrainingController {
     private final TrainingService trainingService;
 
@@ -30,7 +28,7 @@ public class TrainingController {
     //  For this particular case, when there is not a huge list of filters I would use GET
     @PostMapping("/trainee")
     @Operation(summary = "Get Trainee Trainings List", description = "")
-    public ResponseEntity<ApiResponse<List<TraineeTrainingResponseDTO>>> getTraineeTrainings(
+    public ResponseEntity<List<TraineeTrainingResponseDTO>> getTraineeTrainings(
             @RequestBody GetTraineeTrainingsCriteriaFilterDTO dto) {
         return ResponseEntity.ok(trainingService.getTrainingsByTraineeUsernameCriteria(dto));
     }
@@ -38,20 +36,21 @@ public class TrainingController {
     //    13. Get Trainer Trainings List (GET method)
     @PostMapping("/trainer")
     @Operation(summary = "Get Trainer Trainings List", description = "")
-    public ResponseEntity<ApiResponse<List<TrainerTrainingResponseDTO>>> getTrainerTrainings(
+    public ResponseEntity<List<TrainerTrainingResponseDTO>> getTrainerTrainings(
             @RequestBody GetTrainerTrainingsCriteriaFilterDTO dto) {
         return ResponseEntity.ok(trainingService.getTrainingsByTrainerUsernameCriteria(dto));
     }
 
     // TODO:
     //  More RESTful could be just POST /api/v1/training
+    // DONE
 
     //    14 Add Training (POST method)
-    @PostMapping("/add-training")
+    @PostMapping()
     @Operation(summary = " 14 Add Training", description = "")
-    public ResponseEntity<ApiResponse<?>> addTraining(@Valid @RequestBody CreateTrainingDTO dto) {
-        return ResponseEntity.ok(trainingService.addTraining(dto));
+    @ResponseStatus(HttpStatus.OK)
+    public void addTraining(@Valid @RequestBody CreateTrainingDTO dto) {
+       trainingService.addTraining(dto);
     }
-
 
 }

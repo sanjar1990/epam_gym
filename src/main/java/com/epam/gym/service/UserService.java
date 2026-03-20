@@ -1,6 +1,5 @@
 package com.epam.gym.service;
 
-import com.epam.gym.dto.ApiResponse;
 import com.epam.gym.dto.ChangeStatusRequestDTO;
 import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.entity.User;
@@ -28,11 +27,12 @@ public class UserService {
 
     public String generateUsername(String firstName, String lastName) {
         String username = firstName + "." + lastName;
-        // TODO:
+
         //  You have defined an unique constraint on username field in User entity which is good.
         //  Now you generate the username filtering only active users and later call repo.save()
         //  What happens if user with the same first and last name already exists but in status active=false?
         //  It will throw exception. I removed Status check.
+//        Done
         int count = userRepository.countAllByUsername(username);
         return count == 0 ? username : username + count;
     }
@@ -56,15 +56,14 @@ public class UserService {
     }
 
 
-    public boolean changeStatus(ChangeStatusRequestDTO dto) {
+    public void changeStatus(ChangeStatusRequestDTO dto) {
         User user = getUser(dto.getUsername());
         user.setIsActive(dto.getIsActive());
         userRepository.save(user);
-        return user.getIsActive();
     }
 
     //7. Trainee password change
-    public ApiResponse<?> changePassword(UserChangePasswordRequestDTO dto) {
+    public void changePassword(UserChangePasswordRequestDTO dto) {
         User user = userRepository.findByUsernameAndPasswordAndIsActiveTrue(
                         dto.getUsername(), dto.getOldPassword())
                 .orElseThrow(() -> {
@@ -74,7 +73,6 @@ public class UserService {
                 });
         user.setPassword(dto.getNewPassword());
         userRepository.save(user);
-        return ApiResponse.ok();
     }
 
     private User getUser(String username) {

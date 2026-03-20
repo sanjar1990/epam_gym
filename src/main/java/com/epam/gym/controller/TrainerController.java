@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,15 +18,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/trainer")
 @Tag(name = "Trainer Api list", description = "this api is for Trainer")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@RequiredArgsConstructor()
 public class TrainerController {
 
     private final TrainerService trainerService;
 
-    //1. Trainer Registration (POST method)
-    @PostMapping("/public")
+    //1. Trainer create (POST method)
+    @PostMapping()
     @Operation(summary = "Create for Trainer", description = "")
-    public ResponseEntity<ApiResponse<AuthDTO>> createTrainer(
+    public ResponseEntity<AuthDTO> createTrainer(
             @Valid @RequestBody CreateTrainerRequestDTO dto) {
         return ResponseEntity.ok(trainerService.createTrainer(dto));
     }
@@ -33,7 +34,7 @@ public class TrainerController {
     //    8. Get Trainer Profile (GET method)
     @GetMapping()
     @Operation(summary = "Get Trainer", description = "")
-    public ResponseEntity<ApiResponse<TrainerDTO>> getTrainer(
+    public ResponseEntity<TrainerDTO> getTrainer(
             @RequestParam(name = "username") String username) {
         return ResponseEntity.ok(trainerService.getTrainerByUsername(username));
     }
@@ -41,7 +42,7 @@ public class TrainerController {
     //    9. Update Trainer Profile (PUT method)
     @PutMapping()
     @Operation(summary = "Update Trainer details ", description = "")
-    public ResponseEntity<ApiResponse<TrainerDTO>> updateTrainerDetails(@Valid @RequestBody UpdateTrainerRequestDTO dto) {
+    public ResponseEntity<TrainerDTO> updateTrainerDetails(@Valid @RequestBody UpdateTrainerRequestDTO dto) {
         return ResponseEntity.ok(trainerService.updateTrainer(dto));
     }
 
@@ -50,19 +51,20 @@ public class TrainerController {
     //  How about GET /api/v1/trainer/unassigned?trainee=<username>?
 
     //    10. Get not assigned on trainee active trainers. (GET method)
-    @GetMapping("/not-assigned-on-trainee")
+    @GetMapping("/unassigned/{username}")
     @Operation(summary = "Get not assigned on trainee active trainers.  ", description = "")
-    public ResponseEntity<ApiResponse<List<TrainerDTO>>> getTrainerNotAssignedOnTrainee(
-            @RequestParam(name = "username") String username) {
+    public ResponseEntity<List<TrainerDTO>> getTrainerNotAssignedOnTrainee(
+            @PathVariable(name = "username") String username) {
         return ResponseEntity.ok(trainerService.getTrainersNotAssignedOnTrainee(username));
     }
 
     //    16. Activate/De-Activate Trainer (PATCH method)
-    @PatchMapping("/is-active")
+    @PatchMapping("/active")
     @Operation(summary = " 15. Activate/De-Activate Trainer ", description = "")
-    public ResponseEntity<ApiResponse<?>> changeStatusTrainer(
+    @ResponseStatus(HttpStatus.OK)
+    public void changeStatusTrainer(
             @RequestBody ChangeStatusRequestDTO dto) {
-        return ResponseEntity.ok(trainerService.changeStatusTrainee(dto));
+        trainerService.changeStatusTrainee(dto);
     }
 
 
