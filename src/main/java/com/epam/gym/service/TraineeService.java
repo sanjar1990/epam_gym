@@ -5,11 +5,10 @@ import com.epam.gym.entity.Trainee;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
-import com.epam.gym.mapper.trainee.TraineeMapper;
-import com.epam.gym.mapper.trainer.TrainerMapper;
+import com.epam.gym.mapper.trainee.TraineeMapperI;
+import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TraineeRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,13 +24,18 @@ public class TraineeService {
     private final TraineeRepository traineeRepository;
     private final UserService userService;
     private final TrainerService trainerService;
+    private final TraineeMapperI traineeMapperI;
+    private final TrainerMapperI trainerMapperI;
 
     @Autowired
     public TraineeService(TraineeRepository traineeRepository, UserService userService,
-                          TrainerService trainerService) {
+                          TrainerService trainerService, TraineeMapperI traineeMapperI,
+                          TrainerMapperI trainerMapperI) {
         this.traineeRepository = traineeRepository;
         this.userService = userService;
         this.trainerService = trainerService;
+        this.traineeMapperI = traineeMapperI;
+        this.trainerMapperI = trainerMapperI;
     }
 
     //2. Create Trainee profile.
@@ -39,16 +43,11 @@ public class TraineeService {
         String username = userService.generateUsername(dto.getFirstName(), dto.getLastName());
         String password = userService.generatePassword();
 
-        Trainee trainee = new Trainee();
-        User user = new User();
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
+        Trainee trainee = traineeMapperI.toTrainee(dto);
+        User user = trainee.getUser();
         user.setUsername(username);
         user.setPassword(password);
         user.setIsActive(true);
-
-        trainee.setAddress(dto.getAddress());
-        trainee.setDateOfBirth(dto.getDateOfBirth());
         trainee.setUser(user);
 
         traineeRepository.save(trainee);
@@ -59,7 +58,7 @@ public class TraineeService {
 
     public TraineeDTO getTraineeByUsername(String username) {
         Trainee trainee = getTrainee(username);
-        return TraineeMapper.toTraineeDTO(trainee);
+        return traineeMapperI.toTraineeDTO(trainee);
     }
 
     //7. Trainee password change
@@ -70,15 +69,11 @@ public class TraineeService {
     //    10. Update trainee profile.
     public TraineeDTO updateTrainee(UpdateTraineeRequestDTO dto) {
         Trainee trainee = getTrainee(dto.getUsername());
-        trainee.setAddress(dto.getAddress());
-        trainee.setDateOfBirth(dto.getDateOfBirth());
-        User user = trainee.getUser();
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setIsActive(dto.getIsActive());
+        traineeMapperI.updateTraineeFromDto(dto, trainee);
+
         log.info("Trainee updated{}", trainee.getId());
         trainee = traineeRepository.save(trainee);
-        return TraineeMapper.toTraineeDTO(trainee);
+        return traineeMapperI.toTraineeDTO(trainee);
     }
 
     //    11. Activate/De-activate trainee.
@@ -119,7 +114,7 @@ public class TraineeService {
         newTrainers.forEach(trainee::addTrainer);
 
         traineeRepository.save(trainee);
-        return trainee.getTrainers().stream().map(TrainerMapper::toTrainerDTO).toList();
+        return trainee.getTrainers().stream().map(trainerMapperI::toTrainerDTO).toList();
     }
 }
 

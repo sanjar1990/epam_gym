@@ -95,10 +95,8 @@ class UserServiceTest {
         when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.of(user));
 
-        // act
         assertDoesNotThrow(() -> userService.changeStatus(dto));
 
-        // assert
         assertFalse(user.getIsActive());
         verify(userRepository).save(user);
     }
@@ -132,10 +130,8 @@ class UserServiceTest {
         when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "old"))
                 .thenReturn(Optional.of(user));
 
-        // act
         assertDoesNotThrow(() -> userService.changePassword(dto));
 
-        // assert
         assertEquals("new123", user.getPassword());
         verify(userRepository).save(user);
     }

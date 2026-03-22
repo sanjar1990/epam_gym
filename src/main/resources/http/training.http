@@ -1,11 +1,11 @@
 ### 14. Add Training (POST method)
 
-POST localhost:8080/api/v1/training/add-training
+POST localhost:8080/api/v1/training
 Content-Type: application/json
 
 {
   "trainerUsername": "Ali.Aliyev_trainer",
-  "traineeUsername": "Tay.Smith",
+  "traineeUsername": "Ann.Miller",
   "trainingDate": "2020-01-01",
   "trainingDuration": 60,
   "trainingTypeId": 3
@@ -17,7 +17,7 @@ POST localhost:8080/api/v1/training/trainee
 Content-Type: application/json
 
 {
-  "traineeUsername": "Tay.Smith",
+  "traineeUsername": "Ann.Miller",
   "trainerName": "Ali.Aliyev_trainer"
 }
 
@@ -27,7 +27,6 @@ POST localhost:8080/api/v1/training/trainer
 Content-Type: application/json
 
 {
-  "trainerUsername": "Ali.Aliyev_trainer",
-  "traineeName": "Tay.Smith"
+  "trainerUsername": "Ali.Aliyev_trainer"
 }
 

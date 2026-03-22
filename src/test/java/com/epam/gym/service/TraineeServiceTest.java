@@ -6,6 +6,8 @@ import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
+import com.epam.gym.mapper.trainee.TraineeMapperI;
+import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TraineeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +34,11 @@ class TraineeServiceTest {
 
     @Mock
     private TrainerService trainerService;
+    @Mock
+    private TraineeMapperI traineeMapperI;
+
+    @Mock
+    private TrainerMapperI trainerMapperI;
 
     @InjectMocks
     private TraineeService traineeService;
@@ -49,6 +56,13 @@ class TraineeServiceTest {
 
         when(userService.generatePassword())
                 .thenReturn("pass123");
+
+        when(traineeMapperI.toTrainee(any()))
+                .thenAnswer(invocation -> {
+                    Trainee t = new Trainee();
+                    t.setUser(new User());
+                    return t;
+                });
 
         AuthDTO response = traineeService.createTrainee(dto);
 
@@ -69,6 +83,9 @@ class TraineeServiceTest {
 
         when(traineeRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainee));
+
+        when(traineeMapperI.toTraineeDTO(any(Trainee.class)))
+                .thenReturn(new TraineeDTO());
 
         TraineeDTO response = traineeService.getTraineeByUsername("john");
 
@@ -118,6 +135,22 @@ class TraineeServiceTest {
 
         when(traineeRepository.save(any(Trainee.class)))
                 .thenReturn(trainee);
+
+        doAnswer(invocation -> {
+            UpdateTraineeRequestDTO d = invocation.getArgument(0);
+            Trainee t = invocation.getArgument(1);
+
+            t.getUser().setFirstName(d.getFirstName());
+            t.getUser().setLastName(d.getLastName());
+            t.getUser().setIsActive(d.getIsActive());
+            t.setAddress(d.getAddress());
+            t.setDateOfBirth(d.getDateOfBirth());
+
+            return null;
+        }).when(traineeMapperI).updateTraineeFromDto(any(), any());
+
+        when(traineeMapperI.toTraineeDTO(any()))
+                .thenReturn(new TraineeDTO());
 
         TraineeDTO response = traineeService.updateTrainee(dto);
 

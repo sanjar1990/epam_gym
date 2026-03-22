@@ -31,6 +31,8 @@
         <lombok.version>1.18.42</lombok.version>
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <spring.test.version>6.1.0</spring.test.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <mapstruct.processor.version>1.6.3</mapstruct.processor.version>
     </properties>
     <dependencies>
         <dependency>
@@ -125,6 +127,22 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Source: https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.processor.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -139,6 +157,11 @@
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
@@ -151,7 +174,6 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <!-- TODO: Version is not needed here — Maven excludes dependencies by groupId and artifactId only -->
-                            <version>${lombok.version}</version>
                         </exclude>
                     </excludes>
                 </configuration>

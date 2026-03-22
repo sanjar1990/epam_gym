@@ -4,7 +4,7 @@ import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainee;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.Training;
-import com.epam.gym.mapper.training.TrainingMapper;
+import com.epam.gym.mapper.training.TrainingMapperI;
 import com.epam.gym.repository.TrainingRepository;
 import com.epam.gym.specification.TrainingSpecification;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +21,7 @@ public class TrainingService {
     private TrainingRepository trainingRepository;
     private TraineeService traineeService;
     private TrainerService trainerService;
+    private TrainingMapperI trainingMapperI;
 
     @Autowired
     public void setTraineeService(TraineeService traineeService) {
@@ -36,7 +37,10 @@ public class TrainingService {
     public void setTrainingRepository(TrainingRepository trainingRepository) {
         this.trainingRepository = trainingRepository;
     }
-
+    @Autowired
+    public void setTrainingMapper(TrainingMapperI trainingMapperI) {
+        this.trainingMapperI = trainingMapperI;
+    }
     //16. Add training.
     @Transactional
     public void addTraining(CreateTrainingDTO dto) {
@@ -48,12 +52,11 @@ public class TrainingService {
         if (!trainer.getTrainingType().getId().equals(dto.getTrainingTypeId())) {
             throw new RuntimeException("Training type id is not match");
         }
-        Training training = new Training();
+        Training training = trainingMapperI.toEntity(dto);
+
         training.setTrainee(trainee);
         training.setTrainer(trainer);
-        training.setTrainingTypeId(dto.getTrainingTypeId());
-        training.setTrainingDate(dto.getTrainingDate());
-        training.setTrainingDuration(dto.getTrainingDuration());
+
         trainee.getTrainings().add(training);
         trainee.getTrainers().add(trainer);
         trainer.getTrainees().add(trainee);
@@ -70,7 +73,7 @@ public class TrainingService {
 
         return trainingRepository.findAll(spec)
                 .stream()
-                .map(TrainingMapper::toTraineeTrainingResponseDTO)
+                .map(trainingMapperI::toTraineeTrainingResponseDTO)
                 .toList();
     }
 
@@ -80,7 +83,7 @@ public class TrainingService {
         Specification<Training> spec = TrainingSpecification.filterByCriteriaForTrainer(dto);
         return trainingRepository.findAll(spec)
                 .stream()
-                .map(TrainingMapper::toTrainerTrainingResponseDTO)
+                .map(trainingMapperI::toTrainerTrainingResponseDTO)
                 .toList();
     }
 

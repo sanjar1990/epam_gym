@@ -5,6 +5,7 @@ import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
+import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TrainerRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,6 +27,8 @@ class TrainerServiceTest {
 
     @Mock
     private UserService userService;
+    @Mock
+    private TrainerMapperI trainerMapper;
 
     @InjectMocks
     private TrainerService trainerService;
@@ -42,6 +45,13 @@ class TrainerServiceTest {
 
         when(userService.generatePassword())
                 .thenReturn("pass123");
+
+        when(trainerMapper.toEntity(any()))
+                .thenAnswer(invocation -> {
+                    Trainer t = new Trainer();
+                    t.setUser(new User());
+                    return t;
+                });
 
         AuthDTO response = trainerService.createTrainer(dto);
 
@@ -66,6 +76,10 @@ class TrainerServiceTest {
 
         when(trainerRepository.findByUserUsername("john"))
                 .thenReturn(Optional.of(trainer));
+
+
+        when(trainerMapper.toTrainerDTO(any(Trainer.class)))
+                .thenReturn(new TrainerDTO());
 
         TrainerDTO response =
                 trainerService.getTrainerByUsername("john");
@@ -121,6 +135,21 @@ class TrainerServiceTest {
 
         when(trainerRepository.save(any(Trainer.class)))
                 .thenReturn(trainer);
+
+        doAnswer(invocation -> {
+            UpdateTrainerRequestDTO d = invocation.getArgument(0);
+            Trainer t = invocation.getArgument(1);
+
+            t.getUser().setFirstName(d.getFirstName());
+            t.getUser().setLastName(d.getLastName());
+            t.getUser().setIsActive(d.getIsActive());
+            t.setTrainingTypeId(d.getTrainingTypeId());
+
+            return null;
+        }).when(trainerMapper).updateTrainerFromDto(any(), any());
+
+        when(trainerMapper.toTrainerDTO(any()))
+                .thenReturn(new TrainerDTO());
 
         TrainerDTO response =
                 trainerService.updateTrainer(dto);

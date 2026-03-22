@@ -3,6 +3,7 @@ package com.epam.gym.service;
 import com.epam.gym.dto.*;
 import com.epam.gym.entity.*;
 import com.epam.gym.enums.TrainingTypeEnum;
+import com.epam.gym.mapper.training.TrainingMapperI;
 import com.epam.gym.repository.TrainingRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,6 +31,8 @@ class TrainingServiceTest {
 
     @Mock
     private TrainerService trainerService;
+    @Mock
+    private TrainingMapperI trainingMapper;
 
     @InjectMocks
     private TrainingService trainingService;
@@ -37,7 +40,6 @@ class TrainingServiceTest {
     @Test
     void addTraining_shouldSaveTraining_whenValid() {
 
-        // ---------- Arrange ----------
         CreateTrainingDTO dto = new CreateTrainingDTO();
         dto.setTraineeUsername("john");
         dto.setTrainerUsername("mike");
@@ -59,7 +61,9 @@ class TrainingServiceTest {
         when(traineeService.getTrainee("john")).thenReturn(trainee);
         when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
 
-        // ---------- Act + Assert ----------
+        when(trainingMapper.toEntity(any(CreateTrainingDTO.class)))
+                .thenReturn(new Training());
+
         assertDoesNotThrow(() -> trainingService.addTraining(dto));
 
         verify(trainingRepository).save(any(Training.class));

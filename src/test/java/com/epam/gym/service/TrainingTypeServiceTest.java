@@ -3,6 +3,7 @@ package com.epam.gym.service;
 import com.epam.gym.dto.TrainingTypeDTO;
 import com.epam.gym.entity.TrainingType;
 import com.epam.gym.enums.TrainingTypeEnum;
+import com.epam.gym.mapper.training_type.TrainingTypeMapperI;
 import com.epam.gym.repository.TrainingTypeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -21,6 +23,8 @@ class TrainingTypeServiceTest {
 
     @Mock
     private TrainingTypeRepository trainingTypeRepository;
+    @Mock
+    private TrainingTypeMapperI trainingTypeMapperI;
 
     @InjectMocks
     private TrainingTypeService trainingTypeService;
@@ -38,6 +42,17 @@ class TrainingTypeServiceTest {
 
         when(trainingTypeRepository.findAll())
                 .thenReturn(List.of(type1, type2));
+
+        when(trainingTypeMapperI.toDTO(any(TrainingType.class)))
+                .thenAnswer(invocation -> {
+                    TrainingType type = invocation.getArgument(0);
+
+                    TrainingTypeDTO dto = new TrainingTypeDTO();
+                    dto.setId(type.getId());
+                    dto.setTrainingTypeName(type.getTrainingTypeName());
+
+                    return dto;
+                });
 
         List<TrainingTypeDTO> result =
                 trainingTypeService.getAllTrainingTypes();

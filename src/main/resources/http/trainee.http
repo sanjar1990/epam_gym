@@ -1,17 +1,17 @@
     //1. Trainee Registration (POST method)
-POST localhost:8080/api/v1/trainee/public
+POST localhost:8080/api/v1/trainee
 Content-Type: application/json
 
 {
-  "firstName": "Liza",
-  "lastName": "Alexandrovna",
+  "firstName": "Ann",
+  "lastName": "Miller",
   "dateOfBirth": "1993-01-01",
   "address": "Russia ganamgu"
   }
 
 #### 5. Get Trainee Profile (GET method)
 
-GET localhost:8080/api/v1/trainee?username=Tay.Smith
+GET localhost:8080/api/v1/trainee/Ann.Miller
 
 #### 6. Update Trainee Profile (PUT method)
 
@@ -19,11 +19,11 @@ PUT localhost:8080/api/v1/trainee
 Content-Type: application/json
 
 {
-  "username": "Tay.Smith",
-  "firstName": "Sanjar",
-  "lastName": "Niyazov",
+  "username": "Ann.Miller",
+  "firstName": "SanjarUpdated",
+  "lastName": "Niyazov_updated",
   "dateOfBirth": "1990-01-01",
-  "address": "Seoul ganamgu",
+  "address": "Seoul ganamgu updated" ,
   "isActive": true
   }
 
@@ -33,11 +33,10 @@ DELETE localhost:8080/api/v1/trainee?username=Tay.Smith
 
 ### 11. Update Trainee's Trainer List (PUT method)
 
-PUT localhost:8080/api/v1/trainee/update-trainers
+PUT localhost:8080/api/v1/trainee/Ann.Miller/trainers
 Content-Type: application/json
 
 {
-  "traineeUsername": "Tay.Smith",
   "trainerUsernames": ["Mike.Smith","Anna.Edwards","Ali.Aliyev_trainer"]
 
   }

@@ -1,10 +1,10 @@
     //1. Trainer Registration (POST method)
-POST localhost:8080/api/v1/trainer/public
+POST localhost:8080/api/v1/trainer
 Content-Type: application/json
 
 {
-    "firstName": "Ali",
-    "lastName": "Aliyev_trainer",
+    "firstName": "VAli",
+    "lastName": "VAliyev_trainer",
     "trainingTypeId":3
  }
 
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ### 10. Get not assigned on trainee active trainers.
 
-GET localhost:8080/api/v1/trainer/not-assigned-on-trainee?username=Tay.Smiths
+GET localhost:8080/api/v1/trainer/unassigned/Mike.Smith
 
 ### 16. Activate/De-Activate Trainer (PATCH method)
 

@@ -14,5 +14,5 @@ public class TrainerTrainingResponseDTO {
     private LocalDate trainingDate;
     private TrainingTypeDTO trainingType;
     private Integer trainingDuration;
-    private TraineeDTO trainer;
+    private TraineeDTO trainee;
 }
