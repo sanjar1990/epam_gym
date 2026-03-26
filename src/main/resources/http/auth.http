@@ -1,11 +1,11 @@
 ####    //    3. Login (GET method)
 
-POST localhost:8080/api/v1/auth/public/login
+POST localhost:8080/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "username": "Mike.Smith",
-    "password": "XSx2ZNQBIL"
+    "username": "Ann.Miller",
+    "password": "qwCNpaENq4"
  }
 
 #####    4. Change Login (PUT method)

@@ -37,3 +37,5 @@ build/
 /tasks/Task_Hibernate.pdf
 /tasks/Task_Rest.pdf
 /tasks/Task_Spring_Core.pdf
+/src/main/resources/application-local.properties
+/tasks/Task_Spring_Boot.pdf

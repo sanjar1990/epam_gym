@@ -7,6 +7,8 @@ import com.epam.gym.entity.Training;
 import com.epam.gym.mapper.training.TrainingMapperI;
 import com.epam.gym.repository.TrainingRepository;
 import com.epam.gym.specification.TrainingSpecification;
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -23,6 +25,7 @@ public class TrainingService {
     private TrainerService trainerService;
     private TrainingMapperI trainingMapperI;
 
+
     @Autowired
     public void setTraineeService(TraineeService traineeService) {
         this.traineeService = traineeService;
@@ -37,11 +40,15 @@ public class TrainingService {
     public void setTrainingRepository(TrainingRepository trainingRepository) {
         this.trainingRepository = trainingRepository;
     }
+
     @Autowired
     public void setTrainingMapper(TrainingMapperI trainingMapperI) {
         this.trainingMapperI = trainingMapperI;
     }
+
     //16. Add training.
+    @Timed(value = "training.create.time", description = "Time to create training")
+    @Counted(value = "training.create.count", description = "Count training creation")
     @Transactional
     public void addTraining(CreateTrainingDTO dto) {
 
@@ -87,4 +94,7 @@ public class TrainingService {
                 .toList();
     }
 
+    public Long getTrainingsCount() {
+        return trainingRepository.count();
+    }
 }
