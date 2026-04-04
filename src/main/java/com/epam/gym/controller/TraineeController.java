@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,20 +23,18 @@ public class TraineeController {
 
     private final TraineeService traineeService;
 
+
     //1. Trainee Registration (POST method)
-    @PostMapping()
+    @PostMapping("/register")
     @Operation(summary = "Create for Trainee", description = "")
     public ResponseEntity<AuthDTO> createTrainee(@Valid @RequestBody CreateTraineeRequestDTO dto) {
         return ResponseEntity.ok(traineeService.createTrainee(dto));
     }
 
-    // TODO:
-    //  [Optional]
-    //  It is not a big deal, but could be more RESTful with GET /api/v1/trainee/{username} instead of query param
-    //  Same applies to other HTTP verbs, you approach works though.
-    //  Just remember to think of your data as a resource when working in REST methodology
+
 
     //    5. Get Trainee Profile (GET method)
+    @PreAuthorize("hasAnyRole('ROLE_TRAINEE')")
     @GetMapping("/{username}")
     @Operation(summary = "Get Trainee", description = "")
     public ResponseEntity<TraineeDTO> getTrainee(@PathVariable(name = "username") String username) {
@@ -43,6 +42,7 @@ public class TraineeController {
     }
 
     //    6. Update Trainee Profile (PUT method)
+    @PreAuthorize("hasAnyRole('ROLE_TRAINEE','ROLE_ADMIN')")
     @PutMapping()
     @Operation(summary = "Update Trainee details ", description = "")
     public ResponseEntity<TraineeDTO> updateTraineeDetails(@Valid @RequestBody UpdateTraineeRequestDTO dto) {
@@ -50,6 +50,7 @@ public class TraineeController {
     }
 
     //    7. Delete Trainee Profile (DELETE method)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping()
     @Operation(summary = "Delete Trainee ", description = "")
     @ResponseStatus(HttpStatus.OK)
@@ -57,13 +58,10 @@ public class TraineeController {
         traineeService.deleteTrainee(username);
     }
 
-    // TODO:
-    //  [Optional]
-    //  Can be more RESTful with PUT /api/v1/trainee/{username}/trainers and PATCH /api/v1/trainee/{username}/active
-    //  An HTTP verb already suggests the action, so no need to add it in the path.
-    //  Again not a strict requirement but verbs in paths are more RPC-style API, than REST
+
 
     //    11. Update Trainee's Trainer List (PUT method)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping("/{username}/trainers")
     @Operation(summary = "Update trainee's trainer list")
     public ResponseEntity<List<TrainerDTO>> updateTrainerList(
@@ -77,6 +75,7 @@ public class TraineeController {
 
     //    15. Activate/De-Activate Trainee (PATCH method)
     @PatchMapping("/active")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Operation(summary = " 15. Activate/De-Activate Trainee ", description = "")
     @ResponseStatus(HttpStatus.OK)
     public void changeStatusTrainee(@RequestBody ChangeStatusRequestDTO dto) {

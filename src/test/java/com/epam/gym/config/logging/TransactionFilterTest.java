@@ -1,5 +1,6 @@
 package com.epam.gym.config.logging;
 
+import com.epam.gym.filter.TransactionFilter;
 import jakarta.servlet.FilterChain;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

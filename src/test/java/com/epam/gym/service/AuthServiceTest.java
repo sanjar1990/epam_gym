@@ -3,6 +3,10 @@ package com.epam.gym.service;
 import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+import jakarta.annotation.PostConstruct;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,9 +23,21 @@ class AuthServiceTest {
 
     @Mock
     private UserService userService;
+    @Mock
+    private MeterRegistry registry;
 
-    @InjectMocks
     private AuthService authService;
+    @Mock
+    private Counter trainingCreatedCounter;
+
+    @BeforeEach
+    void setup() {
+        when(registry.counter(anyString()))
+                .thenReturn(trainingCreatedCounter);
+
+        authService = new AuthService(userService, registry);
+    }
+
 
     @Test
     void login_shouldPass_whenUserExists() {
@@ -36,14 +52,14 @@ class AuthServiceTest {
         User mockUser = new User();
         mockUser.setUsername(username);
 
-        when(userService.isUserExists(username, password))
+        when(userService.getUser(username))
                 .thenReturn(Optional.of(mockUser));
 
         // when + then (no exception expected)
         assertDoesNotThrow(() -> authService.login(dto));
 
         verify(userService, times(1))
-                .isUserExists(username, password);
+                .getUser(username);
     }
 
     @Test

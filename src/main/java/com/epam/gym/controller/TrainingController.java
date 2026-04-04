@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +23,7 @@ public class TrainingController {
     private final TrainingService trainingService;
 
     //    12. Get Trainee Trainings List (GET method)
-    // TODO:
-    //  [Optional]
-    //  For this particular case, when there is not a huge list of filters I would use GET
+    @PreAuthorize("hasAnyRole('ROLE_TRAINEE','ROLE_ADMIN')")
     @PostMapping("/trainee")
     @Operation(summary = "Get Trainee Trainings List", description = "")
     public ResponseEntity<List<TraineeTrainingResponseDTO>> getTraineeTrainings(
@@ -33,6 +32,7 @@ public class TrainingController {
     }
 
     //    13. Get Trainer Trainings List (GET method)
+    @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
     @PostMapping("/trainer")
     @Operation(summary = "Get Trainer Trainings List", description = "")
     public ResponseEntity<List<TrainerTrainingResponseDTO>> getTrainerTrainings(
@@ -45,6 +45,7 @@ public class TrainingController {
     // DONE
 
     //    14 Add Training (POST method)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping()
     @Operation(summary = " 14 Add Training", description = "")
     @ResponseStatus(HttpStatus.OK)

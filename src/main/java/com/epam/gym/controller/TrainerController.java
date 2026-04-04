@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class TrainerController {
     private final TrainerService trainerService;
 
     //1. Trainer create (POST method)
-    @PostMapping()
+    @PostMapping("/register")
     @Operation(summary = "Create for Trainer", description = "")
     public ResponseEntity<AuthDTO> createTrainer(
             @Valid @RequestBody CreateTrainerRequestDTO dto) {
@@ -32,6 +33,7 @@ public class TrainerController {
     }
 
     //    8. Get Trainer Profile (GET method)
+    @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
     @GetMapping()
     @Operation(summary = "Get Trainer", description = "")
     public ResponseEntity<TrainerDTO> getTrainer(
@@ -40,6 +42,7 @@ public class TrainerController {
     }
 
     //    9. Update Trainer Profile (PUT method)
+    @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
     @PutMapping()
     @Operation(summary = "Update Trainer details ", description = "")
     public ResponseEntity<TrainerDTO> updateTrainerDetails(@Valid @RequestBody UpdateTrainerRequestDTO dto) {
@@ -51,6 +54,7 @@ public class TrainerController {
     //  How about GET /api/v1/trainer/unassigned?trainee=<username>?
 
     //    10. Get not assigned on trainee active trainers. (GET method)
+    @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
     @GetMapping("/unassigned/{username}")
     @Operation(summary = "Get not assigned on trainee active trainers.  ", description = "")
     public ResponseEntity<List<TrainerDTO>> getTrainerNotAssignedOnTrainee(
@@ -59,6 +63,7 @@ public class TrainerController {
     }
 
     //    16. Activate/De-Activate Trainer (PATCH method)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PatchMapping("/active")
     @Operation(summary = " 15. Activate/De-Activate Trainer ", description = "")
     @ResponseStatus(HttpStatus.OK)

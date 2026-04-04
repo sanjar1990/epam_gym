@@ -1,4 +1,4 @@
-package com.epam.gym.config.logging;
+package com.epam.gym.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

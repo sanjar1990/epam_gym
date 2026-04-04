@@ -49,11 +49,6 @@ public class UserService {
         return sb.toString();
     }
 
-    //3. Trainee username and password matching.
-//4. Trainer username and password matching.
-    public Optional<User> isUserExists(String username, String password) {
-        return userRepository.findByUsernameAndPasswordAndIsActiveTrue(username, password);
-    }
 
 
     public void changeStatus(ChangeStatusRequestDTO dto) {
@@ -75,7 +70,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    private User getUser(String username) {
+    public User getUser(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found")
         );
     }
