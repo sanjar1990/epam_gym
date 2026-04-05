@@ -35,14 +35,14 @@ public class TraineeController {
 
     //    5. Get Trainee Profile (GET method)
     @PreAuthorize("hasAnyRole('ROLE_TRAINEE')")
-    @GetMapping("/{username}")
+    @GetMapping()
     @Operation(summary = "Get Trainee", description = "")
-    public ResponseEntity<TraineeDTO> getTrainee(@PathVariable(name = "username") String username) {
-        return ResponseEntity.ok(traineeService.getTraineeByUsername(username));
+    public ResponseEntity<TraineeDTO> getTrainee() {
+        return ResponseEntity.ok(traineeService.getTraineeByUsername());
     }
 
     //    6. Update Trainee Profile (PUT method)
-    @PreAuthorize("hasAnyRole('ROLE_TRAINEE','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_TRAINEE')")
     @PutMapping()
     @Operation(summary = "Update Trainee details ", description = "")
     public ResponseEntity<TraineeDTO> updateTraineeDetails(@Valid @RequestBody UpdateTraineeRequestDTO dto) {

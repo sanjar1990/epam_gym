@@ -8,7 +8,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     int countAllByUsername(String username);
 
-    Optional<User> findByUsernameAndPasswordAndIsActiveTrue(String username, String password);
-
     Optional<User> findByUsername(String username);
 }

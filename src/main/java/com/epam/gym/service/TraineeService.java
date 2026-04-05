@@ -9,6 +9,7 @@ import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.mapper.trainee.TraineeMapperI;
 import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TraineeRepository;
+import com.epam.gym.util.SpringSecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -65,8 +66,8 @@ public class TraineeService {
 
     //6. Select Trainee profile by username.
 
-    public TraineeDTO getTraineeByUsername(String username) {
-        Trainee trainee = getTrainee(username);
+    public TraineeDTO getTraineeByUsername() {
+        Trainee trainee = getTrainee(SpringSecurityUtil.getCurrentUser().getUsername());
         return traineeMapperI.toTraineeDTO(trainee);
     }
 
@@ -77,7 +78,7 @@ public class TraineeService {
 
     //    10. Update trainee profile.
     public TraineeDTO updateTrainee(UpdateTraineeRequestDTO dto) {
-        Trainee trainee = getTrainee(dto.getUsername());
+        Trainee trainee = getTrainee(SpringSecurityUtil.getCurrentUser().getUsername());
         traineeMapperI.updateTraineeFromDto(dto, trainee);
 
         log.info("Trainee updated{}", trainee.getId());

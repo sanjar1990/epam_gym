@@ -1,8 +1,6 @@
 package com.epam.gym.controller;
 
 
-
-
 import com.epam.gym.dto.TrainingTypeDTO;
 import com.epam.gym.enums.TrainingTypeEnum;
 import com.epam.gym.service.TrainingTypeService;
@@ -15,8 +13,8 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -47,9 +45,11 @@ class TrainingTypeControllerTest {
         when(trainingTypeService.getAllTrainingTypes())
                 .thenReturn(List.of(type1, type2));
 
-        // when + then
+        // when & then
         mockMvc.perform(get("/api/v1/training-type"))
                 .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.length()").value(2))
                 .andExpect(jsonPath("$[0].trainingTypeName").value("CARDIO"))
                 .andExpect(jsonPath("$[1].trainingTypeName").value("STRENGTH"));
 
@@ -64,6 +64,7 @@ class TrainingTypeControllerTest {
 
         mockMvc.perform(get("/api/v1/training-type"))
                 .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json"))
                 .andExpect(content().json("[]"));
 
         verify(trainingTypeService).getAllTrainingTypes();

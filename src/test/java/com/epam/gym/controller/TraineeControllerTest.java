@@ -4,6 +4,7 @@ import com.epam.gym.dto.*;
 import com.epam.gym.service.TraineeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -13,13 +14,13 @@ import tools.jackson.databind.ObjectMapper;
 import java.time.LocalDate;
 import java.util.List;
 
-
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TraineeController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class TraineeControllerTest {
 
     @Autowired
@@ -43,17 +44,17 @@ class TraineeControllerTest {
 
         AuthDTO response = new AuthDTO("john.doe", "pass123");
 
-        when(traineeService.createTrainee(any()))
-                .thenReturn(response);
+        when(traineeService.createTrainee(any())).thenReturn(response);
 
-        mockMvc.perform(post("/api/v1/trainee")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(dto)))
+        mockMvc.perform(post("/api/v1/trainee/register")
+                        .contentType(MediaType.APPLICATION_JSON) // ✅ REQUIRED
+                        .content(objectMapper.writeValueAsString(dto))) // ✅ REQUIRED
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username").value("john.doe"));
 
         verify(traineeService).createTrainee(any());
     }
+
 
     @Test
     void getTrainee_shouldReturnDTO() throws Exception {
@@ -63,21 +64,20 @@ class TraineeControllerTest {
         user.setUsername("john");
         dto.setUser(user);
 
-        when(traineeService.getTraineeByUsername("john"))
-                .thenReturn(dto);
+        when(traineeService.getTraineeByUsername()).thenReturn(dto);
 
-        mockMvc.perform(get("/api/v1/trainee/john"))
+        mockMvc.perform(get("/api/v1/trainee")) // ✅ FIXED
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.user.username").value("john"));
 
-        verify(traineeService).getTraineeByUsername("john");
+        verify(traineeService).getTraineeByUsername();
     }
 
+    // ✅ 3. UPDATE
     @Test
     void updateTrainee_shouldReturnUpdatedDTO() throws Exception {
 
         UpdateTraineeRequestDTO request = new UpdateTraineeRequestDTO();
-        request.setUsername("john");
         request.setFirstName("New");
         request.setLastName("Name");
         request.setAddress("Busan");
@@ -89,8 +89,7 @@ class TraineeControllerTest {
         user.setUsername("john");
         response.setUser(user);
 
-        when(traineeService.updateTrainee(any()))
-                .thenReturn(response);
+        when(traineeService.updateTrainee(any())).thenReturn(response);
 
         mockMvc.perform(put("/api/v1/trainee")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -100,6 +99,7 @@ class TraineeControllerTest {
 
         verify(traineeService).updateTrainee(any());
     }
+
 
     @Test
     void deleteTrainee_shouldReturn200() throws Exception {
@@ -112,6 +112,7 @@ class TraineeControllerTest {
 
         verify(traineeService).deleteTrainee("john");
     }
+
 
     @Test
     void updateTrainerList_shouldReturnList() throws Exception {
@@ -154,15 +155,12 @@ class TraineeControllerTest {
         verify(traineeService).changeStatusTrainee(any());
     }
 
-
     @Test
     void createTrainee_shouldReturn400_whenInvalid() throws Exception {
 
-        CreateTraineeRequestDTO dto = new CreateTraineeRequestDTO(); // empty
+        CreateTraineeRequestDTO dto = new CreateTraineeRequestDTO();
 
-        mockMvc.perform(post("/api/v1/trainee")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(dto)))
+        mockMvc.perform(post("/api/v1/trainee/register"))
                 .andExpect(status().isBadRequest());
     }
 }

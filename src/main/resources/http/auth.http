@@ -4,16 +4,16 @@ POST localhost:8080/api/v1/auth/login
 Content-Type: application/json
 
 {
-    "username": "Ann.Miller",
-    "password": "kY6ZZqkYtS"
+    "username": "Ali_ADMIN.Aliyev_trainer",
+    "password": "Toshiba_1990$"
  }
 
 #####    4. Change Login (PUT method)
-POST localhost:8080/api/v1/auth/public/change-password
+POST localhost:8080/api/v1/auth/change-password
 Content-Type: application/json
 
 {
-  "username": "Mike.Smith",
-  "oldPassword": "XSx2ZNQBIL",
+  "username": "Ali_ADMIN.Aliyev_trainer",
+  "oldPassword": "zZyi4X06HU",
   "newPassword": "Toshiba_1990$"
 }

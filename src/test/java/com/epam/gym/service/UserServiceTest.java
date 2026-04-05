@@ -10,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.Optional;
@@ -22,6 +23,9 @@ class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private UserService userService;
@@ -60,29 +64,6 @@ class UserServiceTest {
     }
 
     @Test
-    void isUserExists_shouldReturnUser_whenUserActive() {
-        User user = new User();
-        user.setIsActive(true);
-
-        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
-                .thenReturn(Optional.of(user));
-
-        Optional<User> result = userService.isUserExists("john", "123");
-
-        assertTrue(result.isPresent());
-    }
-
-    @Test
-    void isUserExists_shouldReturnEmpty_whenUserNotFound() {
-        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "123"))
-                .thenReturn(Optional.empty());
-
-        Optional<User> result = userService.isUserExists("john", "123");
-
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
     void changeStatus_shouldUpdateStatus() {
         User user = new User();
         user.setUsername("john");
@@ -95,7 +76,7 @@ class UserServiceTest {
         when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.of(user));
 
-        assertDoesNotThrow(() -> userService.changeStatus(dto));
+        userService.changeStatus(dto);
 
         assertFalse(user.getIsActive());
         verify(userRepository).save(user);
@@ -105,34 +86,37 @@ class UserServiceTest {
     void changeStatus_shouldThrowException_whenUserNotFound() {
         ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
         dto.setUsername("john");
-        dto.setIsActive(false);
 
         when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () ->
-                userService.changeStatus(dto)
-        );
+        assertThrows(RuntimeException.class,
+                () -> userService.changeStatus(dto));
     }
 
     @Test
-    void changePassword_shouldUpdatePassword() {
+    void changePassword_shouldUpdatePassword_whenValid() {
         User user = new User();
         user.setUsername("john");
-        user.setPassword("old");
-        user.setIsActive(true);
+        user.setPassword("encodedOld");
 
         UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
         dto.setUsername("john");
         dto.setOldPassword("old");
         dto.setNewPassword("new123");
 
-        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "old"))
+        when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.of(user));
 
-        assertDoesNotThrow(() -> userService.changePassword(dto));
+        when(passwordEncoder.matches("old", "encodedOld"))
+                .thenReturn(true);
 
-        assertEquals("new123", user.getPassword());
+        when(passwordEncoder.encode("new123"))
+                .thenReturn("encodedNew");
+
+        userService.changePassword(dto);
+
+        assertEquals("encodedNew", user.getPassword());
         verify(userRepository).save(user);
     }
 
@@ -140,14 +124,55 @@ class UserServiceTest {
     void changePassword_shouldThrowException_whenUserNotFound() {
         UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
         dto.setUsername("john");
+
+        when(userRepository.findByUsername("john"))
+                .thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class,
+                () -> userService.changePassword(dto));
+    }
+
+    @Test
+    void changePassword_shouldThrowException_whenOldPasswordInvalid() {
+        User user = new User();
+        user.setUsername("john");
+        user.setPassword("encodedOld");
+
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
+        dto.setUsername("john");
         dto.setOldPassword("wrong");
         dto.setNewPassword("new123");
 
-        when(userRepository.findByUsernameAndPasswordAndIsActiveTrue("john", "wrong"))
+        when(userRepository.findByUsername("john"))
+                .thenReturn(Optional.of(user));
+
+        when(passwordEncoder.matches("wrong", "encodedOld"))
+                .thenReturn(false);
+
+        assertThrows(RuntimeException.class,
+                () -> userService.changePassword(dto));
+
+        verify(userRepository, never()).save(any());
+    }
+
+    @Test
+    void getUser_shouldReturnUser_whenExists() {
+        User user = new User();
+
+        when(userRepository.findByUsername("john"))
+                .thenReturn(Optional.of(user));
+
+        User result = userService.getUser("john");
+
+        assertNotNull(result);
+    }
+
+    @Test
+    void getUser_shouldThrowException_whenNotFound() {
+        when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () ->
-                userService.changePassword(dto)
-        );
+        assertThrows(RuntimeException.class,
+                () -> userService.getUser("john"));
     }
 }

@@ -2,7 +2,6 @@ package com.epam.gym.service;
 
 import com.epam.gym.dto.*;
 import com.epam.gym.entity.*;
-import com.epam.gym.enums.TrainingTypeEnum;
 import com.epam.gym.mapper.training.TrainingMapperI;
 import com.epam.gym.repository.TrainingRepository;
 import org.junit.jupiter.api.Test;
@@ -12,12 +11,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.jpa.domain.Specification;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,8 +30,9 @@ class TrainingServiceTest {
 
     @Mock
     private TrainerService trainerService;
+
     @Mock
-    private TrainingMapperI trainingMapper;
+    private TrainingMapperI trainingMapperI;
 
     @InjectMocks
     private TrainingService trainingService;
@@ -44,33 +44,31 @@ class TrainingServiceTest {
         dto.setTraineeUsername("john");
         dto.setTrainerUsername("mike");
         dto.setTrainingTypeId(5L);
-        dto.setTrainingDate(LocalDate.now());
-        dto.setTrainingDuration(60);
 
         Trainee trainee = new Trainee();
         trainee.setTrainings(new ArrayList<>());
         trainee.setTrainers(new HashSet<>());
 
-        TrainingType trainingType = new TrainingType();
-        trainingType.setId(5L);
+        TrainingType type = new TrainingType();
+        type.setId(5L);
 
         Trainer trainer = new Trainer();
-        trainer.setTrainingType(trainingType);
+        trainer.setTrainingType(type);
         trainer.setTrainees(new HashSet<>());
+
+        Training training = new Training();
 
         when(traineeService.getTrainee("john")).thenReturn(trainee);
         when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
+        when(trainingMapperI.toEntity(dto)).thenReturn(training);
 
-        when(trainingMapper.toEntity(any(CreateTrainingDTO.class)))
-                .thenReturn(new Training());
-
-        assertDoesNotThrow(() -> trainingService.addTraining(dto));
-
-        verify(trainingRepository).save(any(Training.class));
+        trainingService.addTraining(dto);
 
         assertEquals(1, trainee.getTrainings().size());
         assertEquals(1, trainee.getTrainers().size());
         assertEquals(1, trainer.getTrainees().size());
+
+        verify(trainingRepository).save(training);
     }
 
     @Test
@@ -79,17 +77,17 @@ class TrainingServiceTest {
         CreateTrainingDTO dto = new CreateTrainingDTO();
         dto.setTraineeUsername("john");
         dto.setTrainerUsername("mike");
-        dto.setTrainingTypeId(99L); // mismatch
+        dto.setTrainingTypeId(99L);
 
         Trainee trainee = new Trainee();
         trainee.setTrainings(new ArrayList<>());
         trainee.setTrainers(new HashSet<>());
 
-        TrainingType trainingType = new TrainingType();
-        trainingType.setId(1L);
+        TrainingType type = new TrainingType();
+        type.setId(1L);
 
         Trainer trainer = new Trainer();
-        trainer.setTrainingType(trainingType);
+        trainer.setTrainingType(type);
         trainer.setTrainees(new HashSet<>());
 
         when(traineeService.getTrainee("john")).thenReturn(trainee);
@@ -97,6 +95,8 @@ class TrainingServiceTest {
 
         assertThrows(RuntimeException.class,
                 () -> trainingService.addTraining(dto));
+
+        verify(trainingRepository, never()).save(any());
     }
 
     @Test
@@ -110,10 +110,12 @@ class TrainingServiceTest {
         when(trainingRepository.findAll(any(Specification.class)))
                 .thenReturn(List.of(training));
 
+        when(trainingMapperI.toTraineeTrainingResponseDTO(training))
+                .thenReturn(new TraineeTrainingResponseDTO());
+
         List<TraineeTrainingResponseDTO> result =
                 trainingService.getTrainingsByTraineeUsernameCriteria(dto);
 
-        assertNotNull(result);
         assertEquals(1, result.size());
 
         verify(trainingRepository).findAll(any(Specification.class));
@@ -130,13 +132,25 @@ class TrainingServiceTest {
         when(trainingRepository.findAll(any(Specification.class)))
                 .thenReturn(List.of(training));
 
+        when(trainingMapperI.toTrainerTrainingResponseDTO(training))
+                .thenReturn(new TrainerTrainingResponseDTO());
+
         List<TrainerTrainingResponseDTO> result =
                 trainingService.getTrainingsByTrainerUsernameCriteria(dto);
 
-        assertNotNull(result);
         assertEquals(1, result.size());
 
         verify(trainingRepository).findAll(any(Specification.class));
+    }
+
+    @Test
+    void getTrainingsCount_shouldReturnCount() {
+
+        when(trainingRepository.count()).thenReturn(5L);
+
+        Long result = trainingService.getTrainingsCount();
+
+        assertEquals(5L, result);
     }
 
     private Training buildFullTraining() {
@@ -152,7 +166,6 @@ class TrainingServiceTest {
 
         TrainingType type = new TrainingType();
         type.setId(5L);
-        type.setTrainingTypeName(TrainingTypeEnum.CARDIO);
 
         Trainer trainer = new Trainer();
         trainer.setUser(trainerUser);
@@ -162,8 +175,6 @@ class TrainingServiceTest {
         training.setTrainee(trainee);
         training.setTrainer(trainer);
         training.setTrainingType(type);
-        training.setTrainingDate(LocalDate.now());
-        training.setTrainingDuration(60);
 
         return training;
     }

@@ -33,33 +33,28 @@ public class TrainerController {
     }
 
     //    8. Get Trainer Profile (GET method)
-    @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_TRAINER')")
     @GetMapping()
     @Operation(summary = "Get Trainer", description = "")
-    public ResponseEntity<TrainerDTO> getTrainer(
-            @RequestParam(name = "username") String username) {
-        return ResponseEntity.ok(trainerService.getTrainerByUsername(username));
+    public ResponseEntity<TrainerDTO> getTrainer() {
+        return ResponseEntity.ok(trainerService.getTrainerByUsername());
     }
 
     //    9. Update Trainer Profile (PUT method)
-    @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_TRAINER')")
     @PutMapping()
     @Operation(summary = "Update Trainer details ", description = "")
     public ResponseEntity<TrainerDTO> updateTrainerDetails(@Valid @RequestBody UpdateTrainerRequestDTO dto) {
         return ResponseEntity.ok(trainerService.updateTrainer(dto));
     }
 
-    // TODO:
-    //  [Optional]
-    //  How about GET /api/v1/trainer/unassigned?trainee=<username>?
-
     //    10. Get not assigned on trainee active trainers. (GET method)
     @PreAuthorize("hasAnyRole('ROLE_TRAINER','ROLE_ADMIN')")
     @GetMapping("/unassigned/{username}")
     @Operation(summary = "Get not assigned on trainee active trainers.  ", description = "")
     public ResponseEntity<List<TrainerDTO>> getTrainerNotAssignedOnTrainee(
-            @PathVariable(name = "username") String username) {
-        return ResponseEntity.ok(trainerService.getTrainersNotAssignedOnTrainee(username));
+            @PathVariable(name = "username") String traineeUsername) {
+        return ResponseEntity.ok(trainerService.getTrainersNotAssignedOnTrainee(traineeUsername));
     }
 
     //    16. Activate/De-Activate Trainer (PATCH method)

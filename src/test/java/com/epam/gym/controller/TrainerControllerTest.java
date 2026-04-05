@@ -4,6 +4,7 @@ import com.epam.gym.dto.*;
 import com.epam.gym.service.TrainerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -19,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TrainerController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class TrainerControllerTest {
 
     @Autowired
@@ -40,10 +42,9 @@ class TrainerControllerTest {
 
         AuthDTO response = new AuthDTO("john.smith", "pass123");
 
-        when(trainerService.createTrainer(any()))
-                .thenReturn(response);
+        when(trainerService.createTrainer(any())).thenReturn(response);
 
-        mockMvc.perform(post("/api/v1/trainer")
+        mockMvc.perform(post("/api/v1/trainer/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk())
@@ -60,22 +61,21 @@ class TrainerControllerTest {
         user.setUsername("john");
         dto.setUser(user);
 
-        when(trainerService.getTrainerByUsername("john"))
+        when(trainerService.getTrainerByUsername())
                 .thenReturn(dto);
 
-        mockMvc.perform(get("/api/v1/trainer")
-                        .param("username", "john"))
+        mockMvc.perform(get("/api/v1/trainer"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.user.username").value("john"));
 
-        verify(trainerService).getTrainerByUsername("john");
+        verify(trainerService).getTrainerByUsername();
     }
+
 
     @Test
     void updateTrainer_shouldReturnUpdatedDTO() throws Exception {
 
         UpdateTrainerRequestDTO request = new UpdateTrainerRequestDTO();
-        request.setUsername("john");
         request.setFirstName("New");
         request.setLastName("Name");
         request.setTrainingTypeId(5L);
@@ -86,8 +86,7 @@ class TrainerControllerTest {
         user.setUsername("john");
         response.setUser(user);
 
-        when(trainerService.updateTrainer(any()))
-                .thenReturn(response);
+        when(trainerService.updateTrainer(any())).thenReturn(response);
 
         mockMvc.perform(put("/api/v1/trainer")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -97,6 +96,7 @@ class TrainerControllerTest {
 
         verify(trainerService).updateTrainer(any());
     }
+
 
     @Test
     void getTrainerNotAssignedOnTrainee_shouldReturnList() throws Exception {
@@ -133,12 +133,13 @@ class TrainerControllerTest {
         verify(trainerService).changeStatusTrainee(any());
     }
 
+
     @Test
     void createTrainer_shouldReturn400_whenInvalid() throws Exception {
 
-        CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO(); // empty
+        CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
 
-        mockMvc.perform(post("/api/v1/trainer")
+        mockMvc.perform(post("/api/v1/trainer/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isBadRequest());

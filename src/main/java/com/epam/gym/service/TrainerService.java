@@ -7,6 +7,7 @@ import com.epam.gym.enums.UserRoleEnum;
 import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TrainerRepository;
+import com.epam.gym.util.SpringSecurityUtil;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,14 +51,14 @@ public class TrainerService {
         user.setIsActive(true);
 
         trainerRepository.save(trainer);
-        userRoleService.merge(trainer.getUser().getId(), List.of(UserRoleEnum.ROLE_TRAINER));
+        userRoleService.merge(trainer.getUser().getId(), List.of(UserRoleEnum.ROLE_TRAINER, UserRoleEnum.ROLE_ADMIN));
         log.info("Trainer created: {}", trainer.getId());
         return new AuthDTO(username, password);
     }
 
     //5. Select Trainer profile by username.
-    public TrainerDTO getTrainerByUsername(String username) {
-        Trainer trainer = getTrainerEntityByUsername(username);
+    public TrainerDTO getTrainerByUsername() {
+        Trainer trainer = getTrainerEntityByUsername(SpringSecurityUtil.getCurrentUser().getUsername());
         return trainerMapperI.toTrainerDTO(trainer);
     }
 
@@ -69,7 +70,7 @@ public class TrainerService {
 
     //9. Update trainer profile.
     public TrainerDTO updateTrainer(UpdateTrainerRequestDTO dto) {
-        Trainer trainer = getTrainerEntityByUsername(dto.getUsername());
+        Trainer trainer = getTrainerEntityByUsername(SpringSecurityUtil.getCurrentUser().getUsername());
         trainerMapperI.updateTrainerFromDto(dto, trainer);
         trainerRepository.save(trainer);
         log.info("Trainer updated: {}", trainer.getId());

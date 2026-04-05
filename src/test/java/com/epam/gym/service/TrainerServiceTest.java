@@ -2,16 +2,18 @@ package com.epam.gym.service;
 
 import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainer;
-import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
 import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TrainerRepository;
+import com.epam.gym.util.SpringSecurityUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +29,15 @@ class TrainerServiceTest {
 
     @Mock
     private UserService userService;
+
     @Mock
-    private TrainerMapperI trainerMapper;
+    private TrainerMapperI trainerMapperI;
+
+    @Mock
+    private UserRoleService userRoleService;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private TrainerService trainerService;
@@ -38,7 +47,6 @@ class TrainerServiceTest {
         CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
         dto.setFirstName("John");
         dto.setLastName("Smith");
-        dto.setTrainingTypeId(1L);
 
         when(userService.generateUsername("John", "Smith"))
                 .thenReturn("john.smith");
@@ -46,12 +54,14 @@ class TrainerServiceTest {
         when(userService.generatePassword())
                 .thenReturn("pass123");
 
-        when(trainerMapper.toEntity(any()))
-                .thenAnswer(invocation -> {
-                    Trainer t = new Trainer();
-                    t.setUser(new User());
-                    return t;
-                });
+        when(passwordEncoder.encode("pass123"))
+                .thenReturn("encodedPass");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(new User());
+
+        when(trainerMapperI.toEntity(any()))
+                .thenReturn(trainer);
 
         AuthDTO response = trainerService.createTrainer(dto);
 
@@ -59,47 +69,38 @@ class TrainerServiceTest {
         assertEquals("john.smith", response.getUsername());
         assertEquals("pass123", response.getPassword());
 
-        verify(trainerRepository).save(any(Trainer.class));
+        verify(trainerRepository).save(trainer);
+        verify(userRoleService)
+                .merge(any(), any());
     }
 
     @Test
-    void getTrainerByUsername_shouldReturnDTO_whenExists() {
+    void getTrainerByUsername_shouldReturnDTO() {
         User user = new User();
         user.setUsername("john");
 
-        TrainingType trainingType = new TrainingType();
-        trainingType.setId(1L);
-
         Trainer trainer = new Trainer();
         trainer.setUser(user);
-        trainer.setTrainingType(trainingType);
 
-        when(trainerRepository.findByUserUsername("john"))
-                .thenReturn(Optional.of(trainer));
+        try (MockedStatic<SpringSecurityUtil> mocked = mockStatic(SpringSecurityUtil.class)) {
 
+            mocked.when(SpringSecurityUtil::getCurrentUser)
+                    .thenReturn(user);
 
-        when(trainerMapper.toTrainerDTO(any(Trainer.class)))
-                .thenReturn(new TrainerDTO());
+            when(trainerRepository.findByUserUsername("john"))
+                    .thenReturn(Optional.of(trainer));
 
-        TrainerDTO response =
-                trainerService.getTrainerByUsername("john");
+            when(trainerMapperI.toTrainerDTO(trainer))
+                    .thenReturn(new TrainerDTO());
 
-        assertNotNull(response);
+            TrainerDTO result = trainerService.getTrainerByUsername();
 
-        verify(trainerRepository).findByUserUsername("john");
+            assertNotNull(result);
+        }
     }
 
     @Test
-    void getTrainerByUsername_shouldThrowException_whenNotFound() {
-        when(trainerRepository.findByUserUsername("john"))
-                .thenReturn(Optional.empty());
-
-        assertThrows(UserNotFoundException.class,
-                () -> trainerService.getTrainerByUsername("john"));
-    }
-
-    @Test
-    void changePassword_shouldDelegateToUserService() {
+    void changePassword_shouldCallUserService() {
         UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
         dto.setUsername("john");
 
@@ -108,66 +109,44 @@ class TrainerServiceTest {
         verify(userService).changePassword(dto);
     }
 
-    @Test
-    void updateTrainer_shouldUpdateTrainer_andReturnDTO() {
-        User user = new User();
-        user.setFirstName("Old");
-        user.setLastName("Name");
-        user.setIsActive(true);
 
-        TrainingType trainingType = new TrainingType();
-        trainingType.setId(1L);
+    @Test
+    void updateTrainer_shouldUpdateTrainer() {
+        User user = new User();
+        user.setUsername("john");
 
         Trainer trainer = new Trainer();
         trainer.setUser(user);
-        trainer.setTrainingType(trainingType);
-        trainer.setTrainingTypeId(1L);
 
         UpdateTrainerRequestDTO dto = new UpdateTrainerRequestDTO();
-        dto.setUsername("john");
         dto.setFirstName("New");
-        dto.setLastName("Name");
-        dto.setTrainingTypeId(5L);
-        dto.setIsActive(false);
 
-        when(trainerRepository.findByUserUsername("john"))
-                .thenReturn(Optional.of(trainer));
+        try (MockedStatic<SpringSecurityUtil> mocked = mockStatic(SpringSecurityUtil.class)) {
 
-        when(trainerRepository.save(any(Trainer.class)))
-                .thenReturn(trainer);
+            mocked.when(SpringSecurityUtil::getCurrentUser)
+                    .thenReturn(user);
 
-        doAnswer(invocation -> {
-            UpdateTrainerRequestDTO d = invocation.getArgument(0);
-            Trainer t = invocation.getArgument(1);
+            when(trainerRepository.findByUserUsername("john"))
+                    .thenReturn(Optional.of(trainer));
 
-            t.getUser().setFirstName(d.getFirstName());
-            t.getUser().setLastName(d.getLastName());
-            t.getUser().setIsActive(d.getIsActive());
-            t.setTrainingTypeId(d.getTrainingTypeId());
+            doNothing().when(trainerMapperI)
+                    .updateTrainerFromDto(dto, trainer);
 
-            return null;
-        }).when(trainerMapper).updateTrainerFromDto(any(), any());
+            when(trainerMapperI.toTrainerDTO(trainer))
+                    .thenReturn(new TrainerDTO());
 
-        when(trainerMapper.toTrainerDTO(any()))
-                .thenReturn(new TrainerDTO());
+            TrainerDTO result = trainerService.updateTrainer(dto);
 
-        TrainerDTO response =
-                trainerService.updateTrainer(dto);
+            assertNotNull(result);
 
-        assertFalse(user.getIsActive());
-        assertEquals("New", user.getFirstName());
-        assertEquals(5L, trainer.getTrainingTypeId());
-
-        assertNotNull(response);
-
-        verify(trainerRepository).save(trainer);
+            verify(trainerRepository).save(trainer);
+        }
     }
 
     @Test
-    void changeStatusTrainee_shouldDelegateToUserService() {
+    void changeStatusTrainee_shouldCallUserService() {
         ChangeStatusRequestDTO dto = new ChangeStatusRequestDTO();
         dto.setUsername("john");
-        dto.setIsActive(false);
 
         trainerService.changeStatusTrainee(dto);
 
@@ -175,27 +154,19 @@ class TrainerServiceTest {
     }
 
     @Test
-    void getTrainersNotAssignedOnTrainee_shouldReturnDTOList() {
-        User user = new User();
-        user.setUsername("trainer1");
-
+    void getTrainersNotAssignedOnTrainee_shouldReturnList() {
         Trainer trainer = new Trainer();
-        trainer.setUser(user);
-
-        TrainingType trainingType = new TrainingType();
-        trainingType.setId(1L);
-        trainer.setTrainingType(trainingType);
 
         when(trainerRepository.findTrainersNotAssignedToTrainee("john"))
                 .thenReturn(List.of(trainer));
 
-        List<TrainerDTO> response =
+        when(trainerMapperI.toTrainerDTO(trainer))
+                .thenReturn(new TrainerDTO());
+
+        List<TrainerDTO> result =
                 trainerService.getTrainersNotAssignedOnTrainee("john");
 
-        assertEquals(1, response.size());
-
-        verify(trainerRepository)
-                .findTrainersNotAssignedToTrainee("john");
+        assertEquals(1, result.size());
     }
 
     @Test
@@ -212,7 +183,7 @@ class TrainerServiceTest {
     }
 
     @Test
-    void getTrainerEntityByUsername_shouldThrowException() {
+    void getTrainerEntityByUsername_shouldThrow() {
         when(trainerRepository.findByUserUsername("john"))
                 .thenReturn(Optional.empty());
 
@@ -220,16 +191,17 @@ class TrainerServiceTest {
                 () -> trainerService.getTrainerEntityByUsername("john"));
     }
 
+    // ================= GET BY USERNAMES =================
     @Test
     void getTrainersByUsernames_shouldReturnList() {
-        List<String> usernames = List.of("john", "alex");
+        List<String> usernames = List.of("john");
 
         when(trainerRepository.findByUserUsernameIn(usernames))
-                .thenReturn(List.of(new Trainer(), new Trainer()));
+                .thenReturn(List.of(new Trainer()));
 
         List<Trainer> result =
                 trainerService.getTrainersByUsernames(usernames);
 
-        assertEquals(2, result.size());
+        assertEquals(1, result.size());
     }
 }

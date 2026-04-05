@@ -27,6 +27,7 @@ public class Trainee extends BaseEntity {
     @ManyToMany(mappedBy = "trainees")
     private Set<Trainer> trainers = new HashSet<>();
 
+
     public void addTrainer(Trainer trainer) {
         this.trainers.add(trainer);
         trainer.getTrainees().add(this);

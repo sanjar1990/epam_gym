@@ -4,6 +4,7 @@ import com.epam.gym.dto.*;
 import com.epam.gym.service.TrainingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 
@@ -22,6 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(TrainingController.class)
+@AutoConfigureMockMvc(addFilters = false)
 class TrainingControllerTest {
 
     @Autowired
@@ -50,7 +52,7 @@ class TrainingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0]").exists());
+                .andExpect(jsonPath("$[0].trainingDate").exists());
 
         verify(trainingService)
                 .getTrainingsByTraineeUsernameCriteria(any());
@@ -73,7 +75,7 @@ class TrainingControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0]").exists());
+                .andExpect(jsonPath("$[0].trainingDate").exists());
 
         verify(trainingService)
                 .getTrainingsByTrainerUsernameCriteria(any());
@@ -99,10 +101,11 @@ class TrainingControllerTest {
         verify(trainingService).addTraining(any());
     }
 
+
     @Test
     void addTraining_shouldReturn400_whenInvalid() throws Exception {
 
-        CreateTrainingDTO request = new CreateTrainingDTO(); // empty -> invalid
+        CreateTrainingDTO request = new CreateTrainingDTO(); // invalid
 
         mockMvc.perform(post("/api/v1/training")
                         .contentType(MediaType.APPLICATION_JSON)

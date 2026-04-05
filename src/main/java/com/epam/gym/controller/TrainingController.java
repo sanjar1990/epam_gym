@@ -40,9 +40,6 @@ public class TrainingController {
         return ResponseEntity.ok(trainingService.getTrainingsByTrainerUsernameCriteria(dto));
     }
 
-    // TODO:
-    //  More RESTful could be just POST /api/v1/training
-    // DONE
 
     //    14 Add Training (POST method)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")

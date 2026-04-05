@@ -3,6 +3,7 @@ package com.epam.gym.config.security;
 import com.epam.gym.entity.User;
 import com.epam.gym.enums.UserRoleEnum;
 import lombok.Getter;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Getter
+@NullMarked
 public class CustomUserDetails implements UserDetails {
 
     private final User user;

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
-    private final UserService userService;
+
 
 
 
@@ -39,7 +39,7 @@ public class AuthController {
     @ResponseStatus(HttpStatus.OK)
     public void changePassword(@Valid @RequestBody UserChangePasswordRequestDTO dto) {
         System.out.println("Login auth: " + dto.getNewPassword());
-        userService.changePassword(dto);
+        authService.changePassword(dto);
     }
 
 }

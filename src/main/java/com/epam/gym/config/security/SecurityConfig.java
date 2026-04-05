@@ -1,6 +1,7 @@
 package com.epam.gym.config.security;
 
 import com.epam.gym.filter.JwtTokenFilter;
+import com.epam.gym.service.JwtTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +30,7 @@ import java.util.List;
 @EnableMethodSecurity
 public class SecurityConfig {
     private final UserDetailsService userDetailsService;
-    private final JwtTokenFilter jwtTokenFilter;
-    public static final String[] AUTH_WHITELIST ={
+    public static final String[] AUTH_WHITELIST = {
             "/api/v1/auth/**",
             "/api/v1/trainer/register",
             "/api/v1/trainee/register",
@@ -38,21 +38,10 @@ public class SecurityConfig {
     };
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtTokenService jwtTokenService) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(cors -> {
-                    CorsConfiguration configuration = new CorsConfiguration();
-                    configuration.setAllowedOriginPatterns(List.of("*"));
-//                    configuration.setAllowedOrigins(List.of("*"));
-                    configuration.setAllowedMethods(List.of("*"));
-                    configuration.setAllowedHeaders(List.of("*"));
-                    configuration.setAllowCredentials(true);
-
-                    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-                    source.registerCorsConfiguration("/**", configuration);
-                    cors.configurationSource(source);
-                })
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
@@ -62,22 +51,60 @@ public class SecurityConfig {
 
                 .logout(logout -> logout.logoutUrl("/auth/logout").permitAll())
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtTokenFilter(userDetailsService,
+                        jwtTokenService), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
+    }
+
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        configuration.setAllowedOrigins(List.of(
+                "*"
+//                "http://localhost:3000",
+//                "http://127.0.0.1:3000"
+        ));
+
+        configuration.setAllowedMethods(List.of(
+                "GET", "POST", "PUT", "DELETE", "OPTIONS"
+        ));
+
+        configuration.setAllowedHeaders(List.of("*"));
+
+        configuration.setAllowCredentials(true);
+
+        configuration.setExposedHeaders(List.of("Authorization"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+    @Bean
+    public JwtTokenFilter jwtTokenFilter(
+            UserDetailsService userDetailsService,
+            JwtTokenService jwtTokenService
+    ) {
+        return new JwtTokenFilter(userDetailsService, jwtTokenService);
     }
 }

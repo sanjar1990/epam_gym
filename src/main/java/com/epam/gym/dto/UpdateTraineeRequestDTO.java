@@ -10,8 +10,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class UpdateTraineeRequestDTO {
-    @NotBlank(message = "Username cannot be empty or null")
-    private String username;
+//    @NotBlank(message = "Username cannot be empty or null")
+//    private String username;
     @NotBlank(message = "First name cannot be empty or null")
     private String firstName;
     @NotBlank(message = "Last name cannot be empty or null")

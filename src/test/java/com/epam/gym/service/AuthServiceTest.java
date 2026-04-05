@@ -1,21 +1,23 @@
 package com.epam.gym.service;
 
 import com.epam.gym.dto.AuthDTO;
-import com.epam.gym.entity.User;
-import com.epam.gym.exceptions.UserNotFoundException;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
-import jakarta.annotation.PostConstruct;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
-import java.util.Optional;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,64 +25,105 @@ class AuthServiceTest {
 
     @Mock
     private UserService userService;
-    @Mock
-    private MeterRegistry registry;
 
-    private AuthService authService;
     @Mock
-    private Counter trainingCreatedCounter;
+    private JwtTokenService jwtTokenService;
+
+    @Mock
+    private MeterRegistry meterRegistry;
+
+    @Mock
+    private Counter counter;
+
+    @Mock
+    private AuthenticationManager authenticationManager;
+
+    @Mock
+    private LoginAttemptService loginAttemptService;
+
+    @InjectMocks
+    private AuthService authService;
+
 
     @BeforeEach
     void setup() {
-        when(registry.counter(anyString()))
-                .thenReturn(trainingCreatedCounter);
+        when(meterRegistry.counter("user.login.count"))
+                .thenReturn(counter);
 
-        authService = new AuthService(userService, registry);
-    }
-
-
-    @Test
-    void login_shouldPass_whenUserExists() {
-        // given
-        String username = "john";
-        String password = "1234";
-
-        AuthDTO dto = new AuthDTO();
-        dto.setUsername(username);
-        dto.setPassword(password);
-
-        User mockUser = new User();
-        mockUser.setUsername(username);
-
-        when(userService.getUser(username))
-                .thenReturn(Optional.of(mockUser));
-
-        // when + then (no exception expected)
-        assertDoesNotThrow(() -> authService.login(dto));
-
-        verify(userService, times(1))
-                .getUser(username);
+        authService = new AuthService(
+                userService,
+                jwtTokenService,
+                meterRegistry,
+                authenticationManager,
+                loginAttemptService
+        );
     }
 
     @Test
-    void login_shouldThrowException_whenUserDoesNotExist() {
+    void login_shouldReturnToken_whenCredentialsAreValid() {
         // given
-        String username = "wrong";
-        String password = "wrong";
+        AuthDTO dto = new AuthDTO("john", "1234");
 
-        AuthDTO dto = new AuthDTO();
-        dto.setUsername(username);
-        dto.setPassword(password);
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
 
-        when(userService.isUserExists(username, password))
-                .thenReturn(Optional.empty());
-
-        // when + then
-        assertThrows(UserNotFoundException.class, () ->
-                authService.login(dto)
+        User userDetails = new User(
+                "john",
+                "1234",
+                List.of(new SimpleGrantedAuthority("ROLE_TRAINEE"))
         );
 
-        verify(userService, times(1))
-                .isUserExists(username, password);
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        when(jwtTokenService.encode(eq("john"), any()))
+                .thenReturn("mocked-jwt-token");
+
+        // when
+        String token = authService.login(dto);
+
+        // then
+        assertEquals("mocked-jwt-token", token);
+
+        verify(loginAttemptService).loginSucceeded("john");
+        verify(counter).increment();
+    }
+
+    @Test
+    void login_shouldThrowException_whenUserIsBlocked() {
+        // given
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(true);
+
+        // when + then
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> authService.login(dto));
+
+        assertEquals("User is blocked. Try again later.", ex.getMessage());
+
+        verify(authenticationManager, never()).authenticate(any());
+    }
+
+    @Test
+    void login_shouldThrowException_whenAuthenticationFails() {
+        // given
+        AuthDTO dto = new AuthDTO("john", "wrong");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        when(authenticationManager.authenticate(any()))
+                .thenThrow(new RuntimeException("Bad credentials"));
+
+        // when + then
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> authService.login(dto));
+
+        assertEquals("Invalid username or password", ex.getMessage());
+
+        verify(loginAttemptService).loginFailed("john");
     }
 }

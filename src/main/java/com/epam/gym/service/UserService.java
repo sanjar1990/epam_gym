@@ -7,6 +7,7 @@ import com.epam.gym.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,11 +19,14 @@ public class UserService {
     @Value("${password.characters}")
     private String CHARS;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Autowired()
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public String generateUsername(String firstName, String lastName) {
@@ -59,14 +63,18 @@ public class UserService {
 
     //7. Trainee password change
     public void changePassword(UserChangePasswordRequestDTO dto) {
-        User user = userRepository.findByUsernameAndPasswordAndIsActiveTrue(
-                        dto.getUsername(), dto.getOldPassword())
+        User user = userRepository.findByUsername(
+                        dto.getUsername())
                 .orElseThrow(() -> {
                     log.error("User not found {}", dto.getUsername());
                     return new RuntimeException("User not found");
 
                 });
-        user.setPassword(dto.getNewPassword());
+        if (!passwordEncoder.matches(dto.getOldPassword(), user.getPassword())) {
+            log.error("Invalid old password");
+            throw new RuntimeException("Invalid old password");
+        }
+        user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
         userRepository.save(user);
     }
 
