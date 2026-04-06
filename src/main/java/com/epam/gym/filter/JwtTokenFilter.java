@@ -16,6 +16,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+// TODO:
+//  Unused import! Please clean up all redundant code in the project
+//  https://ibb.co/3yGr1dGk
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -54,6 +57,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         final String token = authHeader.substring(7);
         try {
             JwtDTO decode = jwtTokenUtil.decode(token);
+            // TODO:
+            //  If username is null and authContext is empty, do you still want to call 'loadUserByUsername'?
             if (decode.getUsername() != null || SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(decode.getUsername());
                 UsernamePasswordAuthenticationToken authToken =

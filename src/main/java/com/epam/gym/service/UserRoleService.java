@@ -18,6 +18,10 @@ public class UserRoleService {
     }
 
 
+    // TODO:
+    //  Please double-check what happens if accidentally called twice:
+    //   create(1, ROLE_ADMIN);
+    //   create(1, ROLE_ADMIN);
     public void create(Long userId, UserRoleEnum role) {
         UserRole userRoleEntity = new UserRole();
         userRoleEntity.setRole(role);

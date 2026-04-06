@@ -16,7 +16,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.function.Function;
 
-
+// TODO:
+//  1. This file is not formatted correctly
+//  2. Token lifetime can be taken from application properties
+//  3. Commented code should be removed
 @Service
 public class JwtTokenService {
 

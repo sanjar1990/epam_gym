@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+// TODO:
+//  1. File formatting again
+//  2. Why not constructor injection?
+//  3. [Optional] 'loadUserByUsername' method can be simplified by using '.map' + '.orElseThrow'
 @Service
 @NullMarked
 public class CustomUserDetailsService implements UserDetailsService {
