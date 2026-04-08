@@ -1,6 +1,8 @@
 package com.epam.gym.service;
 
 import com.epam.gym.dto.AuthDTO;
+import com.epam.gym.dto.UserChangePasswordRequestDTO;
+import com.epam.gym.enums.UserRoleEnum;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,6 +45,7 @@ class AuthServiceTest {
 
     @InjectMocks
     private AuthService authService;
+
 
 
     @BeforeEach
@@ -126,4 +129,160 @@ class AuthServiceTest {
 
         verify(loginAttemptService).loginFailed("john");
     }
+
+    @Test
+    void login_shouldMapAuthoritiesToUserRoleEnum() {
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        User userDetails = new User(
+                "john",
+                "1234",
+                List.of(new SimpleGrantedAuthority("ROLE_TRAINER"))
+        );
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        when(jwtTokenService.encode(eq("john"), any()))
+                .thenReturn("token");
+
+        authService.login(dto);
+
+        verify(jwtTokenService).encode(eq("john"),
+                argThat(roles -> roles.contains(UserRoleEnum.ROLE_TRAINER)));
+    }
+    @Test
+    void login_shouldHandleMultipleRoles() {
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        User userDetails = new User(
+                "john",
+                "1234",
+                List.of(
+                        new SimpleGrantedAuthority("ROLE_TRAINER"),
+                        new SimpleGrantedAuthority("ROLE_TRAINEE")
+                )
+        );
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        when(jwtTokenService.encode(eq("john"), any()))
+                .thenReturn("token");
+
+        authService.login(dto);
+
+        verify(jwtTokenService).encode(eq("john"),
+                argThat(roles ->
+                        roles.size() == 2 &&
+                                roles.contains(UserRoleEnum.ROLE_TRAINER) &&
+                                roles.contains(UserRoleEnum.ROLE_TRAINEE)
+                ));
+    }
+    @Test
+    void login_shouldNotCallLoginFailed_onSuccess() {
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        User userDetails = new User(
+                "john",
+                "1234",
+                List.of(new SimpleGrantedAuthority("ROLE_TRAINEE"))
+        );
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        when(jwtTokenService.encode(any(), any()))
+                .thenReturn("token");
+
+        authService.login(dto);
+
+        verify(loginAttemptService, never()).loginFailed(any());
+    }
+
+    @Test
+    void login_shouldNotCallLoginSucceeded_onFailure() {
+        AuthDTO dto = new AuthDTO("john", "wrong");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        when(authenticationManager.authenticate(any()))
+                .thenThrow(new RuntimeException());
+
+        assertThrows(RuntimeException.class, () -> authService.login(dto));
+
+        verify(loginAttemptService, never()).loginSucceeded(any());
+    }
+    @Test
+    void login_shouldNotIncrementCounter_onFailure() {
+        AuthDTO dto = new AuthDTO("john", "wrong");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        when(authenticationManager.authenticate(any()))
+                .thenThrow(new RuntimeException());
+
+        assertThrows(RuntimeException.class, () -> authService.login(dto));
+
+        verify(counter, never()).increment();
+    }
+    @Test
+    void changePassword_shouldCallUserService() {
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
+
+        authService.changePassword(dto);
+
+        verify(userService).changePassword(dto);
+    }
+
+    @Test
+    void login_shouldHandleEmptyAuthorities() {
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        User userDetails = new User(
+                "john",
+                "1234",
+                List.of()
+        );
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        when(jwtTokenService.encode(any(), any()))
+                .thenReturn("token");
+
+        String token = authService.login(dto);
+
+        assertEquals("token", token);
+    }
+    @Test
+    void logout_shouldBlacklistToken() {
+        String token = "mocked-jwt-token";
+        authService.logout(token);
+    }
+
 }

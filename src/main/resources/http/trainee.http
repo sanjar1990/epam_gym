@@ -3,7 +3,7 @@ POST localhost:8080/api/v1/trainee/register
 Content-Type: application/json
 
 {
-  "firstName": "Trainee1",
+  "firstName": "Traineetwo",
   "lastName": "Miller",
   "dateOfBirth": "1993-01-01",
   "address": "Russia ganamgu"

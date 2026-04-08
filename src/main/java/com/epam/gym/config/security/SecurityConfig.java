@@ -82,25 +82,27 @@ public class SecurityConfig {
     //  Danger!!!
     //  Wildcard origin (*) cannot be used with credentials=true. This is enforced by 'Fetch Standard' specification
     //  and implemented in modern browsers. Without that rule any website could send authenticated requests to your BE
-    //  and read responses
+    //  and read responses  DONE
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-                "*"
-//                "http://localhost:3000",
-//                "http://127.0.0.1:3000"
+
+                "http://localhost:3000",
+                "http://127.0.0.1:3000"
         ));
 
         configuration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "OPTIONS"
         ));
 
-        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedHeaders(List.of("Authorization",
+                "Content-Type",
+                "Accept"));
 
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(false);
 
         configuration.setExposedHeaders(List.of("Authorization"));
 
@@ -109,6 +111,7 @@ public class SecurityConfig {
 
         return source;
     }
+
     @Bean
     public JwtTokenFilter jwtTokenFilter(
             UserDetailsService userDetailsService,

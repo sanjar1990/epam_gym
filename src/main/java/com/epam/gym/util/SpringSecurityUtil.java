@@ -11,15 +11,15 @@ public class SpringSecurityUtil {
 
     public static User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        CustomUserDetails customUserDetails ;
+        CustomUserDetails customUserDetails;
         if (authentication != null) {
             customUserDetails = (CustomUserDetails) authentication.getPrincipal();
-        }else {
+        } else {
             throw new SecurityException("User not found");
         }
         if (customUserDetails != null) {
             return customUserDetails.getUser();
-        }else {
+        } else {
             throw new SecurityException("User not found");
         }
 
@@ -29,8 +29,8 @@ public class SpringSecurityUtil {
         Object principal = Objects
                 .requireNonNull(
                         SecurityContextHolder
-                .getContext()
-                .getAuthentication())
+                                .getContext()
+                                .getAuthentication())
                 .getPrincipal();
         if (principal instanceof CustomUserDetails user) {
             return user.getUser().getId();

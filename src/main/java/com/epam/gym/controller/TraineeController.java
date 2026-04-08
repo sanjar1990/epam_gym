@@ -32,7 +32,6 @@ public class TraineeController {
     }
 
 
-
     //    5. Get Trainee Profile (GET method)
     @PreAuthorize("hasAnyRole('ROLE_TRAINEE')")
     @GetMapping()
@@ -59,18 +58,14 @@ public class TraineeController {
     }
 
 
-
     //    11. Update Trainee's Trainer List (PUT method)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping("/{username}/trainers")
     @Operation(summary = "Update trainee's trainer list")
-    public ResponseEntity<List<TrainerDTO>> updateTrainerList(
-            @PathVariable String username,
-            @RequestBody UpdateTrainersRequestDTO dto) {
+    public ResponseEntity<List<TrainerDTO>> updateTrainerList(@PathVariable String username,
+                                                              @RequestBody UpdateTrainersRequestDTO dto) {
 
-        return ResponseEntity.ok(
-                traineeService.updateTrainerList(username, dto)
-        );
+        return ResponseEntity.ok(traineeService.updateTrainerList(username, dto));
     }
 
     //    15. Activate/De-Activate Trainee (PATCH method)

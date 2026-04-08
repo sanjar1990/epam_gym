@@ -1,4 +1,3 @@
-
 package com.epam.gym.exceptions.handler;
 
 import com.epam.gym.exceptions.UserNotFoundException;

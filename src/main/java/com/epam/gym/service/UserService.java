@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.Random;
 
 @Slf4j
@@ -52,7 +51,6 @@ public class UserService {
 
         return sb.toString();
     }
-
 
 
     public void changeStatus(ChangeStatusRequestDTO dto) {

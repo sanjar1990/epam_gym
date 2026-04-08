@@ -1,6 +1,5 @@
 package com.epam.gym.service;
 
-import com.epam.gym.config.security.CustomUserDetailsService;
 import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.enums.UserRoleEnum;
@@ -14,7 +13,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,7 +68,7 @@ public class AuthService {
                     .toList();
 
             loginAttemptService.loginSucceeded(username);
-        userLogedInCounter.increment();
+            userLogedInCounter.increment();
             return jwtTokenService.encode(userDetails.getUsername(), roles);
 
         } catch (Exception ex) {
@@ -81,5 +79,9 @@ public class AuthService {
 
     public void changePassword(@Valid UserChangePasswordRequestDTO dto) {
         userService.changePassword(dto);
+    }
+
+    public void logout(@Valid String token) {
+        // add token to blacklist
     }
 }

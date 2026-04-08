@@ -1,6 +1,5 @@
 package com.epam.gym.filter;
 
-import com.epam.gym.config.security.CustomUserDetailsService;
 import com.epam.gym.config.security.SecurityConfig;
 import com.epam.gym.dto.JwtDTO;
 import com.epam.gym.service.JwtTokenService;
@@ -16,10 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-// TODO:
-//  Unused import! Please clean up all redundant code in the project
-//  https://ibb.co/3yGr1dGk
-import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -35,18 +30,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(@NonNull HttpServletRequest request) throws ServletException {
         AntPathMatcher pathMatcher = new AntPathMatcher();
-        return Arrays
-                .stream(SecurityConfig.AUTH_WHITELIST)
+        return Arrays.stream(SecurityConfig.AUTH_WHITELIST)
                 .anyMatch(p -> pathMatcher.match(p, request.getServletPath()));
     }
 
 
     @Override
-    protected void doFilterInternal(
-            @NonNull HttpServletRequest request,
-            @NonNull HttpServletResponse response,
-            @NonNull FilterChain filterChain)
-            throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
 
 
         final String authHeader = request.getHeader("Authorization");
@@ -58,15 +48,12 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         try {
             JwtDTO decode = jwtTokenUtil.decode(token);
             // TODO:
-            //  If username is null and authContext is empty, do you still want to call 'loadUserByUsername'?
-            if (decode.getUsername() != null || SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = userDetailsService.loadUserByUsername(decode.getUsername());
-                UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(userDetails,
-                                null, userDetails.getAuthorities());
-                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authToken);
-            }
+            //  If username is null and authContext is empty, do you still want to call 'loadUserByUsername'? DONE
+            UserDetails userDetails = userDetailsService.loadUserByUsername(decode.getUsername());
+            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(authToken);
+
             filterChain.doFilter(request, response);
         } catch (Exception e) {
             handleException(response);

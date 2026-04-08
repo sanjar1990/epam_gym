@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateTrainerRequestDTO {
-//    @NotBlank(message = "Username cannot be empty or null")
+    //    @NotBlank(message = "Username cannot be empty or null")
 //    private String username;
     @NotBlank(message = "First name cannot be empty or null")
     private String firstName;

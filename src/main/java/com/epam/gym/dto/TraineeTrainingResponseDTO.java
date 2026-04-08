@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-
 public class TraineeTrainingResponseDTO {
     private Long id;
     private String trainingName;

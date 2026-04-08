@@ -80,7 +80,7 @@ public class TrainerService {
     //12. Activate/De-activate trainer.
     public void changeStatusTrainee(ChangeStatusRequestDTO dto) {
         log.info("Changing status for user: {}", dto.getUsername());
-         userService.changeStatus(dto);
+        userService.changeStatus(dto);
     }
 
     //    17. Get trainers list that not assigned on trainee by trainee's username.

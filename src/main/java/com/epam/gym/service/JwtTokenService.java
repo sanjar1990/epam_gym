@@ -7,7 +7,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.KeyGenerator;
@@ -17,27 +16,27 @@ import java.util.*;
 import java.util.function.Function;
 
 // TODO:
-//  1. This file is not formatted correctly
-//  2. Token lifetime can be taken from application properties
-//  3. Commented code should be removed
+//  1. This file is not formatted correctly done
+//  2. Token lifetime can be taken from application properties DONE
+//  3. Commented code should be removed DONE
 @Service
 public class JwtTokenService {
+    @Value("${jwt.expiration.time}")
+    private long DEFAULT_EXPIRATION_MS; // 3 days
+    @Value("${secret.key}")
+    private String secretkey;
 
-    private  final long DEFAULT_EXPIRATION_MS = 1000L * 3600 * 24 * 3; // 3 days
-   @Value("${secret.key}")
-    private   String secretkey ;
+    public JwtTokenService() {
+        try {
+            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
+            SecretKey sk = keyGen.generateKey();
+            secretkey = Base64.getEncoder().encodeToString(sk.getEncoded());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-   public JwtTokenService() {
-       try {
-           KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
-           SecretKey sk = keyGen.generateKey();
-           secretkey = Base64.getEncoder().encodeToString(sk.getEncoded());
-       } catch (NoSuchAlgorithmException e) {
-           throw new RuntimeException(e);
-       }
-   }
-
-    public  String encode(String username, List<UserRoleEnum> roles) {
+    public String encode(String username, List<UserRoleEnum> roles) {
         List<String> roleNames = new ArrayList<>();
         for (UserRoleEnum role : roles) {
             roleNames.add(role.name());
@@ -55,8 +54,8 @@ public class JwtTokenService {
                 .signWith(getKey())
                 .compact();
     }
+
     public String extractUserName(String token) {
-        // extract the username from jwt token
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -66,13 +65,8 @@ public class JwtTokenService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-                .verifyWith(getKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        return Jwts.parser().verifyWith(getKey()).build().parseSignedClaims(token).getPayload();
     }
-
 
 
     private boolean isTokenExpired(String token) {
@@ -88,10 +82,11 @@ public class JwtTokenService {
         byte[] keyBytes = Decoders.BASE64.decode(secretkey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
     public JwtDTO decode(String token) {
         Claims claims = extractAllClaims(token);
-        String username =extractUserName(token);
-        if(isTokenExpired(token)){
+        String username = extractUserName(token);
+        if (isTokenExpired(token)) {
             throw new RuntimeException("Token is expired");
         }
         if (username == null) {
@@ -109,14 +104,4 @@ public class JwtTokenService {
 
         return new JwtDTO(username, roles);
     }
-
-
-
-//    private  Claims getClaims(String token) {
-//        return Jwts.parser()
-//                .setSigningKey(getSigningKey())
-//                .build()
-//                .parseClaimsJws(token)
-//                .getBody();
-//    }
 }

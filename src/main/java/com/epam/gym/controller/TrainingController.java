@@ -47,7 +47,7 @@ public class TrainingController {
     @Operation(summary = " 14 Add Training", description = "")
     @ResponseStatus(HttpStatus.OK)
     public void addTraining(@Valid @RequestBody CreateTrainingDTO dto) {
-       trainingService.addTraining(dto);
+        trainingService.addTraining(dto);
     }
 
 }

@@ -3,7 +3,6 @@ package com.epam.gym.controller;
 import com.epam.gym.dto.AuthDTO;
 import com.epam.gym.dto.UserChangePasswordRequestDTO;
 import com.epam.gym.service.AuthService;
-import com.epam.gym.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,14 +22,12 @@ public class AuthController {
     private final AuthService authService;
 
 
-
-
     //    3. Login (GET method)
     @PostMapping("/login")
     @Operation(summary = "User login", description = "")
     public ResponseEntity<String> login(@Valid @RequestBody AuthDTO dto) {
         log.info("Login auth: {} ", dto.getUsername());
-       return ResponseEntity.ok().body( authService.login(dto));
+        return ResponseEntity.ok().body(authService.login(dto));
     }
 
     //    4. Change Password (PUT method)
@@ -42,4 +39,10 @@ public class AuthController {
         authService.changePassword(dto);
     }
 
+    @DeleteMapping("/logout")
+    @Operation(summary = "User logout", description = "")
+    @ResponseStatus(HttpStatus.OK)
+    public void logout(@Valid String token) {
+        authService.logout(token);
+    }
 }
