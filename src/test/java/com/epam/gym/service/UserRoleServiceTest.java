@@ -24,7 +24,124 @@ class UserRoleServiceTest {
 
     @InjectMocks
     private UserRoleService userRoleService;
+    @Test
+    void merge_shouldDeleteOldRoles_notInNewList() {
+        Long userId = 1L;
 
+        UserRole oldRole = new UserRole();
+        oldRole.setUserId(userId);
+        oldRole.setRole(UserRoleEnum.ROLE_ADMIN);
+
+        when(userRoleRepository.findByUserId(userId))
+                .thenReturn(List.of(oldRole));
+
+        userRoleService.merge(userId, List.of()); // remove all
+
+        verify(userRoleRepository).delete(oldRole);
+    }
+
+    @Test
+    void merge_shouldCreateAndDeleteCorrectly() {
+        Long userId = 1L;
+
+        UserRole oldRole = new UserRole();
+        oldRole.setUserId(userId);
+        oldRole.setRole(UserRoleEnum.ROLE_ADMIN);
+
+        when(userRoleRepository.findByUserId(userId))
+                .thenReturn(List.of(oldRole));
+
+        userRoleService.merge(userId, List.of(UserRoleEnum.ROLE_TRAINEE));
+
+        verify(userRoleRepository).save(any());   // new role created
+        verify(userRoleRepository).delete(oldRole); // old role removed
+    }
+
+    @Test
+    void merge_shouldCreateAllRoles_whenNoOldRoles() {
+        Long userId = 1L;
+
+        when(userRoleRepository.findByUserId(userId))
+                .thenReturn(List.of());
+
+        userRoleService.merge(userId,
+                List.of(UserRoleEnum.ROLE_ADMIN, UserRoleEnum.ROLE_TRAINER));
+
+        verify(userRoleRepository, times(2)).save(any());
+        verify(userRoleRepository, never()).delete(any());
+    }
+
+    @Test
+    void merge_shouldDeleteAll_whenNewRolesEmpty() {
+        Long userId = 1L;
+
+        UserRole role1 = new UserRole();
+        role1.setRole(UserRoleEnum.ROLE_ADMIN);
+
+        UserRole role2 = new UserRole();
+        role2.setRole(UserRoleEnum.ROLE_TRAINEE);
+
+        when(userRoleRepository.findByUserId(userId))
+                .thenReturn(List.of(role1, role2));
+
+        userRoleService.merge(userId, List.of());
+
+        verify(userRoleRepository).delete(role1);
+        verify(userRoleRepository).delete(role2);
+    }
+
+    @Test
+    void create_shouldAllowDuplicateRoles() {
+        Long userId = 1L;
+
+        userRoleService.create(userId, UserRoleEnum.ROLE_ADMIN);
+        userRoleService.create(userId, UserRoleEnum.ROLE_ADMIN);
+
+        verify(userRoleRepository, times(2)).save(any());
+    }
+
+    @Test
+    void getByProfileId_shouldHandleNullRole() {
+        Long userId = 1L;
+
+        UserRole role = new UserRole();
+        role.setUserId(userId);
+        role.setRole(null);
+
+        when(userRoleRepository.findByUserId(userId))
+                .thenReturn(List.of(role));
+
+        List<UserRoleEnum> result =
+                userRoleService.getByProfileId(userId);
+
+        assertEquals(1, result.size());
+        assertNull(result.get(0));
+    }
+
+    @Test
+    void getByProfileId_shouldThrow_whenRepositoryReturnsNull() {
+        when(userRoleRepository.findByUserId(1L))
+                .thenReturn(null);
+
+        assertThrows(NullPointerException.class,
+                () -> userRoleService.getByProfileId(1L));
+    }
+
+    @Test
+    void merge_shouldNotCreate_whenRoleAlreadyExists() {
+        Long userId = 1L;
+
+        UserRole existing = new UserRole();
+        existing.setUserId(userId);
+        existing.setRole(UserRoleEnum.ROLE_ADMIN);
+
+        when(userRoleRepository.findByUserId(userId))
+                .thenReturn(List.of(existing));
+
+        userRoleService.merge(userId, List.of(UserRoleEnum.ROLE_ADMIN));
+
+        verify(userRoleRepository, never()).save(any());
+    }
     @Test
     void merge_shouldCallCreateForEachRole() {
         Long userId = 1L;

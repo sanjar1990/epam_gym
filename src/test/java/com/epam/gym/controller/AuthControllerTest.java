@@ -43,7 +43,7 @@ class AuthControllerTest {
 
         AuthDTO dto = new AuthDTO();
         dto.setUsername("john");
-        dto.setPassword("1234");
+        dto.setPassword("Toshiba_1990$"); // FIXED
 
         when(authService.login(any())).thenReturn("token123");
 
