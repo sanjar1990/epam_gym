@@ -3,6 +3,7 @@ package com.epam.gym.service;
 import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.User;
+import com.epam.gym.enums.UserRoleEnum;
 import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.mapper.trainer.TrainerMapperI;
 import com.epam.gym.repository.TrainerRepository;
@@ -41,7 +42,152 @@ class TrainerServiceTest {
 
     @InjectMocks
     private TrainerService trainerService;
+    @Test
+    void updateTrainer_shouldSaveOnce() {
+        User user = new User();
+        user.setUsername("john");
 
+        Trainer trainer = new Trainer();
+        trainer.setUser(user);
+
+        try (MockedStatic<SpringSecurityUtil> mocked = mockStatic(SpringSecurityUtil.class)) {
+
+            mocked.when(SpringSecurityUtil::getCurrentUser)
+                    .thenReturn(user);
+
+            when(trainerRepository.findByUserUsername("john"))
+                    .thenReturn(Optional.of(trainer));
+
+            when(trainerMapperI.toTrainerDTO(any()))
+                    .thenReturn(new TrainerDTO());
+
+            trainerService.updateTrainer(new UpdateTrainerRequestDTO());
+
+            verify(trainerRepository, times(1)).save(trainer);
+        }
+    }
+    @Test
+    void getTrainersByUsernames_shouldHandleEmptyInput() {
+        when(trainerRepository.findByUserUsernameIn(List.of()))
+                .thenReturn(List.of());
+
+        List<Trainer> result =
+                trainerService.getTrainersByUsernames(List.of());
+
+        assertTrue(result.isEmpty());
+    }
+    @Test
+    void getTrainersNotAssignedOnTrainee_shouldReturnEmptyList() {
+        when(trainerRepository.findTrainersNotAssignedToTrainee("john"))
+                .thenReturn(List.of());
+
+        List<TrainerDTO> result =
+                trainerService.getTrainersNotAssignedOnTrainee("john");
+
+        assertTrue(result.isEmpty());
+    }
+    @Test
+    void updateTrainer_shouldCallMapperUpdateMethod() {
+        User user = new User();
+        user.setUsername("john");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(user);
+
+        UpdateTrainerRequestDTO dto = new UpdateTrainerRequestDTO();
+
+        try (MockedStatic<SpringSecurityUtil> mocked = mockStatic(SpringSecurityUtil.class)) {
+
+            mocked.when(SpringSecurityUtil::getCurrentUser)
+                    .thenReturn(user);
+
+            when(trainerRepository.findByUserUsername("john"))
+                    .thenReturn(Optional.of(trainer));
+
+            when(trainerMapperI.toTrainerDTO(any()))
+                    .thenReturn(new TrainerDTO());
+
+            trainerService.updateTrainer(dto);
+
+            verify(trainerMapperI).updateTrainerFromDto(dto, trainer);
+        }
+    }
+    @Test
+    void getTrainerByUsername_shouldCallMapper() {
+        User user = new User();
+        user.setUsername("john");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(user);
+
+        try (MockedStatic<SpringSecurityUtil> mocked = mockStatic(SpringSecurityUtil.class)) {
+
+            mocked.when(SpringSecurityUtil::getCurrentUser)
+                    .thenReturn(user);
+
+            when(trainerRepository.findByUserUsername("john"))
+                    .thenReturn(Optional.of(trainer));
+
+            trainerService.getTrainerByUsername();
+
+            verify(trainerMapperI).toTrainerDTO(trainer);
+        }
+    }
+    @Test
+    void createTrainer_shouldSetUserFieldsCorrectly() {
+        CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
+        dto.setFirstName("John");
+        dto.setLastName("Smith");
+
+        when(userService.generateUsername(any(), any()))
+                .thenReturn("john");
+
+        when(userService.generatePassword())
+                .thenReturn("pass");
+
+        when(passwordEncoder.encode("pass"))
+                .thenReturn("encoded");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(new User());
+
+        when(trainerMapperI.toEntity(any()))
+                .thenReturn(trainer);
+
+        trainerService.createTrainer(dto);
+
+        assertEquals("john", trainer.getUser().getUsername());
+        assertEquals("encoded", trainer.getUser().getPassword());
+        assertTrue(trainer.getUser().getIsActive());
+    }
+    @Test
+    void createTrainer_shouldAssignCorrectRoles() {
+        CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
+        dto.setFirstName("John");
+        dto.setLastName("Smith");
+
+        when(userService.generateUsername(any(), any()))
+                .thenReturn("john");
+
+        when(userService.generatePassword())
+                .thenReturn("pass");
+
+        when(passwordEncoder.encode(any()))
+                .thenReturn("encoded");
+
+        Trainer trainer = new Trainer();
+        trainer.setUser(new User());
+
+        when(trainerMapperI.toEntity(any()))
+                .thenReturn(trainer);
+
+        trainerService.createTrainer(dto);
+
+        verify(userRoleService).merge(
+                any(),
+                eq(List.of(UserRoleEnum.ROLE_TRAINER, UserRoleEnum.ROLE_ADMIN))
+        );
+    }
     @Test
     void createTrainer_shouldCreateTrainer_andReturnAuthDTO() {
         CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();

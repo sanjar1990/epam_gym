@@ -37,6 +37,166 @@ class TrainingServiceTest {
     @InjectMocks
     private TrainingService trainingService;
 
+
+    @Test
+    void addTraining_shouldThrowException_whenTrainerTrainingTypeIsNull() {
+
+        CreateTrainingDTO dto = new CreateTrainingDTO();
+        dto.setTraineeUsername("john");
+        dto.setTrainerUsername("mike");
+        dto.setTrainingTypeId(1L);
+
+        Trainee trainee = new Trainee();
+        trainee.setTrainings(new ArrayList<>());
+        trainee.setTrainers(new HashSet<>());
+
+        Trainer trainer = new Trainer(); // trainingType = null
+
+        when(traineeService.getTrainee("john")).thenReturn(trainee);
+        when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
+
+        assertThrows(NullPointerException.class,
+                () -> trainingService.addTraining(dto));
+    }
+    @Test
+    void addTraining_shouldThrowException_whenMapperReturnsNull() {
+
+        CreateTrainingDTO dto = new CreateTrainingDTO();
+        dto.setTraineeUsername("john");
+        dto.setTrainerUsername("mike");
+        dto.setTrainingTypeId(5L);
+
+        Trainee trainee = new Trainee();
+        trainee.setTrainings(new ArrayList<>());
+        trainee.setTrainers(new HashSet<>());
+
+        TrainingType type = new TrainingType();
+        type.setId(5L);
+
+        Trainer trainer = new Trainer();
+        trainer.setTrainingType(type);
+        trainer.setTrainees(new HashSet<>());
+
+        when(traineeService.getTrainee("john")).thenReturn(trainee);
+        when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
+        when(trainingMapperI.toEntity(dto)).thenReturn(null);
+
+        assertThrows(NullPointerException.class,
+                () -> trainingService.addTraining(dto));
+    }
+
+    @Test
+    void addTraining_shouldSetBidirectionalRelationshipsCorrectly() {
+
+        CreateTrainingDTO dto = new CreateTrainingDTO();
+        dto.setTraineeUsername("john");
+        dto.setTrainerUsername("mike");
+        dto.setTrainingTypeId(5L);
+
+        Trainee trainee = new Trainee();
+        trainee.setTrainings(new ArrayList<>());
+        trainee.setTrainers(new HashSet<>());
+
+        TrainingType type = new TrainingType();
+        type.setId(5L);
+
+        Trainer trainer = new Trainer();
+        trainer.setTrainingType(type);
+        trainer.setTrainees(new HashSet<>());
+
+        Training training = new Training();
+
+        when(traineeService.getTrainee("john")).thenReturn(trainee);
+        when(trainerService.getTrainerEntityByUsername("mike")).thenReturn(trainer);
+        when(trainingMapperI.toEntity(dto)).thenReturn(training);
+
+        trainingService.addTraining(dto);
+
+        assertEquals(trainee, training.getTrainee());
+        assertEquals(trainer, training.getTrainer());
+    }
+
+    @Test
+    void getTrainingsByTraineeUsernameCriteria_shouldReturnEmptyList() {
+
+        GetTraineeTrainingsCriteriaFilterDTO dto =
+                new GetTraineeTrainingsCriteriaFilterDTO();
+
+        when(trainingRepository.findAll(any(Specification.class)))
+                .thenReturn(List.of());
+
+        List<TraineeTrainingResponseDTO> result =
+                trainingService.getTrainingsByTraineeUsernameCriteria(dto);
+
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    void getTrainingsByTrainerUsernameCriteria_shouldReturnEmptyList() {
+
+        GetTrainerTrainingsCriteriaFilterDTO dto =
+                new GetTrainerTrainingsCriteriaFilterDTO();
+
+        when(trainingRepository.findAll(any(Specification.class)))
+                .thenReturn(List.of());
+
+        List<TrainerTrainingResponseDTO> result =
+                trainingService.getTrainingsByTrainerUsernameCriteria(dto);
+
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    void getTrainingsByTrainerUsernameCriteria_shouldCallMapper() {
+
+        GetTrainerTrainingsCriteriaFilterDTO dto =
+                new GetTrainerTrainingsCriteriaFilterDTO();
+
+        Training training = buildFullTraining();
+
+        when(trainingRepository.findAll(any(Specification.class)))
+                .thenReturn(List.of(training));
+
+        when(trainingMapperI.toTrainerTrainingResponseDTO(training))
+                .thenReturn(new TrainerTrainingResponseDTO());
+
+        trainingService.getTrainingsByTrainerUsernameCriteria(dto);
+
+        verify(trainingMapperI).toTrainerTrainingResponseDTO(training);
+    }
+
+    @Test
+    void getTrainingsCount_shouldCallRepository() {
+
+        when(trainingRepository.count()).thenReturn(10L);
+
+        trainingService.getTrainingsCount();
+
+        verify(trainingRepository).count();
+    }
+
+    @Test
+    void getTrainingsByTraineeUsernameCriteria_shouldHandleMultipleTrainings() {
+
+        GetTraineeTrainingsCriteriaFilterDTO dto =
+                new GetTraineeTrainingsCriteriaFilterDTO();
+
+        Training t1 = buildFullTraining();
+        Training t2 = buildFullTraining();
+
+        when(trainingRepository.findAll(any(Specification.class)))
+                .thenReturn(List.of(t1, t2));
+
+        when(trainingMapperI.toTraineeTrainingResponseDTO(any()))
+                .thenReturn(new TraineeTrainingResponseDTO());
+
+        List<TraineeTrainingResponseDTO> result =
+                trainingService.getTrainingsByTraineeUsernameCriteria(dto);
+
+        assertEquals(2, result.size());
+    }
+
+
     @Test
     void addTraining_shouldSaveTraining_whenValid() {
 

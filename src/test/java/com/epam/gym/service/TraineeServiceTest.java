@@ -3,7 +3,6 @@ package com.epam.gym.service;
 import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainee;
 import com.epam.gym.entity.Trainer;
-import com.epam.gym.entity.TrainingType;
 import com.epam.gym.entity.User;
 import com.epam.gym.enums.UserRoleEnum;
 import com.epam.gym.exceptions.UserNotFoundException;
@@ -18,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +51,123 @@ class TraineeServiceTest {
     @InjectMocks
     private TraineeService traineeService;
 
+    @Test
+    void changePassword_shouldDelegateToUserService() {
+        UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
 
+        traineeService.changePassword(dto);
+
+        verify(userService).changePassword(dto);
+    }
+    @Test
+    void getTrainee_shouldReturnTrainee_whenExists() {
+        Trainee trainee = new Trainee();
+
+        when(traineeRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainee));
+
+        Trainee result = traineeService.getTrainee("john");
+
+        assertNotNull(result);
+    }
+    @Test
+    void deleteTrainee_shouldRemoveTraineeFromTrainers() {
+        Trainee trainee = new Trainee();
+
+        Trainer trainer = new Trainer();
+        trainer.setTrainees(new HashSet<>());
+
+        trainee.setTrainers(new HashSet<>(List.of(trainer)));
+        trainer.getTrainees().add(trainee);
+
+        when(traineeRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainee));
+
+        traineeService.deleteTrainee("john");
+
+        assertFalse(trainer.getTrainees().contains(trainee));
+        assertTrue(trainee.getTrainers().isEmpty());
+
+        verify(traineeRepository).delete(trainee);
+    }
+    @Test
+    void updateTrainerList_shouldRemoveOldTrainers_andAddNewOnes() {
+        Trainee trainee = new Trainee();
+
+        Trainer oldTrainer = new Trainer();
+        oldTrainer.setTrainees(new HashSet<>());
+
+        trainee.setTrainers(new HashSet<>(List.of(oldTrainer)));
+
+        Trainer newTrainer = new Trainer();
+        newTrainer.setTrainees(new HashSet<>());
+
+        UpdateTrainersRequestDTO dto = new UpdateTrainersRequestDTO();
+        dto.setTrainerUsernames(List.of("newTrainer"));
+
+        when(traineeRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainee));
+
+        when(trainerService.getTrainersByUsernames(any()))
+                .thenReturn(List.of(newTrainer));
+
+        when(trainerMapperI.toTrainerDTO(any()))
+                .thenReturn(new TrainerDTO());
+
+        List<TrainerDTO> result =
+                traineeService.updateTrainerList("john", dto);
+
+        assertEquals(1, result.size());
+        assertTrue(trainee.getTrainers().contains(newTrainer));
+
+        verify(traineeRepository).save(trainee);
+    }
+    @Test
+    void updateTrainerList_shouldHandleEmptyTrainerList() {
+        Trainee trainee = new Trainee();
+        trainee.setTrainers(new HashSet<>());
+
+        UpdateTrainersRequestDTO dto = new UpdateTrainersRequestDTO();
+        dto.setTrainerUsernames(List.of());
+
+        when(traineeRepository.findByUserUsername("john"))
+                .thenReturn(Optional.of(trainee));
+
+        when(trainerService.getTrainersByUsernames(any()))
+                .thenReturn(List.of());
+
+        List<TrainerDTO> result =
+                traineeService.updateTrainerList("john", dto);
+
+        assertTrue(result.isEmpty());
+    }
+    @Test
+    void createTrainee_shouldSetUserFieldsCorrectly() {
+        CreateTraineeRequestDTO dto = new CreateTraineeRequestDTO();
+        dto.setFirstName("John");
+        dto.setLastName("Doe");
+
+        when(userService.generateUsername(any(), any()))
+                .thenReturn("john");
+
+        when(userService.generatePassword())
+                .thenReturn("pass");
+
+        when(passwordEncoder.encode("pass"))
+                .thenReturn("encoded");
+
+        Trainee trainee = new Trainee();
+        trainee.setUser(new User());
+
+        when(traineeMapperI.toTrainee(any()))
+                .thenReturn(trainee);
+
+        traineeService.createTrainee(dto);
+
+        assertEquals("john", trainee.getUser().getUsername());
+        assertEquals("encoded", trainee.getUser().getPassword());
+        assertTrue(trainee.getUser().getIsActive());
+    }
     @Test
     void createTrainee_shouldSaveTrainee_andReturnAuthDTO() {
 
