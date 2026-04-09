@@ -9,7 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class ExternalApiHealthIndicatorTest {
@@ -39,7 +40,6 @@ class ExternalApiHealthIndicatorTest {
         assertEquals("Available", health.getDetails().get("externalApi"));
     }
 
-    // ⚠️ NON-2xx RESPONSE
     @Test
     void health_shouldReturnDown_whenApiReturnsErrorStatus() {
         ResponseEntity<String> response =

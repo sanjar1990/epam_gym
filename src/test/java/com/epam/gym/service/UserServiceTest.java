@@ -35,7 +35,6 @@ class UserServiceTest {
         ReflectionTestUtils.setField(userService, "CHARS", "ABC123");
     }
 
-    // ==================== generateUsername ====================
 
     @Test
     void generateUsername_shouldReturnSimple_whenNoDuplicates() {
@@ -55,7 +54,6 @@ class UserServiceTest {
         assertEquals("john.doe2", result);
     }
 
-    // ==================== generatePassword ====================
 
     @Test
     void generatePassword_shouldGenerateValidPassword() {
@@ -76,7 +74,6 @@ class UserServiceTest {
         assertThrows(Exception.class, () -> userService.generatePassword());
     }
 
-    // ==================== changeStatus ====================
 
     @Test
     void changeStatus_shouldUpdateAndSaveUser() {
@@ -106,7 +103,6 @@ class UserServiceTest {
         assertThrows(RuntimeException.class, () -> userService.changeStatus(dto));
     }
 
-    // ==================== changePassword ====================
 
     @Test
     void changePassword_shouldUpdatePassword_whenValid() {
@@ -157,7 +153,6 @@ class UserServiceTest {
         verify(userRepository, never()).save(any());
     }
 
-    // ==================== getUser ====================
 
     @Test
     void getUser_shouldReturnUser_whenExists() {

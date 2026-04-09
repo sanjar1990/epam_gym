@@ -24,6 +24,7 @@ class UserRoleServiceTest {
 
     @InjectMocks
     private UserRoleService userRoleService;
+
     @Test
     void merge_shouldDeleteOldRoles_notInNewList() {
         Long userId = 1L;
@@ -35,7 +36,7 @@ class UserRoleServiceTest {
         when(userRoleRepository.findByUserId(userId))
                 .thenReturn(List.of(oldRole));
 
-        userRoleService.merge(userId, List.of()); // remove all
+        userRoleService.merge(userId, List.of());
 
         verify(userRoleRepository).delete(oldRole);
     }
@@ -53,8 +54,8 @@ class UserRoleServiceTest {
 
         userRoleService.merge(userId, List.of(UserRoleEnum.ROLE_TRAINEE));
 
-        verify(userRoleRepository).save(any());   // new role created
-        verify(userRoleRepository).delete(oldRole); // old role removed
+        verify(userRoleRepository).save(any());
+        verify(userRoleRepository).delete(oldRole);
     }
 
     @Test
@@ -142,6 +143,7 @@ class UserRoleServiceTest {
 
         verify(userRoleRepository, never()).save(any());
     }
+
     @Test
     void merge_shouldCallCreateForEachRole() {
         Long userId = 1L;

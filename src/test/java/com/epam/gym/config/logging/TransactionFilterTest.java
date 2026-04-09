@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @ExtendWith(MockitoExtension.class)
 class TransactionFilterTest {
 
-    private TransactionFilter filter = new TransactionFilter();
+    private final TransactionFilter filter = new TransactionFilter();
 
     @Test
     void shouldAddTransactionIdToMDC() throws Exception {
@@ -25,12 +25,12 @@ class TransactionFilterTest {
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         FilterChain chain = (req, res) -> {
-            // ✅ ASSERT INSIDE CHAIN
             assertNotNull(MDC.get("transactionId"));
         };
 
         filter.doFilter(request, response, chain);
     }
+
     @Test
     void shouldRemoveTransactionIdAfterRequest() throws Exception {
         MockHttpServletRequest request = new MockHttpServletRequest();

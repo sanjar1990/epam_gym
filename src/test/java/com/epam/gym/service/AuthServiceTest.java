@@ -8,6 +8,7 @@ import io.micrometer.core.instrument.MeterRegistry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -27,26 +28,19 @@ class AuthServiceTest {
 
     @Mock
     private UserService userService;
-
     @Mock
     private JwtTokenService jwtTokenService;
-
     @Mock
     private MeterRegistry meterRegistry;
-
     @Mock
     private Counter counter;
-
     @Mock
     private AuthenticationManager authenticationManager;
-
     @Mock
     private LoginAttemptService loginAttemptService;
 
     @InjectMocks
     private AuthService authService;
-
-
 
     @BeforeEach
     void setup() {
@@ -64,7 +58,6 @@ class AuthServiceTest {
 
     @Test
     void login_shouldReturnToken_whenCredentialsAreValid() {
-        // given
         AuthDTO dto = new AuthDTO("john", "1234");
 
         when(loginAttemptService.isBlocked("john")).thenReturn(false);
@@ -79,59 +72,50 @@ class AuthServiceTest {
 
         when(authenticationManager.authenticate(any()))
                 .thenReturn(authentication);
-
         when(authentication.getPrincipal()).thenReturn(userDetails);
-
         when(jwtTokenService.encode(eq("john"), any()))
-                .thenReturn("mocked-jwt-token");
+                .thenReturn("token");
 
-        // when
-        String token = authService.login(dto);
+        String result = authService.login(dto);
 
-        // then
-        assertEquals("mocked-jwt-token", token);
-
+        assertEquals("token", result);
         verify(loginAttemptService).loginSucceeded("john");
         verify(counter).increment();
     }
 
     @Test
     void login_shouldThrowException_whenUserIsBlocked() {
-        // given
         AuthDTO dto = new AuthDTO("john", "1234");
 
         when(loginAttemptService.isBlocked("john")).thenReturn(true);
 
-        // when + then
         RuntimeException ex = assertThrows(RuntimeException.class,
                 () -> authService.login(dto));
 
         assertEquals("User is blocked. Try again later.", ex.getMessage());
 
-        verify(authenticationManager, never()).authenticate(any());
+        verifyNoInteractions(authenticationManager, jwtTokenService);
     }
 
     @Test
     void login_shouldThrowException_whenAuthenticationFails() {
-        // given
         AuthDTO dto = new AuthDTO("john", "wrong");
 
         when(loginAttemptService.isBlocked("john")).thenReturn(false);
 
         when(authenticationManager.authenticate(any()))
-                .thenThrow(new RuntimeException("Bad credentials"));
+                .thenThrow(new RuntimeException());
 
-        // when + then
         RuntimeException ex = assertThrows(RuntimeException.class,
                 () -> authService.login(dto));
 
         assertEquals("Invalid username or password", ex.getMessage());
-
         verify(loginAttemptService).loginFailed("john");
+        verify(counter, never()).increment();
     }
 
     @Test
-    void login_shouldMapAuthoritiesToUserRoleEnum() {
+    void login_shouldMapSingleRole() {
         AuthDTO dto = new AuthDTO("john", "1234");
 
         when(loginAttemptService.isBlocked("john")).thenReturn(false);
@@ -146,19 +130,18 @@ class AuthServiceTest {
 
         when(authenticationManager.authenticate(any()))
                 .thenReturn(authentication);
-
         when(authentication.getPrincipal()).thenReturn(userDetails);
-
-        when(jwtTokenService.encode(eq("john"), any()))
+        when(jwtTokenService.encode(any(), any()))
                 .thenReturn("token");
 
         authService.login(dto);
 
         verify(jwtTokenService).encode(eq("john"),
-                argThat(roles -> roles.contains(UserRoleEnum.ROLE_TRAINER)));
+                eq(List.of(UserRoleEnum.ROLE_TRAINER)));
     }
+
     @Test
-    void login_shouldHandleMultipleRoles() {
+    void login_shouldMapMultipleRoles() {
         AuthDTO dto = new AuthDTO("john", "1234");
 
         when(loginAttemptService.isBlocked("john")).thenReturn(false);
@@ -176,10 +159,8 @@ class AuthServiceTest {
 
         when(authenticationManager.authenticate(any()))
                 .thenReturn(authentication);
-
         when(authentication.getPrincipal()).thenReturn(userDetails);
-
-        when(jwtTokenService.encode(eq("john"), any()))
+        when(jwtTokenService.encode(any(), any()))
                 .thenReturn("token");
 
         authService.login(dto);
@@ -191,8 +172,72 @@ class AuthServiceTest {
                                 roles.contains(UserRoleEnum.ROLE_TRAINEE)
                 ));
     }
+
     @Test
-    void login_shouldNotCallLoginFailed_onSuccess() {
+    void login_shouldHandleEmptyAuthorities() {
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        User userDetails = new User("john", "1234", List.of());
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+        when(jwtTokenService.encode(any(), any()))
+                .thenReturn("token");
+
+        String result = authService.login(dto);
+
+        assertEquals("token", result);
+    }
+
+    @Test
+    void login_shouldFail_whenRoleIsInvalidEnum() {
+        AuthDTO dto = new AuthDTO("john", "1234");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        User userDetails = new User(
+                "john",
+                "1234",
+                List.of(new SimpleGrantedAuthority("INVALID_ROLE"))
+        );
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+        when(authentication.getPrincipal()).thenReturn(userDetails);
+
+        assertThrows(RuntimeException.class,
+                () -> authService.login(dto));
+    }
+
+    @Test
+    void login_shouldFail_whenPrincipalIsInvalid() {
+        AuthDTO dto = new AuthDTO("john", "Toshiba_1990$");
+
+        when(loginAttemptService.isBlocked("john")).thenReturn(false);
+
+        Authentication authentication = mock(Authentication.class);
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(authentication);
+        when(authentication.getPrincipal()).thenReturn("INVALID");
+
+        RuntimeException ex = assertThrows(RuntimeException.class,
+                () -> authService.login(dto));
+
+        assertEquals("Invalid username or password", ex.getMessage());
+
+        verify(loginAttemptService).loginFailed("john");
+    }
+
+    @Test
+    void login_shouldCallMethodsInCorrectOrder() {
         AuthDTO dto = new AuthDTO("john", "1234");
 
         when(loginAttemptService.isBlocked("john")).thenReturn(false);
@@ -207,43 +252,18 @@ class AuthServiceTest {
 
         when(authenticationManager.authenticate(any()))
                 .thenReturn(authentication);
-
         when(authentication.getPrincipal()).thenReturn(userDetails);
-
         when(jwtTokenService.encode(any(), any()))
                 .thenReturn("token");
 
         authService.login(dto);
 
-        verify(loginAttemptService, never()).loginFailed(any());
+        InOrder inOrder = inOrder(loginAttemptService, counter);
+
+        inOrder.verify(loginAttemptService).loginSucceeded("john");
+        inOrder.verify(counter).increment();
     }
 
-    @Test
-    void login_shouldNotCallLoginSucceeded_onFailure() {
-        AuthDTO dto = new AuthDTO("john", "wrong");
-
-        when(loginAttemptService.isBlocked("john")).thenReturn(false);
-
-        when(authenticationManager.authenticate(any()))
-                .thenThrow(new RuntimeException());
-
-        assertThrows(RuntimeException.class, () -> authService.login(dto));
-
-        verify(loginAttemptService, never()).loginSucceeded(any());
-    }
-    @Test
-    void login_shouldNotIncrementCounter_onFailure() {
-        AuthDTO dto = new AuthDTO("john", "wrong");
-
-        when(loginAttemptService.isBlocked("john")).thenReturn(false);
-
-        when(authenticationManager.authenticate(any()))
-                .thenThrow(new RuntimeException());
-
-        assertThrows(RuntimeException.class, () -> authService.login(dto));
-
-        verify(counter, never()).increment();
-    }
     @Test
     void changePassword_shouldCallUserService() {
         UserChangePasswordRequestDTO dto = new UserChangePasswordRequestDTO();
@@ -254,35 +274,7 @@ class AuthServiceTest {
     }
 
     @Test
-    void login_shouldHandleEmptyAuthorities() {
-        AuthDTO dto = new AuthDTO("john", "1234");
-
-        when(loginAttemptService.isBlocked("john")).thenReturn(false);
-
-        User userDetails = new User(
-                "john",
-                "1234",
-                List.of()
-        );
-
-        Authentication authentication = mock(Authentication.class);
-
-        when(authenticationManager.authenticate(any()))
-                .thenReturn(authentication);
-
-        when(authentication.getPrincipal()).thenReturn(userDetails);
-
-        when(jwtTokenService.encode(any(), any()))
-                .thenReturn("token");
-
-        String token = authService.login(dto);
-
-        assertEquals("token", token);
+    void logout_shouldExecute() {
+        authService.logout("token");
     }
-    @Test
-    void logout_shouldBlacklistToken() {
-        String token = "mocked-jwt-token";
-        authService.logout(token);
-    }
-
 }

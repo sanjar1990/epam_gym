@@ -46,6 +46,7 @@ class TrainingTypeServiceTest {
         verify(trainingTypeMapperI).toDTO(type1);
         verify(trainingTypeMapperI).toDTO(type2);
     }
+
     @Test
     void getAllTrainingTypes_shouldNotCallMapper_whenEmptyList() {
 
@@ -56,6 +57,7 @@ class TrainingTypeServiceTest {
 
         verify(trainingTypeMapperI, never()).toDTO(any());
     }
+
     @Test
     void getAllTrainingTypes_shouldHandleNullFields() {
 

@@ -9,7 +9,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(properties = {
         "spring.datasource.url=jdbc:h2:mem:testdb",
@@ -18,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
         "spring.datasource.password=",
         "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
 
-        // disable migrations if you use Flyway/Liquibase
         "spring.flyway.enabled=false",
         "spring.liquibase.enabled=false"
 })

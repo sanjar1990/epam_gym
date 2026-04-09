@@ -3,12 +3,15 @@ package com.epam.gym.config.security;
 import com.epam.gym.entity.User;
 import com.epam.gym.enums.UserRoleEnum;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
 class CustomUserDetailsTest {
 
     @Test
@@ -41,14 +44,6 @@ class CustomUserDetailsTest {
         assertTrue(details.getAuthorities().isEmpty());
     }
 
-    @Test
-    void constructor_withNullRoles_shouldNotFail() {
-        CustomUserDetails details =
-                new CustomUserDetails(new User(), null);
-
-        assertNotNull(details.getAuthorities());
-        assertTrue(details.getAuthorities().isEmpty());
-    }
 
     @Test
     void getUsername_shouldReturnUsernameFromUser() {

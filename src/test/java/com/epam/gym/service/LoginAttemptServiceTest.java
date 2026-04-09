@@ -3,7 +3,8 @@ package com.epam.gym.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LoginAttemptServiceTest {
 
@@ -30,7 +31,7 @@ class LoginAttemptServiceTest {
 
         service.loginFailed(user);
         service.loginFailed(user);
-        service.loginFailed(user); // 3rd attempt
+        service.loginFailed(user);
 
         assertTrue(service.isBlocked(user));
     }
@@ -59,25 +60,19 @@ class LoginAttemptServiceTest {
     void isBlocked_shouldUnblockUser_afterBlockTimeExpires() throws InterruptedException, NoSuchFieldException, IllegalAccessException {
         String user = "john";
 
-        // trigger block
         service.loginFailed(user);
         service.loginFailed(user);
         service.loginFailed(user);
 
         assertTrue(service.isBlocked(user));
 
-        // simulate time passing (minimal sleep, still acceptable here)
         Thread.sleep(10);
 
-        // 🔥 hack: we cannot change BLOCK_TIME_MS, so simulate expiration manually
-        // call isBlocked multiple times until it resets (not ideal but works)
-
-        // force expiration by manipulating internal state via reflection
         var blockTimeField = service.getClass().getDeclaredField("blockTimeCache");
         blockTimeField.setAccessible(true);
 
         var map = (java.util.Map<String, Long>) blockTimeField.get(service);
-        map.put(user, System.currentTimeMillis() - (6 * 60 * 1000)); // older than 5 min
+        map.put(user, System.currentTimeMillis() - (6 * 60 * 1000));
 
         assertFalse(service.isBlocked(user));
     }
@@ -89,9 +84,9 @@ class LoginAttemptServiceTest {
 
         service.loginFailed(user1);
         service.loginFailed(user1);
-        service.loginFailed(user1); // blocked
+        service.loginFailed(user1);
 
-        service.loginFailed(user2); // only 1 attempt
+        service.loginFailed(user2);
 
         assertTrue(service.isBlocked(user1));
         assertFalse(service.isBlocked(user2));
@@ -102,7 +97,6 @@ class LoginAttemptServiceTest {
         String user1 = "john";
         String user2 = "alice";
 
-        // block both
         for (int i = 0; i < 3; i++) {
             service.loginFailed(user1);
             service.loginFailed(user2);

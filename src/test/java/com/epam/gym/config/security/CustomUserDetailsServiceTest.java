@@ -2,7 +2,6 @@ package com.epam.gym.config.security;
 
 import com.epam.gym.entity.User;
 import com.epam.gym.enums.UserRoleEnum;
-import com.epam.gym.exceptions.UserNotFoundException;
 import com.epam.gym.repository.UserRepository;
 import com.epam.gym.service.UserRoleService;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +32,6 @@ class CustomUserDetailsServiceTest {
 
     @Test
     void loadUserByUsername_shouldReturnUserDetails_whenUserExists() {
-        // given
         User user = new User();
         user.setId(1L);
         user.setUsername("john");
@@ -45,10 +44,8 @@ class CustomUserDetailsServiceTest {
         when(userRoleService.getByProfileId(1L))
                 .thenReturn(List.of(UserRoleEnum.ROLE_ADMIN));
 
-        // when
         UserDetails result = service.loadUserByUsername("john");
 
-        // then
         assertNotNull(result);
         assertEquals("john", result.getUsername());
         assertEquals("1234", result.getPassword());
@@ -60,12 +57,10 @@ class CustomUserDetailsServiceTest {
 
     @Test
     void loadUserByUsername_shouldThrowException_whenUserNotFound() {
-        // given
         when(userRepository.findByUsername("john"))
                 .thenReturn(Optional.empty());
 
-        // when + then
-        assertThrows(UserNotFoundException.class, () ->
+        assertThrows(UsernameNotFoundException.class, () ->
                 service.loadUserByUsername("john")
         );
 

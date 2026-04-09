@@ -42,6 +42,7 @@ class TrainerServiceTest {
 
     @InjectMocks
     private TrainerService trainerService;
+
     @Test
     void updateTrainer_shouldSaveOnce() {
         User user = new User();
@@ -66,6 +67,7 @@ class TrainerServiceTest {
             verify(trainerRepository, times(1)).save(trainer);
         }
     }
+
     @Test
     void getTrainersByUsernames_shouldHandleEmptyInput() {
         when(trainerRepository.findByUserUsernameIn(List.of()))
@@ -76,6 +78,7 @@ class TrainerServiceTest {
 
         assertTrue(result.isEmpty());
     }
+
     @Test
     void getTrainersNotAssignedOnTrainee_shouldReturnEmptyList() {
         when(trainerRepository.findTrainersNotAssignedToTrainee("john"))
@@ -86,6 +89,7 @@ class TrainerServiceTest {
 
         assertTrue(result.isEmpty());
     }
+
     @Test
     void updateTrainer_shouldCallMapperUpdateMethod() {
         User user = new User();
@@ -112,6 +116,7 @@ class TrainerServiceTest {
             verify(trainerMapperI).updateTrainerFromDto(dto, trainer);
         }
     }
+
     @Test
     void getTrainerByUsername_shouldCallMapper() {
         User user = new User();
@@ -133,6 +138,7 @@ class TrainerServiceTest {
             verify(trainerMapperI).toTrainerDTO(trainer);
         }
     }
+
     @Test
     void createTrainer_shouldSetUserFieldsCorrectly() {
         CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
@@ -160,6 +166,7 @@ class TrainerServiceTest {
         assertEquals("encoded", trainer.getUser().getPassword());
         assertTrue(trainer.getUser().getIsActive());
     }
+
     @Test
     void createTrainer_shouldAssignCorrectRoles() {
         CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
@@ -188,6 +195,7 @@ class TrainerServiceTest {
                 eq(List.of(UserRoleEnum.ROLE_TRAINER, UserRoleEnum.ROLE_ADMIN))
         );
     }
+
     @Test
     void createTrainer_shouldCreateTrainer_andReturnAuthDTO() {
         CreateTrainerRequestDTO dto = new CreateTrainerRequestDTO();
@@ -337,7 +345,6 @@ class TrainerServiceTest {
                 () -> trainerService.getTrainerEntityByUsername("john"));
     }
 
-    // ================= GET BY USERNAMES =================
     @Test
     void getTrainersByUsernames_shouldReturnList() {
         List<String> usernames = List.of("john");

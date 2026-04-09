@@ -59,6 +59,7 @@ class TraineeServiceTest {
 
         verify(userService).changePassword(dto);
     }
+
     @Test
     void getTrainee_shouldReturnTrainee_whenExists() {
         Trainee trainee = new Trainee();
@@ -70,6 +71,7 @@ class TraineeServiceTest {
 
         assertNotNull(result);
     }
+
     @Test
     void deleteTrainee_shouldRemoveTraineeFromTrainers() {
         Trainee trainee = new Trainee();
@@ -90,6 +92,7 @@ class TraineeServiceTest {
 
         verify(traineeRepository).delete(trainee);
     }
+
     @Test
     void updateTrainerList_shouldRemoveOldTrainers_andAddNewOnes() {
         Trainee trainee = new Trainee();
@@ -122,6 +125,7 @@ class TraineeServiceTest {
 
         verify(traineeRepository).save(trainee);
     }
+
     @Test
     void updateTrainerList_shouldHandleEmptyTrainerList() {
         Trainee trainee = new Trainee();
@@ -141,6 +145,7 @@ class TraineeServiceTest {
 
         assertTrue(result.isEmpty());
     }
+
     @Test
     void createTrainee_shouldSetUserFieldsCorrectly() {
         CreateTraineeRequestDTO dto = new CreateTraineeRequestDTO();
@@ -168,6 +173,7 @@ class TraineeServiceTest {
         assertEquals("encoded", trainee.getUser().getPassword());
         assertTrue(trainee.getUser().getIsActive());
     }
+
     @Test
     void createTrainee_shouldSaveTrainee_andReturnAuthDTO() {
 
@@ -274,7 +280,6 @@ class TraineeServiceTest {
             verify(traineeRepository).save(trainee);
         }
     }
-
 
 
     @Test

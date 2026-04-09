@@ -47,8 +47,8 @@ class TraineeControllerTest {
         when(traineeService.createTrainee(any())).thenReturn(response);
 
         mockMvc.perform(post("/api/v1/trainee/register")
-                        .contentType(MediaType.APPLICATION_JSON) // ✅ REQUIRED
-                        .content(objectMapper.writeValueAsString(dto))) // ✅ REQUIRED
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username").value("john.doe"));
 
@@ -66,14 +66,14 @@ class TraineeControllerTest {
 
         when(traineeService.getTraineeByUsername()).thenReturn(dto);
 
-        mockMvc.perform(get("/api/v1/trainee")) // ✅ FIXED
+        mockMvc.perform(get("/api/v1/trainee"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.user.username").value("john"));
 
         verify(traineeService).getTraineeByUsername();
     }
 
-    // ✅ 3. UPDATE
+
     @Test
     void updateTrainee_shouldReturnUpdatedDTO() throws Exception {
 

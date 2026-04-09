@@ -58,6 +58,7 @@ class TrainingServiceTest {
         assertThrows(NullPointerException.class,
                 () -> trainingService.addTraining(dto));
     }
+
     @Test
     void addTraining_shouldThrowException_whenMapperReturnsNull() {
 

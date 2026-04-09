@@ -33,7 +33,6 @@ class TrainingTypeControllerTest {
     @Test
     void getTrainingTypes_shouldReturnList() throws Exception {
 
-        // given
         TrainingTypeDTO type1 = new TrainingTypeDTO();
         type1.setId(1L);
         type1.setTrainingTypeName(TrainingTypeEnum.CARDIO);
@@ -45,7 +44,6 @@ class TrainingTypeControllerTest {
         when(trainingTypeService.getAllTrainingTypes())
                 .thenReturn(List.of(type1, type2));
 
-        // when & then
         mockMvc.perform(get("/api/v1/training-type"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))

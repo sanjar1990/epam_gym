@@ -23,7 +23,7 @@ class AuthDTOTest {
 
     @Test
     void validDto_shouldHaveNoViolations() {
-        AuthDTO dto = new AuthDTO("john", "password123");
+        AuthDTO dto = new AuthDTO("john", "Toshiba_1990$");
 
         Set<ConstraintViolation<AuthDTO>> violations = validator.validate(dto);
 
@@ -32,7 +32,7 @@ class AuthDTOTest {
 
     @Test
     void nullUsername_shouldFail() {
-        AuthDTO dto = new AuthDTO(null, "password123");
+        AuthDTO dto = new AuthDTO(null, "Toshiba_1990$");
 
         Set<ConstraintViolation<AuthDTO>> violations = validator.validate(dto);
 
@@ -57,8 +57,13 @@ class AuthDTOTest {
         Set<ConstraintViolation<AuthDTO>> violations = validator.validate(dto);
 
         assertFalse(violations.isEmpty());
-        assertEquals("Password cannot be empty or null",
-                violations.iterator().next().getMessage());
+        assertTrue(
+                violations.stream()
+                        .anyMatch(v ->
+                                v.getPropertyPath().toString().equals("password") &&
+                                        v.getMessage().equals("Password cannot be empty or null")
+                        )
+        );
     }
 
     @Test

@@ -23,7 +23,6 @@ class JwtTokenServiceTest {
                 "DEFAULT_EXPIRATION_MS",
                 1000 * 60 * 60);
 
-        // ✅ valid 256-bit base64 key
         ReflectionTestUtils.setField(jwtTokenService,
                 "secretkey",
                 "dGVzdHNlY3JldGtleXRlc3RzZWNyZXRrZXl0ZXN0c2VjcmV0a2V5MTIz");
@@ -70,7 +69,6 @@ class JwtTokenServiceTest {
 
         assertEquals("john", username);
     }
-
 
 
     @Test
