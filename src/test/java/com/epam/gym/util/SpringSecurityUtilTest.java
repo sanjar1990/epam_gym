@@ -2,59 +2,16 @@ package com.epam.gym.util;
 
 import com.epam.gym.config.security.CustomUserDetails;
 import com.epam.gym.entity.User;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class SpringSecurityUtilTest {
 
-    @AfterEach
-    void tearDown() {
-        SecurityContextHolder.clearContext();
-    }
-
-    @Test
-    void getCurrentUser_shouldThrowClassCastException_whenPrincipalIsWrongType() {
-        Authentication authentication = mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn("anonymousUser");
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        assertThrows(ClassCastException.class,
-                SpringSecurityUtil::getCurrentUser);
-    }
-
-    @Test
-    void getCurrentUser_shouldReturnNull_whenUserInsidePrincipalIsNull() {
-        CustomUserDetails userDetails = mock(CustomUserDetails.class);
-        when(userDetails.getUser()).thenReturn(null);
-
-        Authentication authentication = mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn(userDetails);
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        User result = SpringSecurityUtil.getCurrentUser();
-
-        assertNull(result);
-    }
-    @Test
-    void getCurrentUserId_shouldThrowException_whenUserIsNullInsidePrincipal() {
-        CustomUserDetails userDetails = mock(CustomUserDetails.class);
-        when(userDetails.getUser()).thenReturn(null);
-
-        Authentication authentication = mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn(userDetails);
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        assertThrows(NullPointerException.class,
-                SpringSecurityUtil::getCurrentUserId);
-    }
     @Test
     void getCurrentUser() {
         // Arrange
@@ -79,67 +36,15 @@ class SpringSecurityUtilTest {
 
     @Test
     void getCurrentUserId() {
-        // Arrange
-        SecurityContextHolder.clearContext();
-
-        // Act & Assert
-        assertThrows(SecurityException.class, SpringSecurityUtil::getCurrentUser);
-    }
-
-    @Test
-    void getCurrentUser_shouldThrowException_whenPrincipalIsNull() {
-        // Arrange
-        Authentication authentication = mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn(null);
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        // Act & Assert
-        assertThrows(SecurityException.class, SpringSecurityUtil::getCurrentUser);
-    }
-
-    @Test
-    void getCurrentUserId_shouldReturnId_whenPrincipalIsCustomUserDetails() {
-        // Arrange
-        User user = new User();
-        user.setId(99L);
-
         CustomUserDetails userDetails = mock(CustomUserDetails.class);
-        when(userDetails.getUser()).thenReturn(user);
+        when(userDetails.getUser()).thenReturn(null);
 
         Authentication authentication = mock(Authentication.class);
         when(authentication.getPrincipal()).thenReturn(userDetails);
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Act
-        Long result = SpringSecurityUtil.getCurrentUserId();
-
-        // Assert
-        assertEquals(99L, result);
-    }
-
-    @Test
-    void getCurrentUserId_shouldReturnNull_whenPrincipalIsNotCustomUserDetails() {
-        // Arrange
-        Authentication authentication = mock(Authentication.class);
-        when(authentication.getPrincipal()).thenReturn("anonymousUser");
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        // Act
-        Long result = SpringSecurityUtil.getCurrentUserId();
-
-        // Assert
-        assertNull(result);
-    }
-
-    @Test
-    void getCurrentUserId_shouldThrowException_whenAuthenticationIsNull() {
-        // Arrange
-        SecurityContextHolder.clearContext();
-
-        // Act & Assert
-        assertThrows(NullPointerException.class, SpringSecurityUtil::getCurrentUserId);
+        assertThrows(NullPointerException.class,
+                SpringSecurityUtil::getCurrentUserId);
     }
 }

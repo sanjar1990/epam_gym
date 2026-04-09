@@ -116,4 +116,15 @@ class LoginAttemptServiceTest {
         assertFalse(service.isBlocked(user1));
         assertTrue(service.isBlocked(user2));
     }
+
+    @Test
+    void loginFailed_shouldKeepUserBlocked_afterMoreThanMaxAttempts() {
+        String user = "john";
+
+        for (int i = 0; i < 5; i++) {
+            service.loginFailed(user);
+        }
+
+        assertTrue(service.isBlocked(user));
+    }
 }

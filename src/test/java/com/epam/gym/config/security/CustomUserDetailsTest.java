@@ -13,7 +13,6 @@ class CustomUserDetailsTest {
 
     @Test
     void constructor_shouldMapRolesToAuthorities() {
-        // given
         User user = new User();
         user.setUsername("john");
         user.setPassword("1234");
@@ -24,19 +23,31 @@ class CustomUserDetailsTest {
                 UserRoleEnum.ROLE_ADMIN
         );
 
-        // when
         CustomUserDetails details = new CustomUserDetails(user, roles);
 
-        // then
         assertEquals(2, details.getAuthorities().size());
-
         assertTrue(details.getAuthorities().contains(
-                new SimpleGrantedAuthority("ROLE_TRAINER")
-        ));
-
+                new SimpleGrantedAuthority("ROLE_TRAINER")));
         assertTrue(details.getAuthorities().contains(
-                new SimpleGrantedAuthority("ROLE_ADMIN")
-        ));
+                new SimpleGrantedAuthority("ROLE_ADMIN")));
+    }
+
+    @Test
+    void constructor_withEmptyRoles_shouldCreateEmptyAuthorities() {
+        CustomUserDetails details =
+                new CustomUserDetails(new User(), List.of());
+
+        assertNotNull(details.getAuthorities());
+        assertTrue(details.getAuthorities().isEmpty());
+    }
+
+    @Test
+    void constructor_withNullRoles_shouldNotFail() {
+        CustomUserDetails details =
+                new CustomUserDetails(new User(), null);
+
+        assertNotNull(details.getAuthorities());
+        assertTrue(details.getAuthorities().isEmpty());
     }
 
     @Test
@@ -62,7 +73,29 @@ class CustomUserDetailsTest {
     }
 
     @Test
-    void isAccountNonLocked_shouldReturnUserActiveStatus() {
+    void getUser_shouldReturnSameUserInstance() {
+        User user = new User();
+
+        CustomUserDetails details =
+                new CustomUserDetails(user, List.of());
+
+        assertEquals(user, details.getUser());
+    }
+
+    @Test
+    void getRoleList_shouldReturnMappedAuthorities() {
+        List<UserRoleEnum> roles = List.of(UserRoleEnum.ROLE_ADMIN);
+
+        CustomUserDetails details =
+                new CustomUserDetails(new User(), roles);
+
+        assertEquals(1, details.getRoleList().size());
+        assertEquals("ROLE_ADMIN",
+                details.getRoleList().get(0).getAuthority());
+    }
+
+    @Test
+    void isAccountNonLocked_shouldReturnFalse_whenUserInactive() {
         User user = new User();
         user.setIsActive(false);
 
@@ -70,6 +103,17 @@ class CustomUserDetailsTest {
                 new CustomUserDetails(user, List.of());
 
         assertFalse(details.isAccountNonLocked());
+    }
+
+    @Test
+    void isAccountNonLocked_shouldReturnTrue_whenUserActive() {
+        User user = new User();
+        user.setIsActive(true);
+
+        CustomUserDetails details =
+                new CustomUserDetails(user, List.of());
+
+        assertTrue(details.isAccountNonLocked());
     }
 
     @Test
