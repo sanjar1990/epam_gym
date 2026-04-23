@@ -40,3 +40,4 @@ build/
 /src/main/resources/application-local.properties
 /tasks/Task_Spring_Boot.pdf
 /tasks/Task_Spring_Security.pdf
+/tasks/Task_Microservices.pdf

@@ -50,4 +50,13 @@ public class TrainingController {
         trainingService.addTraining(dto);
     }
 
+    //    14 Add Training (POST method)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @DeleteMapping("/{trainingId}")
+    @Operation(summary = " 14 Adddelete Training", description = "")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteTraining(@PathVariable Long trainingId) {
+        trainingService.deleteTraining(trainingId);
+    }
+
 }

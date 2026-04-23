@@ -4,27 +4,36 @@ import com.epam.gym.dto.*;
 import com.epam.gym.entity.Trainee;
 import com.epam.gym.entity.Trainer;
 import com.epam.gym.entity.Training;
+import com.epam.gym.entity.UserRole;
+import com.epam.gym.enums.ActionType;
 import com.epam.gym.mapper.training.TrainingMapperI;
 import com.epam.gym.repository.TrainingRepository;
+import com.epam.gym.service.clint.WorkloadClientService;
 import com.epam.gym.specification.TrainingSpecification;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
+@Transactional
 public class TrainingService {
     private TrainingRepository trainingRepository;
     private TraineeService traineeService;
     private TrainerService trainerService;
     private TrainingMapperI trainingMapperI;
-
+    private final WorkloadClientService workloadClientService;
+    private final JwtTokenService jwtTokenService;
 
     @Autowired
     public void setTraineeService(TraineeService traineeService) {
@@ -69,6 +78,7 @@ public class TrainingService {
         trainer.getTrainees().add(trainee);
 
         trainingRepository.save(training);
+        toWorkloadService(trainer, training, ActionType.ADD);
         log.info("Training added {}", training.getId());
     }
 
@@ -97,4 +107,28 @@ public class TrainingService {
     public Long getTrainingsCount() {
         return trainingRepository.count();
     }
+
+    public void deleteTraining(Long trainingId) {
+        Training training = trainingRepository.findById(trainingId)
+                .orElseThrow(() -> new RuntimeException("Training not found"));
+        trainingRepository.deleteById(trainingId);
+        toWorkloadService(training.getTrainer(), training, ActionType.DELETE);
+        log.info("Training deleted {}", trainingId);
+    }
+
+    private void toWorkloadService(Trainer trainer, Training training, ActionType actionType) {
+        TrainerWorkloadRequest trainerWorkloadRequest = new TrainerWorkloadRequest();
+        trainerWorkloadRequest.setUsername(trainer.getUser().getUsername());
+        trainerWorkloadRequest.setFirstName(trainer.getUser().getFirstName());
+        trainerWorkloadRequest.setLastName(trainer.getUser().getLastName());
+        trainerWorkloadRequest.setTrainingDate(training.getTrainingDate());
+        trainerWorkloadRequest.setTrainingDuration(training.getTrainingDuration());
+        trainerWorkloadRequest.setIsActive(trainer.getUser().getIsActive());
+        trainerWorkloadRequest.setActionType(actionType);
+        String token = jwtTokenService.encode(trainer.getUser().getUsername(),
+                trainer.getUser().getRoles().stream().map(UserRole::getRole).collect(Collectors.toList()));
+        workloadClientService.sendWorkload(trainerWorkloadRequest, "Bearer " + token, MDC.get("transactionId"));
+    }
+
+
 }

@@ -10,10 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-// TODO:
-//  1. File formatting again  DONE
-//  2. Why not constructor injection? DONE
-//  3. [Optional] 'loadUserByUsername' method can be simplified by using '.map' + '.orElseThrow' DONE
+
 @Service
 @NullMarked
 @RequiredArgsConstructor

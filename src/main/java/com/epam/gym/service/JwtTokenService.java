@@ -15,10 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.function.Function;
 
-// TODO:
-//  1. This file is not formatted correctly done
-//  2. Token lifetime can be taken from application properties DONE
-//  3. Commented code should be removed DONE
+
 @Service
 public class JwtTokenService {
     @Value("${jwt.expiration.time}")

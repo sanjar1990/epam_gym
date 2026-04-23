@@ -48,11 +48,7 @@ public class SecurityConfig {
                         .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
-                // TODO:
-                //  Could you please test the following:
-                //  1. User logs in and receives JWT token
-                //  2. User logs out by calling '/auth/logout' endpoint
-                //  3. User tries to access protected endpoint with the same token
+
                 .logout(logout -> logout.logoutUrl("/auth/logout").permitAll())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtTokenFilter(userDetailsService,
@@ -78,11 +74,7 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
-    // TODO:
-    //  Danger!!!
-    //  Wildcard origin (*) cannot be used with credentials=true. This is enforced by 'Fetch Standard' specification
-    //  and implemented in modern browsers. Without that rule any website could send authenticated requests to your BE
-    //  and read responses  DONE
+
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
 
